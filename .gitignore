@@ -5,6 +5,7 @@
 /doc/
 /pkg/
 /spec/reports/
+/spec/crunchbase.yml
 /tmp/
 
 # rspec failure tracking

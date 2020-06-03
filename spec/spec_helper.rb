@@ -1,9 +1,19 @@
-require "bundler/setup"
-require "crunchbase4"
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'crunchbase4'
+
+require 'yaml'
+
+yaml = YAML.load_file(File.join(File.dirname(__FILE__), 'crunchbase.yml'))
+Crunchbase4.config.user_key = yaml['user_key']
+# Crunchbase4.config do |c|
+#   c.user_key = yaml['user_key']
+# end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
