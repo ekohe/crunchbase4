@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/people/mark-zuckerberg?field_ids=born_on,created_at,died_on,entity_def_id,facebook,facet_ids,first_name,gender,identifier,image_id,image_url,investor_stage,investor_type,last_name,layout_id,linkedin,location_group_identifiers,location_identifiers,middle_name,num_articles,num_current_advisor_jobs,num_current_jobs,num_event_appearances,num_exits,num_exits_ipo,num_founded_organizations,num_investments,num_investments_funding_rounds,num_jobs,num_lead_investments,num_partner_investments,num_past_advisor_jobs,num_past_jobs,num_portfolio_organizations,num_relationships,override_layout_id,primary_job_title,primary_organization,rank_delta_d30,rank_delta_d7,rank_delta_d90,rank_person,rank_principal,rank_principal_investor,short_description,twitter,updated_at,uuid,permalink,permalink_aliases,name,aliases,website,rank,short_description,description
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 03 Jun 2020 15:21:43 GMT
+      Etag:
+      - W/"1591197703722"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '1'
+      X-Cb-Request-Took:
+      - '6'
+      Content-Length:
+      - '4462'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"location_group_identifiers":[{"uuid":"f79bcf34-5d9e-4a01-837e-f6012edd056c","value":"San
+        Francisco Bay Area","permalink":"san-francisco-bay-area-california","entity_def_id":"location","location_type":"group"},{"uuid":"625c1897-0157-4afb-bfb6-2585c562e720","value":"Silicon
+        Valley","permalink":"silicon-valley-california","entity_def_id":"location","location_type":"group"},{"uuid":"cf97b169-46c9-493f-a20f-3fe590824934","value":"West
+        Coast","permalink":"west-coast-united-states","entity_def_id":"location","location_type":"group"},{"uuid":"f37257c7-3745-42a1-8e07-b7db80a362ac","value":"Western
+        US","permalink":"western-united-states","entity_def_id":"location","location_type":"group"}],"aliases":["Zuck"],"first_name":"Mark","rank_delta_d30":0.6,"image_url":"https://res.cloudinary.com/crunchbase-production/image/upload/v1448830269/gzcifut4c2xah95x0ewd.jpg","num_investments_funding_rounds":8,"num_lead_investments":1,"name":"Mark
+        Zuckerberg","rank_principal":21553,"permalink":"mark-zuckerberg","num_current_advisor_jobs":4,"facet_ids":["investor","rank"],"num_founded_organizations":8,"identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"},"image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","primary_job_title":"Founder
+        & CEO","description":"Mark Zuckerberg is the founder and CEO of Facebook,
+        which he started in his college dorm room in 2004 with roomates Dustin Moskovitz
+        and Chris Hughes and from New York.\r\n\r\nZuckerberg is responsible for setting
+        the overall direction and product strategy for the company. He leads the design
+        of Facebook''s service and development of its core technology and infrastructure.
+        Mark studied computer science at Harvard University before moving the company
+        to Palo Alto, California.\r\n\r\nEarlier in life, Zuckerberg developed a music
+        recommendation system called Synapse and a peer-to-peer client called Wirehog.
+        However, he abandoned both to pursue new projects.\r\n\r\nZuckerberg attended
+        Harvard University and studied computer science before founding Facebook.\r\n\r\nWhile
+        at Harvard, Zuckerberg created Facemash, a website that compared students''
+        dorm photos side-by-side in a fashion similar to HOT or NOT. Harvard administration
+        was not amused, and Zuckerberg faced subsequent disciplinary action. Less
+        than three months later, he launched Facebook.\r\n\r\nIn September 2010, Zuckerberg
+        donated $100 million to the Newark Public School System to help renovate and
+        revamp the system.\r\n\r\nZuckerberg won the 2007 Crunchie Award for ''Best
+        Startup CEO.'' He was the Time Magazine 2010 Person Of The Year. He also won
+        the 2012 Crunchie Award for CEO of the year.","investor_stage":["seed"],"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","rank":21553,"short_description":"Mark
+        Zuckerberg is the founder and CEO of Facebook, which he started in his college
+        dorm room in 2004 with roomates Dustin Moskovitz and Chr...","num_partner_investments":2,"num_past_advisor_jobs":2,"num_portfolio_organizations":7,"num_investments":8,"num_jobs":14,"num_past_jobs":1,"permalink_aliases":[],"facebook":{"value":"https://www.facebook.com/zuck"},"last_name":"Zuckerberg","layout_id":"investor","investor_type":["investment_partner","angel"],"primary_organization":{"uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},"rank_person":64,"created_at":"2007-05-26T04:51:46Z","location_identifiers":[{"uuid":"0d81d68c-9c59-f14f-0116-3ad9ce7145ca","value":"Palo
+        Alto","permalink":"palo-alto-california","entity_def_id":"location","location_type":"city"},{"uuid":"eb879a83-c91a-121e-0bb8-829782dbcf04","value":"California","permalink":"california-united-states","entity_def_id":"location","location_type":"region"},{"uuid":"f110fca2-1055-99f6-996d-011c198b3928","value":"United
+        States","permalink":"united-states","entity_def_id":"location","location_type":"country"},{"uuid":"b25caef9-a1b8-3a5d-6232-93b2dfb6a1d1","value":"North
+        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"num_articles":31046,"num_current_jobs":7,"num_event_appearances":6,"twitter":{"value":"https://twitter.com/finkd"},"rank_delta_d90":0.7,"updated_at":"2018-12-13T14:05:34Z","entity_def_id":"person","born_on":"1984-05-14","rank_delta_d7":0.6,"gender":"male"}}'
+  recorded_at: Wed, 03 Jun 2020 15:21:43 GMT
+recorded_with: VCR 6.0.0

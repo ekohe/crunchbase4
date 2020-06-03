@@ -91,6 +91,11 @@ module Crunchbase4
           partner_investments
         ]
       end
+
+      def parse_cards_response(response)
+        parse_response(response, response.dig('properties'))
+        # response.dig('cards')
+      end
     end
   end
 end

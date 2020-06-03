@@ -4,7 +4,6 @@
 module Crunchbase4
   # API Request
   class Client
-
     # API Parameters
     #
     #   entity_id:  UUID or permalink of desired entity
@@ -23,19 +22,20 @@ module Crunchbase4
       entities('Organization', entity_id).fetch_cards(cards)
     end
 
-    def people(entity_id, card_id: nil)
-      kobject = entities('People', entity_id)
+    def person(entity_id, card_id: nil)
+      kobject = entities('Person', entity_id)
       return kobject.fetch if card_id.nil?
 
       kobject.cards(card_id)
     end
 
     # Fetching all cards of people
-    def people_cards(entity_id)
-      entities('People', entity_id).fetch_cards
+    def person_cards(entity_id)
+      entities('Person', entity_id).fetch_cards
     end
 
     private
+
     def entities(kclass_name, entity_id)
       Kernel.const_get("Crunchbase4::Entities::#{kclass_name}").new(entity_id)
     end

@@ -8,10 +8,6 @@ module Crunchbase4
     class Organization < Request
       RESOURCE_LIST = 'organizations'
 
-      def fields
-        field_ids.map { |field| field.to_sym }
-      end
-
       def field_ids
         %w[
           acquirer_identifier
@@ -140,17 +136,9 @@ module Crunchbase4
         ]
       end
 
-      def parse_response(response)
-        dynamic_attributes(self, field_ids, response.dig('properties'))
-      end
-
       def parse_cards_response(response)
         parse_response(response, response.dig('properties'))
         # response.dig('cards')
-      end
-
-      def as_json
-        fields.each_with_object({}) { |item, hash| hash[item] = send(item) }
       end
     end
   end

@@ -16,6 +16,7 @@ module Crunchbase4
       end.get(uri, *args)
 
       return response.body if response.status == 200
+
       raise Error, response.reason_phrase
     end
 

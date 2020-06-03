@@ -13,11 +13,11 @@ module Crunchbase4
         # Manually creates methods for both getter and setter and then
         #   sends a message to the new setter with the attribute_value
         object.class.send(:define_method, "#{attribute_name}=".to_sym) do |value|
-          instance_variable_set("@" + attribute_name, value)
+          instance_variable_set('@' + attribute_name, value)
         end
 
         object.class.send(:define_method, attribute_name.to_sym) do
-          instance_variable_get("@" + attribute_name.to_s)
+          instance_variable_get('@' + attribute_name.to_s)
         end
 
         object.send("#{attribute_name}=".to_sym, attribute_value)
@@ -27,11 +27,14 @@ module Crunchbase4
     end
 
     private
+
     def field_value(name, data)
       value = data.dig(name)
 
       return value if value.nil? || value.is_a?(String)
-      return value.collect { |e| e.dig('value') } if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
+      if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
+        return value.collect { |e| e.dig('value') }
+      end
       return value.dig('value') if value.is_a?(Hash) && value.keys.include?('value')
 
       value
