@@ -4,13 +4,13 @@ require 'bundler/setup'
 require 'crunchbase'
 require 'pry'
 
-require 'yaml'
-
-yaml = YAML.load_file(File.join(File.dirname(__FILE__), 'crunchbase.yml'))
-Crunchbase.config.user_key = yaml['user_key']
-# Crunchbase.config do |c|
-#   c.user_key = yaml['user_key']
-# end
+api_key = if File.exist?('crunchbase.yml')
+            require 'yaml'
+            YAML.load_file(File.join(File.dirname(__FILE__), 'crunchbase.yml'))['user_key']
+          else
+            'api_key'
+          end
+Crunchbase.config.user_key = api_key
 
 require 'vcr'
 VCR.configure do |config|
