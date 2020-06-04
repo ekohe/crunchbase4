@@ -10,15 +10,19 @@ module Crunchbase
       def basis_fields
         %w[
           uuid
+          identifier
           permalink
           permalink_aliases
           name
           legal_name
           aliases
           website
-          rank
+          linkedin
+          twitter
+          rank_org
           short_description
           description
+          rank_org_company
         ]
       end
 
@@ -43,7 +47,6 @@ module Crunchbase
           funding_stage
           funding_total
           funds_total
-          identifier
           image_id
           image_url
           investor_identifiers
@@ -56,7 +59,6 @@ module Crunchbase
           last_funding_total
           last_funding_type
           layout_id
-          linkedin
           listed_stock_symbol
           location_group_identifiers
           location_identifiers
@@ -93,8 +95,7 @@ module Crunchbase
           rank_delta_d30
           rank_delta_d7
           rank_delta_d90
-          rank_org
-          rank_org_company
+          rank
           rank_org_school
           rank_principal
           rank_principal_investor
@@ -105,7 +106,6 @@ module Crunchbase
           status
           stock_exchange_symbol
           stock_symbol
-          twitter
           updated_at
           went_public_on
         ] + basis_fields

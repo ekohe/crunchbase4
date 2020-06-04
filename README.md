@@ -11,7 +11,7 @@ A Ruby Library for Crunchbase API v4 -  [CB-v4 Doc](https://app.swaggerhub.com/a
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'crunchbase4'
+gem 'crunchbase4', github: 'ekohe/crunchbase4'
 ```
 
 And then execute:
@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-## Configure your amazon certificate
+## Configure your API certificate
 
 ```
 require 'crunchbase4'
@@ -33,6 +33,10 @@ CB_CONFIG = YAML.load(File.read('crunchbase.yml'))
 Crunchbase.config do |c|
   c.user_key = CB_CONFIG['user_key']
 end
+
+OR
+
+Crunchbase.config.user_key = CB_CONFIG['user_key']
 ```
 
 ## get the organization data

@@ -18,7 +18,7 @@ module Crunchbase
 
       # Will include all attribute from API document
       def fetch
-        object.parse_response(request(
+        object.parse_response(entity(
                                 root_uri,
                                 field_ids: object.field_ids.join(',')
                               ))
@@ -26,7 +26,7 @@ module Crunchbase
 
       # Only include a part basis fields of endpoint
       def fetch_cards(card_names = [])
-        object.parse_cards_response(request(
+        object.parse_cards_response(entity(
                                       root_uri,
                                       field_ids: object.basis_fields.join(','),
                                       cards: (object.full_cards & card_names).join(',')
@@ -34,7 +34,7 @@ module Crunchbase
       end
 
       def cards(card_id)
-        object.parse_response(request(
+        object.parse_response(entity(
                                 root_uri(name: __method__, id: card_id)
                               ))
       end

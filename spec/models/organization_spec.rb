@@ -14,19 +14,23 @@ RSpec.describe Crunchbase::Models::Organization do
     it 'returns basis fields' do
       org = described_class.new
 
-      expect(org.basis_fields.size).to eq(10)
+      expect(org.basis_fields.size).to eq(14)
       expect(org.basis_fields).to eq(
         %w[
           uuid
+          identifier
           permalink
           permalink_aliases
           name
           legal_name
           aliases
           website
-          rank
+          linkedin
+          twitter
+          rank_org
           short_description
           description
+          rank_org_company
         ]
       )
     end

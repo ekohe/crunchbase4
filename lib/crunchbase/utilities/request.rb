@@ -10,11 +10,22 @@ module Crunchbase
     module Request
       module_function
 
-      def request(uri, *args)
+      def entity(uri, *args)
         response = Faraday.new(url: BASE_URI, headers: headers) do |faraday|
           faraday.adapter Faraday.default_adapter
           faraday.response :json
         end.get(uri, *args)
+
+        return response.body if response.status == 200
+
+        raise Error, response.reason_phrase
+      end
+
+      def search(uri, args)
+        response = Faraday.new(url: BASE_URI, headers: headers) do |faraday|
+          faraday.adapter Faraday.default_adapter
+          faraday.response :json
+        end.post(uri, args)
 
         return response.body if response.status == 200
 

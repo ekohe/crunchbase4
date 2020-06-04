@@ -3,8 +3,7 @@
 module Crunchbase
   # Searches API
   module Searches
+    autoload :Client, 'crunchbase/searches/client'
     autoload :Organization, 'crunchbase/searches/organization'
-    autoload :Person, 'crunchbase/searches/person'
-    autoload :Request, 'crunchbase/searches/request'
   end
 end

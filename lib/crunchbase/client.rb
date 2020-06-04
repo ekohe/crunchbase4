@@ -33,6 +33,10 @@ module Crunchbase
       entities('Person', entity_id).fetch_cards
     end
 
+    def searches(keyword, _scope: nil)
+      Crunchbase::Searches::Organization.new('name', keyword)
+    end
+
     private
 
     def entities(kclass_name, entity_id)
