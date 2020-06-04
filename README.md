@@ -1,4 +1,4 @@
-# Crunchbase4
+# Crunchbase
 
 A Ruby Library for Crunchbase API v4 -  [CB-v4 Doc](https://app.swaggerhub.com/apis/Crunchbase/crunchbase-enterprise_api/1.0.1)
 
@@ -30,7 +30,7 @@ Or install it yourself as:
 require 'crunchbase4'
 
 CB_CONFIG = YAML.load(File.read('crunchbase.yml'))
-Crunchbase4.config do |c|
+Crunchbase.config do |c|
   c.user_key = CB_CONFIG['user_key']
 end
 ```
@@ -38,9 +38,9 @@ end
 ## get the organization data
 
 ```
-pry(main)> client = Crunchbase4::Client.new
+pry(main)> client = Crunchbase::Client.new
 pry(main)> response = client.organization('ekohe')
-=> #<Crunchbase4::Entities::Organization:0x00007fbc5cfdf2f8
+=> #<Crunchbase::Entities::Organization:0x00007fbc5cfdf2f8
  @acquirer_identifier=nil,
  @aliases=nil,
  @categories=["Apps", "Artificial Intelligence", "Big Data", "E-Commerce", "Enterprise Software", "FinTech", "iOS", "Retail", "UX Design"],
@@ -65,9 +65,9 @@ OR if you want to get the json data, please call `response.as_json` in your proj
 ## get the person data
 
 ```
-pry(main)> client = Crunchbase4::Client.new
+pry(main)> client = Crunchbase::Client.new
 pry(main)> response = client.person('mark-zuckerberg')
-=> #<Crunchbase4::Entities::Person:0x00007ffbf201d178
+=> #<Crunchbase::Entities::Person:0x00007ffbf201d178
  @aliases=["Zuck"],
  @born_on="1984-05-14",
  @created_at="2007-05-26T04:51:46Z",
@@ -136,4 +136,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Crunchbase4 project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/encoreshao/crunchbase4/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Crunchbase project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/encoreshao/crunchbase4/blob/master/CODE_OF_CONDUCT.md).

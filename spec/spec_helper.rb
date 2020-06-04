@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'crunchbase4'
+require 'crunchbase'
 require 'pry'
 
 require 'yaml'
 
 yaml = YAML.load_file(File.join(File.dirname(__FILE__), 'crunchbase.yml'))
-Crunchbase4.config.user_key = yaml['user_key']
-# Crunchbase4.config do |c|
+Crunchbase.config.user_key = yaml['user_key']
+# Crunchbase.config do |c|
 #   c.user_key = yaml['user_key']
 # end
 

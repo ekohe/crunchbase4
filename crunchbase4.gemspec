@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/crunchbase4/version'
+require_relative 'lib/crunchbase/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'crunchbase4'
-  spec.version       = Crunchbase4::VERSION
+  spec.version       = Crunchbase::VERSION
   spec.authors       = ['Encore Shao']
   spec.email         = ['encore.shao@gmail.com']
 

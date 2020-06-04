@@ -3,7 +3,7 @@
 require 'singleton'
 
 # Root Crunchbase
-module Crunchbase4
+module Crunchbase
   # Config
   class Config
     include Singleton

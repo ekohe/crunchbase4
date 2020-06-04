@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# Crunchbase4 API
-module Crunchbase4
+module Crunchbase
   # Searches API
   module Searches
     # Request API
     class Request
-      include ::Crunchbase4::Request
+      include ::Crunchbase::Utilities::Request
+      include ::Crunchbase::Utilities::Response
     end
   end
 end

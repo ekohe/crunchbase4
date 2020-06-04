@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Crunchbase4::Client do
+RSpec.describe Crunchbase::Client do
   let(:client) { described_class.new }
 
   it 'be able to get organization data' do

@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-# Root Crunchbase
-module Crunchbase4
+module Crunchbase
   # Get the Entities data from API
-  module Entities
+  module Models
     # Get the person data from API
-    class Person < Request
+    class Person < Entity
       RESOURCE_LIST = 'people'
 
       def field_ids
@@ -90,11 +89,6 @@ module Crunchbase4
           primary_organization
           partner_investments
         ]
-      end
-
-      def parse_cards_response(response)
-        parse_response(response, response.dig('properties'))
-        # response.dig('cards')
       end
     end
   end

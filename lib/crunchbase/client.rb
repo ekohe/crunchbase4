@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# Crunchbase API
-module Crunchbase4
+module Crunchbase
   # API Request
   class Client
     # API Parameters
@@ -37,7 +36,8 @@ module Crunchbase4
     private
 
     def entities(kclass_name, entity_id)
-      Kernel.const_get("Crunchbase4::Entities::#{kclass_name}").new(entity_id)
+      model_name = Kernel.const_get("Crunchbase::Models::#{kclass_name}")
+      Crunchbase::Entities::Client.new(entity_id, model_name)
     end
   end
 end

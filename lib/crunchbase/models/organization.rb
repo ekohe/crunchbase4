@@ -1,12 +1,26 @@
 # frozen_string_literal: true
 
-# Root Crunchbase
-module Crunchbase4
+module Crunchbase
   # Get the Organization data from API
-  module Entities
-    # Organization API
-    class Organization < Request
+  module Models
+    # Build Organization API
+    class Organization < Entity
       RESOURCE_LIST = 'organizations'
+
+      def basis_fields
+        %w[
+          uuid
+          permalink
+          permalink_aliases
+          name
+          legal_name
+          aliases
+          website
+          rank
+          short_description
+          description
+        ]
+      end
 
       def field_ids
         %w[
@@ -97,21 +111,6 @@ module Crunchbase4
         ] + basis_fields
       end
 
-      def basis_fields
-        %w[
-          uuid
-          permalink
-          permalink_aliases
-          name
-          legal_name
-          aliases
-          website
-          rank
-          short_description
-          description
-        ]
-      end
-
       def full_cards
         %w[
           raised_investments
@@ -134,11 +133,6 @@ module Crunchbase4
           press_references
           headquarters_address
         ]
-      end
-
-      def parse_cards_response(response)
-        parse_response(response, response.dig('properties'))
-        # response.dig('cards')
       end
     end
   end

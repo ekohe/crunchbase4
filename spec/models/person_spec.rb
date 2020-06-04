@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Crunchbase4::Entities::Person do
-  context 'fields and cards' do
+RSpec.describe Crunchbase::Models::Person do
+  context 'person' do
     it 'returns all fields' do
-      person = described_class.new('mark-zuckerberg')
+      person = described_class.new
 
       expect(person.field_ids.size).to eq(56)
       expect(person.field_ids).to include('name')
@@ -12,7 +12,7 @@ RSpec.describe Crunchbase4::Entities::Person do
     end
 
     it 'returns basis fields' do
-      person = described_class.new('mark-zuckerberg')
+      person = described_class.new
 
       expect(person.basis_fields.size).to eq(9)
       expect(person.basis_fields).to eq(
@@ -31,7 +31,7 @@ RSpec.describe Crunchbase4::Entities::Person do
     end
 
     it 'returns full cards' do
-      person = described_class.new('mark-zuckerberg')
+      person = described_class.new
 
       expect(person.full_cards.size).to eq(13)
       expect(person.full_cards).to eq(
