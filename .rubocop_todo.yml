@@ -33,3 +33,6 @@ Metrics/PerceivedComplexity:
 
 Metrics/BlockLength:
   Max: 200
+
+Layout/LineLength:
+  Max: 200

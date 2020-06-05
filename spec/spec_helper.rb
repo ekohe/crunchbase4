@@ -4,9 +4,10 @@ require 'bundler/setup'
 require 'crunchbase'
 require 'pry'
 
-api_key = if File.exist?('crunchbase.yml')
+config_file = File.join(File.dirname(__FILE__), 'crunchbase.yml')
+api_key = if File.exist?(config_file)
             require 'yaml'
-            YAML.load_file(File.join(File.dirname(__FILE__), 'crunchbase.yml'))['user_key']
+            YAML.load_file(config_file)['user_key']
           else
             'api_key'
           end

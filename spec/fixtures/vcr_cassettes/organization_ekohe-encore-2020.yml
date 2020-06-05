@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/people/ekohe-encore-2020?field_ids=born_on,created_at,died_on,entity_def_id,facebook,facet_ids,first_name,gender,identifier,image_id,image_url,investor_stage,investor_type,last_name,layout_id,linkedin,location_group_identifiers,location_identifiers,middle_name,num_articles,num_current_advisor_jobs,num_current_jobs,num_event_appearances,num_exits,num_exits_ipo,num_founded_organizations,num_investments,num_investments_funding_rounds,num_jobs,num_lead_investments,num_partner_investments,num_past_advisor_jobs,num_past_jobs,num_portfolio_organizations,num_relationships,override_layout_id,primary_job_title,primary_organization,rank_delta_d30,rank_delta_d7,rank_delta_d90,rank_person,rank_principal,rank_principal_investor,short_description,twitter,updated_at,uuid,permalink,permalink_aliases,name,aliases,website,rank,short_description,description
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 05 Jun 2020 12:24:48 GMT
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Request-Took:
+      - '2'
+      Content-Length:
+      - '64'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"requested resource could not be found","code":"CS404"}'
+  recorded_at: Fri, 05 Jun 2020 12:24:48 GMT
+recorded_with: VCR 6.0.0

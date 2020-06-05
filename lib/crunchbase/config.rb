@@ -7,7 +7,7 @@ module Crunchbase
   # Config
   class Config
     include Singleton
-    attr_accessor :user_key
+    attr_accessor :user_key, :debug
   end
 
   def self.config

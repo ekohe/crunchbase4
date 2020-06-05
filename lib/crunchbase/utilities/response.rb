@@ -33,9 +33,7 @@ module Crunchbase
         value = data.dig(name)
 
         return value if value.nil? || value.is_a?(String)
-        if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
-          return value.collect { |e| e.dig('value') }
-        end
+        return value.collect { |e| e.dig('value') } if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
         return value.dig('value') if value.is_a?(Hash) && value.keys.include?('value')
 
         value

@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/funding_rounds/a01b8d46-d311-3333-7c34-aa3ae9c03f22?field_ids=created_at,entity_def_id,funded_organization_categories,funded_organization_description,funded_organization_funding_stage,funded_organization_funding_total,funded_organization_identifier,funded_organization_location,funded_organization_revenue_range,identifier,image_id,investor_identifiers,is_equity,lead_investor_identifiers,num_partners,num_relationships,permalink,pre_money_valuation,rank,rank_funding_round,updated_at,uuid,name,announced_on,closed_on,investment_stage,investment_type,money_raised,target_money_raised,num_investors,short_description
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 05 Jun 2020 12:22:52 GMT
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Request-Took:
+      - '5'
+      Content-Length:
+      - '64'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"requested resource could not be found","code":"CS404"}'
+  recorded_at: Fri, 05 Jun 2020 12:22:52 GMT
+recorded_with: VCR 6.0.0
