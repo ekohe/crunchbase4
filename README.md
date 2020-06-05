@@ -38,23 +38,18 @@ OR
 Crunchbase.config.user_key = CB_CONFIG['user_key']
 ```
 
-## get the organization data
+## Get the organization data
 
 ```
 pry(main)> client = Crunchbase::Client.new
 pry(main)> response = client.organization('ekohe')
-=> #<Crunchbase::Entities::Organization:0x00007fbc5cfdf2f8
- @acquirer_identifier=nil,
- @aliases=nil,
+=> #<Crunchbase::Models::Organization:0x00007fbc5cfdf2f8
  @categories=["Apps", "Artificial Intelligence", "Big Data", "E-Commerce", "Enterprise Software", "FinTech", "iOS", "Retail", "UX Design"],
  @category_groups=["Apps", "Artificial Intelligence", "Commerce and Shopping", "Data and Analytics", "Design", "Financial Services", "Mobile", "Platforms", "Science and Engineering", "Software"],
- @closed_on=nil,
  @company_type="for_profit",
  @contact_email="info@ekohe.com",
  @created_at="2013-05-14T14:28:38Z",
- @delisted_on=nil,
- @demo_days=nil,
- @description=
+ ...
  ...>
 pry(main)> response.name
 => "Ekohe"
@@ -64,26 +59,21 @@ pry(main)> response.permalink
 
 OR if you want to get the json data, please call `response.as_json` in your project.
 
-
-## get the person data
+## Get the person data
 
 ```
 pry(main)> client = Crunchbase::Client.new
 pry(main)> response = client.person('mark-zuckerberg')
-=> #<Crunchbase::Entities::Person:0x00007ffbf201d178
+=> #<Crunchbase::Models::Person:0x00007ffbf201d178
  @aliases=["Zuck"],
  @born_on="1984-05-14",
  @created_at="2007-05-26T04:51:46Z",
- @description=
-  "Mark Zuckerberg is the founder and CEO of Facebook, which he started in his college dorm room in 2004 with roomates Dustin Moskovitz and Chris Hughes and from New York.\r\n\r\nZuckerberg is responsible for setting the overall direction and product strategy for the company. He leads the design of Facebook's service and development of its core technology and infrastructure. Mark studied computer science at Harvard University before moving the company to Palo Alto, California.\r\n\r\nEarlier in life, Zuckerberg developed a music recommendation system called Synapse and a peer-to-peer client called Wirehog. However, he abandoned both to pursue new projects.\r\n\r\nZuckerberg attended Harvard University and studied computer science before founding Facebook.\r\n\r\nWhile at Harvard, Zuckerberg created Facemash, a website that compared students' dorm photos side-by-side in a fashion similar to HOT or NOT. Harvard administration was not amused, and Zuckerberg faced subsequent disciplinary action. Less than three months later, he launched Facebook.\r\n\r\nIn September 2010, Zuckerberg donated $100 million to the Newark Public School System to help renovate and revamp the system.\r\n\r\nZuckerberg won the 2007 Crunchie Award for 'Best Startup CEO.' He was the Time Magazine 2010 Person Of The Year. He also won the 2012 Crunchie Award for CEO of the year.",
- @died_on=nil,
  @entity_def_id="person",
  @entity_id="mark-zuckerberg",
  @facebook="https://www.facebook.com/zuck",
  @facet_ids=["investor", "rank"],
  @first_name="Mark",
  @gender="male",
- @identifier="Mark Zuckerberg",
 ...>
 pry(main)> response.name
 => "Mark Zuckerberg"
@@ -110,16 +100,69 @@ pry(main)> response.as_json
  :investor_type=>["investment_partner", "angel"],
  :last_name=>"Zuckerberg",
  :layout_id=>"investor",
- :linkedin=>nil,
- :location_group_identifiers=>["San Francisco Bay Area", "Silicon Valley", "West Coast", "Western US"],
- :location_identifiers=>["Palo Alto", "California", "United States", "North America"],
- :middle_name=>nil,
- :num_articles=>31046,
- :num_current_advisor_jobs=>4,
- :num_current_jobs=>7,
- :num_event_appearances=>6,
- :num_exits=>nil,
  ....>
+```
+
+## Get the funding round data
+
+```
+pry(main)> client = Crunchbase::Client.new
+=> #<Crunchbase::Client:0x00007f8806824c28>
+pry(main)> response = client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247')
+=> #<Crunchbase::Models::FundingRound:0x00007f8806b55ca8
+ @announced_on="2013-06-30",
+ @closed_on=nil,
+ @created_at="2020-04-02T12:17:59Z",
+ @entity_def_id="funding_round",
+ @funded_organization_categories=nil,
+ @funded_organization_description="Facebook is an online social networking service that enables its users to connect with friends and family.",
+ @funded_organization_funding_stage="ipo",
+ @funded_organization_funding_total=2335700000,
+ @funded_organization_identifier="Facebook",
+ @funded_organization_location=["Menlo Park", "California", "United States", "North America"],
+ @funded_organization_revenue_range="r_10000000",
+ ....>
+pry(main)> response.name
+=> "Secondary Market - Facebook"
+pry(main)> response.uuid
+=> "371c20af-8aa9-4bcb-a8da-0694d138f247"
+```
+
+OR if you want to get the json data, please call `response.as_json` in your project.
+
+```
+pry(main)> response.as_json
+=> {:created_at=>"2020-04-02T12:17:59Z",
+ :entity_def_id=>"funding_round",
+ :funded_organization_categories=>nil,
+ :funded_organization_description=>"Facebook is an online social networking service that enables its users to connect with friends and family.",
+ :funded_organization_funding_stage=>"ipo",
+ :funded_organization_funding_total=>2335700000,
+ :funded_organization_identifier=>"Facebook",
+ :funded_organization_location=>["Menlo Park", "California", "United States", "North America"],
+ :funded_organization_revenue_range=>"r_10000000",
+ :identifier=>"Secondary Market - Facebook",
+ :image_id=>"rde5yhdgakaqryj6zpu6",
+ :investor_identifiers=>["Jean-Brice Abrial"],
+ :is_equity=>false,
+ :lead_investor_identifiers=>nil,
+ :num_partners=>nil,
+ :num_relationships=>nil,
+ :permalink=>"facebook-secondary-market--371c20af",
+ :pre_money_valuation=>nil,
+ :rank=>1881995,
+ :rank_funding_round=>21406,
+ :updated_at=>"2020-04-02T12:17:59Z",
+ :uuid=>"371c20af-8aa9-4bcb-a8da-0694d138f247",
+ :name=>"Secondary Market - Facebook",
+ :announced_on=>"2013-06-30",
+ :closed_on=>nil,
+ :investment_stage=>nil,
+ :investment_type=>"secondary_market",
+ :money_raised=>nil,
+ :target_money_raised=>nil,
+ :num_investors=>1,
+ :short_description=>"Facebook raised an undisclosed amount on 2013-06-30 in Secondary Market"}
 ```
 
 ## Development

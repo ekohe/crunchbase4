@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Encore Shao']
   spec.email         = ['encore.shao@gmail.com']
 
-  spec.summary       = 'Ruby Library for Crunchbase API Version 4.0'
-  spec.description   = 'A Ruby wrapper for Crunchbase API version 4.0, crunchbase build new API interface by GraphQL'
-  spec.homepage      = 'https://github.com/encoreshao/crunchbase4'
+  spec.summary       = 'A Ruby wrapper for Crunchbase API v4.0'
+  spec.description   = 'A Ruby wrapper for Crunchbase API v4.0, it will be based on Entity and Searches'
+  spec.homepage      = 'https://github.com/ekohe/crunchbase4'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
   spec.post_install_message = 'Thanks for installing!'
@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/encoreshao/crunchbase4'
-  spec.metadata['changelog_uri'] = 'https://github.com/encoreshao/crunchbase4/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/ekohe/crunchbase4'
+  spec.metadata['changelog_uri'] = 'https://github.com/ekohe/crunchbase4/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
