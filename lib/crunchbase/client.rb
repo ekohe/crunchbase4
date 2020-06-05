@@ -42,6 +42,16 @@ module Crunchbase
       entities('FundingRound', entity_id).fetch_cards
     end
 
+    # Lookup an Acquisition or Single card
+    def acquisition(entity_id, card_id: nil)
+      lookup_for('Acquisition', entity_id, card_id)
+    end
+
+    # Lookup Acquisition's all card
+    def acquisition_cards(entity_id)
+      entities('Acquisition', entity_id).fetch_cards
+    end
+
     # For Searches
     #
 

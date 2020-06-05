@@ -2,6 +2,10 @@
 
 RSpec.describe Crunchbase::Models::Organization do
   context 'organization' do
+    it 'returns organizations as endpoint' do
+      expect(described_class::RESOURCE_LIST).to eq('organizations')
+    end
+
     it 'returns all fields' do
       org = described_class.new
 

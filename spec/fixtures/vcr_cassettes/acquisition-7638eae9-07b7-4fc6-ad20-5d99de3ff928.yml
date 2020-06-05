@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/acquisitions/7638eae9-07b7-4fc6-ad20-5d99de3ff928?field_ids=acquiree_categories,acquiree_last_funding_type,acquiree_locations,acquiree_num_funding_rounds,acquiree_revenue_range,acquiree_short_description,acquirer_categories,acquirer_funding_total,acquirer_identifier,acquirer_locations,acquirer_num_funding_rounds,acquirer_short_description,created_at,disposition_of_acquired,entity_def_id,num_relationships,rank,rank_acquisition,status,terms,updated_at,uuid,permalink,identifier,announced_on,completed_on,acquisition_type,price,short_description,acquiree_funding_total,acquiree_identifier,acquirer_revenue_range
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 05 Jun 2020 23:39:33 GMT
+      Etag:
+      - W/"1591400373157"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '2'
+      X-Cb-Request-Took:
+      - '5'
+      Content-Length:
+      - '3796'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"acquirer_num_funding_rounds":15,"permalink":"facebook-acquires-giphy--7638eae9","identifier":{"uuid":"7638eae9-07b7-4fc6-ad20-5d99de3ff928","value":"Giphy
+        acquired by Facebook","image_id":"v1455824985/s1mtdmlvnamjcpnthcfb.jpg","permalink":"facebook-acquires-giphy--7638eae9","entity_def_id":"acquisition"},"acquirer_locations":[{"uuid":"1f8abfef-5379-b26b-7020-05a09908492f","value":"Menlo
+        Park","permalink":"menlo-park-california","entity_def_id":"location","location_type":"city"},{"uuid":"eb879a83-c91a-121e-0bb8-829782dbcf04","value":"California","permalink":"california-united-states","entity_def_id":"location","location_type":"region"},{"uuid":"f110fca2-1055-99f6-996d-011c198b3928","value":"United
+        States","permalink":"united-states","entity_def_id":"location","location_type":"country"},{"uuid":"b25caef9-a1b8-3a5d-6232-93b2dfb6a1d1","value":"North
+        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"rank_acquisition":79,"announced_on":{"value":"2020-05-15","precision":"day"},"uuid":"7638eae9-07b7-4fc6-ad20-5d99de3ff928","price":{"value":400000000,"currency":"USD","value_usd":400000000},"rank":1104699,"short_description":"Facebook
+        acquires Giphy on 2020-05-15 for $400000000","acquiree_categories":[{"uuid":"bc4ee7e1-d4a1-c228-c551-29d716ba971f","value":"Communities","permalink":"communities","entity_def_id":"category"},{"uuid":"2772a539-e636-09dc-30dc-b1a7deb98d0e","value":"Internet","permalink":"internet","entity_def_id":"category"},{"uuid":"6ed1eddf-4d71-581a-c523-7ccdf6759e64","value":"Photo
+        Sharing","permalink":"photo-sharing","entity_def_id":"category"},{"uuid":"5c362e08-2d00-f3b4-ca60-584bfcc4e72f","value":"Publishing","permalink":"publishing","entity_def_id":"category"},{"uuid":"0d39287e-5b13-77a6-9702-74294daded43","value":"Search
+        Engine","permalink":"search-engine-0d39","entity_def_id":"category"},{"uuid":"5349a2f2-14d8-9727-c32a-19ebea5db78c","value":"Social
+        Media","permalink":"social-media","entity_def_id":"category"}],"acquiree_last_funding_type":"series_d","acquiree_num_funding_rounds":4,"acquiree_funding_total":{"value":150949998,"currency":"USD","value_usd":150949998},"acquisition_type":"acquisition","acquiree_locations":[{"uuid":"d64b7615-985c-fbf4-4aff-aa89d70c4050","value":"New
+        York","permalink":"new-york-new-york","entity_def_id":"location","location_type":"city"},{"uuid":"83ead471-332b-d02e-67b7-67279aed075b","value":"New
+        York","permalink":"new-york-united-states","entity_def_id":"location","location_type":"region"},{"uuid":"f110fca2-1055-99f6-996d-011c198b3928","value":"United
+        States","permalink":"united-states","entity_def_id":"location","location_type":"country"},{"uuid":"b25caef9-a1b8-3a5d-6232-93b2dfb6a1d1","value":"North
+        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"acquirer_identifier":{"role":"acquirer","uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},"disposition_of_acquired":"subsidiary","acquirer_revenue_range":"r_10000000","acquiree_revenue_range":"r_00010000","acquirer_funding_total":{"value":2335700000,"currency":"USD","value_usd":2335700000},"status":"pending","acquiree_short_description":"Giphy
+        allows users to search, share, and discover best GIFs.","created_at":"2020-05-15T15:44:26Z","acquirer_short_description":"Facebook
+        is an online social networking service that enables its users to connect with
+        friends and family.","updated_at":"2020-05-18T16:32:25Z","entity_def_id":"acquisition","acquiree_identifier":{"role":"acquiree","uuid":"048f759f-06e4-456b-6126-3d4a57141b5d","value":"Giphy","image_id":"v1455824985/s1mtdmlvnamjcpnthcfb.jpg","permalink":"giphy","entity_def_id":"organization"}}}'
+  recorded_at: Fri, 05 Jun 2020 23:39:33 GMT
+recorded_with: VCR 6.0.0

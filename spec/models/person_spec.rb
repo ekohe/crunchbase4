@@ -2,6 +2,10 @@
 
 RSpec.describe Crunchbase::Models::Person do
   context 'person' do
+    it 'returns people as endpoint' do
+      expect(described_class::RESOURCE_LIST).to eq('people')
+    end
+
     it 'returns all fields' do
       person = described_class.new
 

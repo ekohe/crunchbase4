@@ -141,4 +141,43 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(funding_round.updated_at).to eq('2020-04-02T12:17:59Z')
     expect(funding_round.uuid).to eq('371c20af-8aa9-4bcb-a8da-0694d138f247')
   end
+
+  it 'be able to get acquisition data' do
+    acquisition = VCR.use_cassette('acquisition-7638eae9-07b7-4fc6-ad20-5d99de3ff928') do
+      described_class.new('7638eae9-07b7-4fc6-ad20-5d99de3ff928', Crunchbase::Models::Acquisition).fetch
+    end
+
+    expect(acquisition.acquiree_categories).to eq(['Communities', 'Internet', 'Photo Sharing', 'Publishing', 'Search Engine', 'Social Media'])
+    expect(acquisition.acquiree_funding_total).to eq(150_949_998)
+    expect(acquisition.acquiree_identifier).to eq('Giphy')
+    expect(acquisition.acquiree_last_funding_type).to eq('series_d')
+    expect(acquisition.acquiree_locations).to eq(['New York', 'New York', 'United States', 'North America'])
+    expect(acquisition.acquiree_num_funding_rounds).to eq(4)
+    expect(acquisition.acquiree_revenue_range).to eq('r_00010000')
+    expect(acquisition.acquiree_short_description).to eq('Giphy allows users to search, share, and discover best GIFs.')
+    expect(acquisition.acquirer_categories).to eq(nil)
+    expect(acquisition.acquirer_funding_total).to eq(2_335_700_000)
+    expect(acquisition.acquirer_identifier).to eq('Facebook')
+    expect(acquisition.acquirer_locations).to eq(['Menlo Park', 'California', 'United States', 'North America'])
+    expect(acquisition.acquirer_num_funding_rounds).to eq(15)
+    expect(acquisition.acquirer_revenue_range).to eq('r_10000000')
+    expect(acquisition.acquirer_short_description).to eq('Facebook is an online social networking service that enables its users to connect with friends and family.')
+    expect(acquisition.acquisition_type).to eq('acquisition')
+    expect(acquisition.announced_on).to eq('2020-05-15')
+    expect(acquisition.completed_on).to eq(nil)
+    expect(acquisition.created_at).to eq('2020-05-15T15:44:26Z')
+    expect(acquisition.disposition_of_acquired).to eq('subsidiary')
+    expect(acquisition.entity_def_id).to eq('acquisition')
+    expect(acquisition.identifier).to eq('Giphy acquired by Facebook')
+    expect(acquisition.num_relationships).to eq(nil)
+    expect(acquisition.permalink).to eq('facebook-acquires-giphy--7638eae9')
+    expect(acquisition.price).to eq(400_000_000)
+    expect(acquisition.rank).to eq(1_104_699)
+    expect(acquisition.rank_acquisition).to eq(79)
+    expect(acquisition.short_description).to eq('Facebook acquires Giphy on 2020-05-15 for $400000000')
+    expect(acquisition.status).to eq('pending')
+    expect(acquisition.terms).to eq(nil)
+    expect(acquisition.updated_at).to eq('2020-05-18T16:32:25Z')
+    expect(acquisition.uuid).to eq('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
+  end
 end

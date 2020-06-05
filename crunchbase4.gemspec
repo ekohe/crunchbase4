@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'crunchbase4'
   spec.version       = Crunchbase::VERSION
   spec.authors       = ['Encore Shao']
-  spec.email         = ['encore.shao@gmail.com']
+  spec.email         = ['encore@ekohe.com']
 
-  spec.summary       = 'A Ruby wrapper for Crunchbase API v4.0'
-  spec.description   = 'A Ruby wrapper for Crunchbase API v4.0, it will be based on Entity and Searches'
+  spec.summary       = 'Crunchbase is a ruby wrapper base on Crunchbase V4 API'
+  spec.description   = 'Crunchbase is a ruby wrapper base on Crunchbase V4 API. It provides easy to get the API data by each endpoint. '
   spec.homepage      = 'https://github.com/ekohe/crunchbase4'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')

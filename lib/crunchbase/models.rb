@@ -7,6 +7,7 @@ module Crunchbase
     autoload :Organization,                 'crunchbase/models/organization'
     autoload :Person,                       'crunchbase/models/person'
     autoload :FundingRound,                 'crunchbase/models/funding_round'
+    autoload :Acquisition,                  'crunchbase/models/acquisition'
     autoload :Investment,                   'crunchbase/models/investment'
     autoload :PressReference,               'crunchbase/models/press_reference'
     autoload :CategoryGroup,                'crunchbase/models/category_group'
