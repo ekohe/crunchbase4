@@ -294,6 +294,10 @@ response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 ```
 
+## Changelogs
+
+You can click [Changelog](https://github.com/ekohe/crunchbase4/blob/master/CHANGELOG.md) to view all historical changes.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ekohe/crunchbase4. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/ekohe/crunchbase4/blob/master/CODE_OF_CONDUCT.md).
