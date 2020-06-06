@@ -40,10 +40,15 @@ Crunchbase.config.user_key = CB_CONFIG['user_key']
 
 ## Usage
 
-### Get the organization data
+### The first step is to build an API client
 
 ```
 pry(main)> client = Crunchbase::Client.new
+```
+
+### Get the organization data
+
+```
 pry(main)> response = client.organization('ekohe')
 => #<Crunchbase::Models::Organization:0x00007fbc5cfdf2f8
  @categories=["Apps", "Artificial Intelligence", "Big Data", "E-Commerce", "Enterprise Software", "FinTech", "iOS", "Retail", "UX Design"],
@@ -59,12 +64,11 @@ pry(main)> response.permalink
 => "ekohe"
 ```
 
-OR if you want to get the json data, please call `response.as_json` in your project.
+Or, if you want to use json data, please call `response.as_json` in your project.
 
 ### Get the person data
 
 ```
-pry(main)> client = Crunchbase::Client.new
 pry(main)> response = client.person('mark-zuckerberg')
 => #<Crunchbase::Models::Person:0x00007ffbf201d178
  @aliases=["Zuck"],
@@ -83,32 +87,9 @@ pry(main)> response.permalink
 => "mark-zuckerberg"
 ```
 
-OR if you want to get the json data, please call `response.as_json` in your project.
-
-```
-pry(main)> response.as_json
-=> {:born_on=>"1984-05-14",
- :created_at=>"2007-05-26T04:51:46Z",
- :died_on=>nil,
- :entity_def_id=>"person",
- :facebook=>"https://www.facebook.com/zuck",
- :facet_ids=>["investor", "rank"],
- :first_name=>"Mark",
- :gender=>"male",
- :identifier=>"Mark Zuckerberg",
- :image_id=>"v1448830269/gzcifut4c2xah95x0ewd.jpg",
- :image_url=>"https://res.cloudinary.com/crunchbase-production/image/upload/v1448830269/gzcifut4c2xah95x0ewd.jpg",
- :investor_stage=>["seed"],
- :investor_type=>["investment_partner", "angel"],
- :last_name=>"Zuckerberg",
- :layout_id=>"investor",
- ....>
-```
-
 ### Get the funding round data
 
 ```
-pry(main)> client = Crunchbase::Client.new
 => #<Crunchbase::Client:0x00007f8806824c28>
 pry(main)> response = client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247')
 => #<Crunchbase::Models::FundingRound:0x00007f8806b55ca8
@@ -130,48 +111,9 @@ pry(main)> response.uuid
 => "371c20af-8aa9-4bcb-a8da-0694d138f247"
 ```
 
-OR if you want to get the json data, please call `response.as_json` in your project.
-
-```
-pry(main)> response.as_json
-=> {:created_at=>"2020-04-02T12:17:59Z",
- :entity_def_id=>"funding_round",
- :funded_organization_categories=>nil,
- :funded_organization_description=>"Facebook is an online social networking service that enables its users to connect with friends and family.",
- :funded_organization_funding_stage=>"ipo",
- :funded_organization_funding_total=>2335700000,
- :funded_organization_identifier=>"Facebook",
- :funded_organization_location=>["Menlo Park", "California", "United States", "North America"],
- :funded_organization_revenue_range=>"r_10000000",
- :identifier=>"Secondary Market - Facebook",
- :image_id=>"rde5yhdgakaqryj6zpu6",
- :investor_identifiers=>["Jean-Brice Abrial"],
- :is_equity=>false,
- :lead_investor_identifiers=>nil,
- :num_partners=>nil,
- :num_relationships=>nil,
- :permalink=>"facebook-secondary-market--371c20af",
- :pre_money_valuation=>nil,
- :rank=>1881995,
- :rank_funding_round=>21406,
- :updated_at=>"2020-04-02T12:17:59Z",
- :uuid=>"371c20af-8aa9-4bcb-a8da-0694d138f247",
- :name=>"Secondary Market - Facebook",
- :announced_on=>"2013-06-30",
- :closed_on=>nil,
- :investment_stage=>nil,
- :investment_type=>"secondary_market",
- :money_raised=>nil,
- :target_money_raised=>nil,
- :num_investors=>1,
- :short_description=>"Facebook raised an undisclosed amount on 2013-06-30 in Secondary Market"}
-```
-
 ### Get the acquisition data
 
 ```
-pry(main)> client = Crunchbase::Client.new
-=> #<Crunchbase::Client:0x00007f8806824c28>
 pry(main)> response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 => #<Crunchbase::Models::Acquisition:0x00007fa01134da60
  @acquiree_categories=["Communities", "Internet", "Photo Sharing", "Publishing", "Search Engine", "Social Media"],
@@ -186,42 +128,23 @@ pry(main)> response.acquiree_funding_total
 => 150949998
 ```
 
-OR if you want to get the json data, please call `response.as_json` in your project.
+### Get the press reference data
 
 ```
-pry(main)> response.as_json
-=> {:acquiree_categories=>["Communities", "Internet", "Photo Sharing", "Publishing", "Search Engine", "Social Media"],
- :acquiree_last_funding_type=>"series_d",
- :acquiree_locations=>["New York", "New York", "United States", "North America"],
- :acquiree_num_funding_rounds=>4,
- :acquiree_revenue_range=>"r_00010000",
- :acquiree_short_description=>"Giphy allows users to search, share, and discover best GIFs.",
- :acquirer_categories=>nil,
- :acquirer_funding_total=>2335700000,
- :acquirer_identifier=>"Facebook",
- :acquirer_locations=>["Menlo Park", "California", "United States", "North America"],
- :acquirer_num_funding_rounds=>15,
- :acquirer_short_description=>"Facebook is an online social networking service that enables its users to connect with friends and family.",
- :created_at=>"2020-05-15T15:44:26Z",
- :disposition_of_acquired=>"subsidiary",
- :entity_def_id=>"acquisition",
- :num_relationships=>nil,
- :rank=>1104699,
- :rank_acquisition=>79,
- :status=>"pending",
- :terms=>nil,
- :updated_at=>"2020-05-18T16:32:25Z",
- :uuid=>"7638eae9-07b7-4fc6-ad20-5d99de3ff928",
- :permalink=>"facebook-acquires-giphy--7638eae9",
- :identifier=>"Giphy acquired by Facebook",
- :announced_on=>"2020-05-15",
- :completed_on=>nil,
- :acquisition_type=>"acquisition",
- :price=>400000000,
- :short_description=>"Facebook acquires Giphy on 2020-05-15 for $400000000",
- :acquiree_funding_total=>150949998,
- :acquiree_identifier=>"Giphy",
- :acquirer_revenue_range=>"r_10000000"}
+pry(main)> response = client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
+=> #<Crunchbase::Models::PressReference:0x00007fce2d33dbc0
+ @activity_entities=["Facebook", "General Atlantic", "KKR", "Reliance Industries", "Vista Equity Partners"],
+ @author=nil,
+ @created_at="2020-06-05T17:41:10Z",
+ @entity_def_id="press_reference",
+ @identifier="Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm",
+ @posted_on="2020-06-05",
+ @publisher="Tech in Asia",
+ @thumbnail_url="https://cdn.techinasia.com/wp-content/uploads/2016/07/Flickr_-_World_Economic_Forum_-_Ambani.jpg",
+ @title="Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm",
+ @updated_at="2020-06-05T17:41:10Z",
+ @url="https://ift.tt/3cByFh1",
+ @uuid="0171b30e-9cf8-4ad5-8288-2993e4308e0f">
 ```
 
 ## Development

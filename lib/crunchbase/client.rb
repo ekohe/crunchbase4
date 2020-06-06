@@ -52,6 +52,16 @@ module Crunchbase
       entities('Acquisition', entity_id).fetch_cards
     end
 
+    # Lookup an PressReference or Single card
+    def press_reference(entity_id, card_id: nil)
+      lookup_for('PressReference', entity_id, card_id)
+    end
+
+    # Lookup PressReference's all card
+    def press_reference_cards(entity_id)
+      entities('PressReference', entity_id).fetch_cards
+    end
+
     # For Searches
     #
 

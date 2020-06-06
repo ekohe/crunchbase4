@@ -65,5 +65,14 @@ RSpec.describe Crunchbase::Client do
       expect(acquisition.permalink).to eq('facebook-acquires-giphy--7638eae9')
       expect(acquisition.uuid).to eq('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
     end
+
+    it 'be able to get press_reference data' do
+      press_reference = VCR.use_cassette('press_reference-0171b30e-9cf8-4ad5-8288-2993e4308e0f') do
+        client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
+      end
+
+      expect(press_reference.title).to eq('Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm')
+      expect(press_reference.uuid).to eq('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
+    end
   end
 end

@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/press_references/0171b30e-9cf8-4ad5-8288-2993e4308e0f?field_ids=activity_entities,created_at,entity_def_id,identifier,thumbnail_url,updated_at,uuid,url,title,author,posted_on,publisher
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 00:08:33 GMT
+      Etag:
+      - W/"1591402113177"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '1'
+      X-Cb-Request-Took:
+      - '3'
+      Content-Length:
+      - '1536'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJwcm9wZXJ0aWVzIjp7ImlkZW50aWZpZXIiOnsidXVpZCI6IjAxNzFiMzBlLTljZjgtNGFkNS04Mjg4LTI5OTNlNDMwOGUwZiIsInZhbHVlIjoiSmlvIFBsYXRmb3JtcyB0byByZWNlaXZlICQxLjJiIGZyb20gQWJ1IERoYWJp4oCZcyBzb3ZlcmVpZ24gaW52ZXN0bWVudCBmaXJtIiwiZW50aXR5X2RlZl9pZCI6InByZXNzX3JlZmVyZW5jZSJ9LCJ1cmwiOnsidmFsdWUiOiJodHRwczovL2lmdC50dC8zY0J5RmgxIn0sInV1aWQiOiIwMTcxYjMwZS05Y2Y4LTRhZDUtODI4OC0yOTkzZTQzMDhlMGYiLCJwb3N0ZWRfb24iOiIyMDIwLTA2LTA1IiwicHVibGlzaGVyIjoiVGVjaCBpbiBBc2lhIiwidGh1bWJuYWlsX3VybCI6Imh0dHBzOi8vY2RuLnRlY2hpbmFzaWEuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE2LzA3L0ZsaWNrcl8tX1dvcmxkX0Vjb25vbWljX0ZvcnVtXy1fQW1iYW5pLmpwZyIsImNyZWF0ZWRfYXQiOiIyMDIwLTA2LTA1VDE3OjQxOjEwWiIsInRpdGxlIjoiSmlvIFBsYXRmb3JtcyB0byByZWNlaXZlICQxLjJiIGZyb20gQWJ1IERoYWJp4oCZcyBzb3ZlcmVpZ24gaW52ZXN0bWVudCBmaXJtIiwidXBkYXRlZF9hdCI6IjIwMjAtMDYtMDVUMTc6NDE6MTBaIiwiZW50aXR5X2RlZl9pZCI6InByZXNzX3JlZmVyZW5jZSIsImFjdGl2aXR5X2VudGl0aWVzIjpbeyJ1dWlkIjoiZGY2NjI4MTItN2Y5Ny0wYjQzLTlkM2UtMTJmNjRmNTA0ZmJiIiwidmFsdWUiOiJGYWNlYm9vayIsImltYWdlX2lkIjoicmRlNXloZGdha2FxcnlqNnpwdTYiLCJwZXJtYWxpbmsiOiJmYWNlYm9vayIsImVudGl0eV9kZWZfaWQiOiJvcmdhbml6YXRpb24ifSx7InV1aWQiOiI4YjhkOTZmOC05ZGZlLWIyN2EtOGY1Ny03ZDI2NmEwNTFkYzkiLCJ2YWx1ZSI6IkdlbmVyYWwgQXRsYW50aWMiLCJpbWFnZV9pZCI6InYxMzk5OTY4NTkyL2Q1dTRuYm5uYXpqNGh0aG1jZWQ1LnBuZyIsInBlcm1hbGluayI6ImdlbmVyYWwtYXRsYW50aWMiLCJlbnRpdHlfZGVmX2lkIjoib3JnYW5pemF0aW9uIn0seyJ1dWlkIjoiM2NmYTg4ZDYtMTNhMi00MDZkLWE3MzAtMDhlNWZlYjUzNDZmIiwidmFsdWUiOiJLS1IiLCJpbWFnZV9pZCI6InFuYzBqc3NqajNoNWl2cWY0aHZnIiwicGVybWFsaW5rIjoia2tyLTM0NmYiLCJlbnRpdHlfZGVmX2lkIjoib3JnYW5pemF0aW9uIn0seyJ1dWlkIjoiN2JhNDdhYTAtMGUwMS00MTAxLWE3NGQtNjdhODIwNTU4NGZkIiwidmFsdWUiOiJSZWxpYW5jZSBJbmR1c3RyaWVzIiwiaW1hZ2VfaWQiOiJqZWhxOHJzbW9reTlwdnhvcWN5ZCIsInBlcm1hbGluayI6InJlbGlhbmNlLWluZHVzdHJpZXMtODRmZCIsImVudGl0eV9kZWZfaWQiOiJvcmdhbml6YXRpb24ifSx7InV1aWQiOiI0ZDA5NjI3My1hZTVkLWQ0YzMtYTQxMS0yMGE0MjUxNGQyY2UiLCJ2YWx1ZSI6IlZpc3RhIEVxdWl0eSBQYXJ0bmVycyIsImltYWdlX2lkIjoidjE0ODEyMzA2NjEvZ21qYXJrcG55c2llcXFpdGc1ZngucG5nIiwicGVybWFsaW5rIjoidmlzdGEtZXF1aXR5LXBhcnRuZXJzIiwiZW50aXR5X2RlZl9pZCI6Im9yZ2FuaXphdGlvbiJ9XX19
+  recorded_at: Sat, 06 Jun 2020 00:08:33 GMT
+recorded_with: VCR 6.0.0

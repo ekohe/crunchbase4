@@ -180,4 +180,23 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(acquisition.updated_at).to eq('2020-05-18T16:32:25Z')
     expect(acquisition.uuid).to eq('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
   end
+
+  it 'be able to get press_reference data' do
+    press_reference = VCR.use_cassette('press_reference-0171b30e-9cf8-4ad5-8288-2993e4308e0f') do
+      described_class.new('0171b30e-9cf8-4ad5-8288-2993e4308e0f', Crunchbase::Models::PressReference).fetch
+    end
+
+    expect(press_reference.activity_entities).to eq(['Facebook', 'General Atlantic', 'KKR', 'Reliance Industries', 'Vista Equity Partners'])
+    expect(press_reference.author).to eq(nil)
+    expect(press_reference.created_at).to eq('2020-06-05T17:41:10Z')
+    expect(press_reference.entity_def_id).to eq('press_reference')
+    expect(press_reference.identifier).to eq('Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm')
+    expect(press_reference.posted_on).to eq('2020-06-05')
+    expect(press_reference.publisher).to eq('Tech in Asia')
+    expect(press_reference.thumbnail_url).to eq('https://cdn.techinasia.com/wp-content/uploads/2016/07/Flickr_-_World_Economic_Forum_-_Ambani.jpg')
+    expect(press_reference.title).to eq('Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm')
+    expect(press_reference.updated_at).to eq('2020-06-05T17:41:10Z')
+    expect(press_reference.url).to eq('https://ift.tt/3cByFh1')
+    expect(press_reference.uuid).to eq('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
+  end
 end
