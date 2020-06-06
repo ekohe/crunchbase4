@@ -199,4 +199,28 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(press_reference.url).to eq('https://ift.tt/3cByFh1')
     expect(press_reference.uuid).to eq('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
   end
+
+  it 'be able to get investment data' do
+    investment = VCR.use_cassette('investment-1368da0c-07b0-46ef-9a86-b518367e60d6') do
+      described_class.new('1368da0c-07b0-46ef-9a86-b518367e60d6', Crunchbase::Models::Investment).fetch
+    end
+
+    expect(investment.announced_on).to eq('2013-06-30')
+    expect(investment.created_at).to eq('2020-04-02T12:17:59Z')
+    expect(investment.entity_def_id).to eq('investment')
+    expect(investment.funding_round_identifier).to eq('Secondary Market - Facebook')
+    expect(investment.funding_round_money_raised).to eq(nil)
+    expect(investment.identifier).to eq('Jean-Brice Abrial investment in Secondary Market - Facebook')
+    expect(investment.investor_identifier).to eq('Jean-Brice Abrial')
+    expect(investment.investor_stage).to eq(%w[early_stage_venture seed])
+    expect(investment.investor_type).to eq(['angel'])
+    expect(investment.is_lead_investor).to eq(nil)
+    expect(investment.money_invested).to eq(1_500_000.0)
+    expect(investment.name).to eq('Jean-Brice Abrial investment in Secondary Market - Facebook')
+    expect(investment.organization_identifier).to eq('Facebook')
+    expect(investment.partner_identifiers).to eq(nil)
+    expect(investment.permalink).to eq('jean-brice-abrial-invested-in-facebook-secondary-market--371c20af--1368da0c')
+    expect(investment.updated_at).to eq('2020-04-02T12:17:59Z')
+    expect(investment.uuid).to eq('1368da0c-07b0-46ef-9a86-b518367e60d6')
+  end
 end

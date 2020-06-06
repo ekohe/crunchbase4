@@ -147,6 +147,30 @@ pry(main)> response = client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e
  @uuid="0171b30e-9cf8-4ad5-8288-2993e4308e0f">
 ```
 
+### Get the investment data
+
+```
+pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
+=> #<Crunchbase::Models::Investment:0x00007f8c15105830
+ @announced_on="2013-06-30",
+ @created_at="2020-04-02T12:17:59Z",
+ @entity_def_id="investment",
+ @funding_round_identifier="Secondary Market - Facebook",
+ @funding_round_money_raised=nil,
+ @identifier="Jean-Brice Abrial investment in Secondary Market - Facebook",
+ @investor_identifier="Jean-Brice Abrial",
+ @investor_stage=["early_stage_venture", "seed"],
+ @investor_type=["angel"],
+ @is_lead_investor=nil,
+ @money_invested=1500000.0,
+ @name="Jean-Brice Abrial investment in Secondary Market - Facebook",
+ @organization_identifier="Facebook",
+ @partner_identifiers=nil,
+ @permalink="jean-brice-abrial-invested-in-facebook-secondary-market--371c20af--1368da0c",
+ @updated_at="2020-04-02T12:17:59Z",
+ @uuid="1368da0c-07b0-46ef-9a86-b518367e60d6">
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

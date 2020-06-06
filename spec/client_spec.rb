@@ -74,5 +74,14 @@ RSpec.describe Crunchbase::Client do
       expect(press_reference.title).to eq('Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm')
       expect(press_reference.uuid).to eq('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
     end
+
+    it 'be able to get investment data' do
+      investment = VCR.use_cassette('investment-1368da0c-07b0-46ef-9a86-b518367e60d6') do
+        client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
+      end
+
+      expect(investment.name).to eq('Jean-Brice Abrial investment in Secondary Market - Facebook')
+      expect(investment.uuid).to eq('1368da0c-07b0-46ef-9a86-b518367e60d6')
+    end
   end
 end

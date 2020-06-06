@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/investments/1368da0c-07b0-46ef-9a86-b518367e60d6?field_ids=created_at,entity_def_id,identifier,investor_identifier,is_lead_investor,funding_round_identifier,updated_at,uuid,name,permalink,money_invested,investor_stage,investor_type,funding_round_money_raised,organization_identifier,partner_identifiers,announced_on
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 00:26:51 GMT
+      Etag:
+      - W/"1591403211062"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '1'
+      X-Cb-Request-Took:
+      - '3'
+      Content-Length:
+      - '1358'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"name":"Jean-Brice Abrial investment in Secondary Market
+        - Facebook","permalink":"jean-brice-abrial-invested-in-facebook-secondary-market--371c20af--1368da0c","identifier":{"uuid":"1368da0c-07b0-46ef-9a86-b518367e60d6","value":"Jean-Brice
+        Abrial investment in Secondary Market - Facebook","permalink":"jean-brice-abrial-invested-in-facebook-secondary-market--371c20af--1368da0c","entity_def_id":"investment"},"investor_stage":["early_stage_venture","seed"],"announced_on":"2013-06-30","uuid":"1368da0c-07b0-46ef-9a86-b518367e60d6","organization_identifier":{"uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"371c20af-8aa9-4bcb-a8da-0694d138f247","value":"Secondary
+        Market - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-secondary-market--371c20af","entity_def_id":"funding_round"},"money_invested":{"value":1500000.0,"currency":"EUR","value_usd":1951851.7217284038},"investor_type":["angel"],"created_at":"2020-04-02T12:17:59Z","updated_at":"2020-04-02T12:17:59Z","entity_def_id":"investment","investor_identifier":{"uuid":"54b3835f-5ad4-458c-949e-54d1c00d562a","value":"Jean-Brice
+        Abrial","image_id":"k04g0i6ofn8jgrhjlknk","permalink":"jean-brice-abrial","entity_def_id":"person"}}}'
+  recorded_at: Sat, 06 Jun 2020 00:26:51 GMT
+recorded_with: VCR 6.0.0

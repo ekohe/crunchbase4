@@ -33,6 +33,8 @@ Metrics/PerceivedComplexity:
 
 Metrics/BlockLength:
   Max: 200
+  Exclude:
+    - spec/entities/client_spec.rb
 
 Layout/LineLength:
   Max: 200
