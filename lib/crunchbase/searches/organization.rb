@@ -5,8 +5,6 @@ module Crunchbase
   module Searches
     # Send request for entities endpoints
     class Organization < Client
-      include ::Crunchbase::Utilities::Request
-
       def endpoint
         ::Crunchbase::Models::Organization::RESOURCE_LIST
       end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../utilities/response'
+
 module Crunchbase
   # Get the Organization data from API
   module Models

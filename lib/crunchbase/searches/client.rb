@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../utilities/request'
+
 module Crunchbase
   # Whole Searches endpoints
   module Searches

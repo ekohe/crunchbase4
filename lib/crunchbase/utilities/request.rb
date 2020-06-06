@@ -2,6 +2,7 @@
 
 require 'faraday'
 require 'faraday_middleware'
+require_relative '../errors'
 
 module Crunchbase
   # Utilities
