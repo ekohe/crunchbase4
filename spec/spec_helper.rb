@@ -4,16 +4,23 @@ require 'bundler/setup'
 require 'crunchbase'
 require 'pry'
 
-config_file = File.join(File.dirname(__FILE__), 'crunchbase.yml')
-api_key = if File.exist?(config_file)
-            require 'yaml'
-            YAML.load_file(config_file)['user_key']
-          else
-            'api_key'
-          end
+file = File.join(File.dirname(__FILE__), 'crunchbase.yml')
+if File.exist?(file)
+  require 'yaml'
+  cb_config = YAML.load_file(file)
+
+  api_key = cb_config['user_key']
+  debug   = cb_config['debug']
+else
+  api_key = 'api_key'
+  debug   = false
+end
+
 Crunchbase.config.user_key = api_key
+Crunchbase.config.debug = debug
 
 require 'vcr'
+
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock

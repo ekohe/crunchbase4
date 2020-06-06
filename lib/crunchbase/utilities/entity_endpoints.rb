@@ -80,6 +80,13 @@ module Crunchbase
         model_name = Kernel.const_get("Crunchbase::Models::#{kclass_name}")
         Crunchbase::Entities::Client.new(entity_id, model_name)
       end
+
+      def lookup_for(model_name, entity_id, card_id)
+        kobject = entities(model_name, entity_id)
+        return kobject.fetch if card_id.nil?
+
+        kobject.cards(card_id)
+      end
     end
   end
 end

@@ -3,6 +3,7 @@ PATH
   specs:
     crunchbase4 (0.1.0)
       faraday
+      faraday_curl
       faraday_middleware
 
 GEM
@@ -17,6 +18,8 @@ GEM
     diff-lcs (1.3)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
+    faraday_curl (0.0.2)
+      faraday (>= 0.9.0)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
     hashdiff (1.0.1)

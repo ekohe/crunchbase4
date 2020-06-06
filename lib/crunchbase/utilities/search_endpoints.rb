@@ -7,17 +7,9 @@ module Crunchbase
     module SearchEndpoints
       # For Searches
 
-      def searches(keyword, _scope: nil)
-        Crunchbase::Searches::Organization.new('name', keyword)
-      end
-
-      private
-
-      def lookup_for(model_name, entity_id, card_id)
-        kobject = entities(model_name, entity_id)
-        return kobject.fetch if card_id.nil?
-
-        kobject.cards(card_id)
+      def searches(keyword, scope_name: nil)
+        kclass = Kernel.const_get("Crunchbase::Searches::#{scope_name}")
+        kclass.new('name', keyword).search
       end
     end
   end

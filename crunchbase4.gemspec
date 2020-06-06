@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'faraday'
+  spec.add_dependency 'faraday_curl'
   spec.add_dependency 'faraday_middleware'
 
   # VCR for testing APIs
