@@ -6,10 +6,18 @@ module Crunchbase
     # All Searches API endpoint
     module SearchEndpoints
       # For Searches
+      def search_organizations(raw_data)
+        searches(raw_data, 'organization').searches
+      end
 
-      def searches(keyword, scope_name: nil)
-        kclass = Kernel.const_get("Crunchbase::Searches::#{scope_name}")
-        kclass.new('name', keyword).search
+      def search_funding_rounds(raw_data)
+        searches(raw_data, 'funding_round').searches
+      end
+
+      private
+
+      def searches(raw_data, scope_name)
+        Crunchbase::Searches::Client.new(raw_data, scope_name)
       end
     end
   end

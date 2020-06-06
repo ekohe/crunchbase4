@@ -13,9 +13,9 @@ module Crunchbase
 
       ROOT_LIST = 'entities'
 
-      def initialize(entity_id, model_name)
-        @entity_id  = entity_id
-        @model_name = model_name
+      def initialize(entity_id, entity_type)
+        @entity_id = entity_id
+        @entity_type = entity_type
       end
 
       # Will include all attribute from API document

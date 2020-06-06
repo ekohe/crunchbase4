@@ -46,7 +46,9 @@ Crunchbase.config.user_key = CB_CONFIG['user_key']
 pry(main)> client = Crunchbase::Client.new
 ```
 
-### Get the organization data
+### Entity
+
+####  Get the organization data
 
 ```
 pry(main)> response = client.organization('ekohe')
@@ -66,7 +68,7 @@ pry(main)> response.permalink
 
 Or, if you want to use json data, please call `response.as_json` in your project.
 
-### Get the person data
+#### Get the person data
 
 ```
 pry(main)> response = client.person('mark-zuckerberg')
@@ -87,7 +89,7 @@ pry(main)> response.permalink
 => "mark-zuckerberg"
 ```
 
-### Get the funding round data
+#### Get the funding round data
 
 ```
 => #<Crunchbase::Client:0x00007f8806824c28>
@@ -111,7 +113,7 @@ pry(main)> response.uuid
 => "371c20af-8aa9-4bcb-a8da-0694d138f247"
 ```
 
-### Get the acquisition data
+#### Get the acquisition data
 
 ```
 pry(main)> response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
@@ -128,7 +130,7 @@ pry(main)> response.acquiree_funding_total
 => 150949998
 ```
 
-### Get the press reference data
+#### Get the press reference data
 
 ```
 pry(main)> response = client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
@@ -147,7 +149,7 @@ pry(main)> response = client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e
  @uuid="0171b30e-9cf8-4ad5-8288-2993e4308e0f">
 ```
 
-### Get the investment data
+#### Get the investment data
 
 ```
 pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
@@ -171,6 +173,112 @@ pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
  @uuid="1368da0c-07b0-46ef-9a86-b518367e60d6">
 ```
 
+### Search
+
+* Search query parameters for each endpoint
+
+```
+{
+  "field_ids": [],
+  "query": [],
+  "order": [],
+  "limit": 0
+}
+```
+
+#### Search organizations by query conditions and order
+
+* Step1: Needs to build the query conditions
+
+```
+query_data = {
+  'field_ids' => %w[
+    name
+    website
+    uuid
+    short_description
+    company_type
+  ],
+  'order' => [
+    {
+      'field_id' => 'company_type',
+      'sort' => 'asc'
+    }
+  ],
+  'query' => [
+    {
+      'type' => 'predicate',
+      'field_id' => 'funding_total',
+      'operator_id' => 'between',
+      'values' => [
+        {
+          'value' => 1_000_000,
+          'currency' => 'usd'
+        },
+        {
+          'value' => 10_000_000,
+          'currency' => 'usd'
+        }
+      ]
+    },
+    {
+      'type' => 'predicate',
+      'field_id' => 'facet_ids',
+      'operator_id' => 'includes',
+      'values' => %w[company investor]
+    }
+  ],
+  'limit' => 4
+}
+```
+
+* Use `client` to send a request and parse response
+
+```
+pry(main)> response = client.search_organizations(query_data)
+=> #<Crunchbase::Searches::Client:0x00007fdfc1ad6eb8
+ @conditions=
+  {"field_ids"=>["name", "website", "uuid", "short_description", "company_type"],
+   "order"=>[{"field_id"=>"company_type", "sort"=>"asc"}],
+   "query"=>
+    [{"type"=>"predicate", "field_id"=>"funding_total", "operator_id"=>"between", "values"=>[{"value"=>1000000, "currency"=>"usd"}, {"value"=>10000000, "currency"=>"usd"}]},
+     {"type"=>"predicate", "field_id"=>"facet_ids", "operator_id"=>"includes", "values"=>["company", "investor"]}],
+   "limit"=>4},
+ @count=4,
+ @entities=
+  [#<Crunchbase::Models::Organization:0x00007fdfc1b06460
+    @company_type="for_profit",
+    @name="360VUZ",
+    @short_description="360VUZ is an immersive virtual video mobile app that enables users to teleport from their smartphone in 360°",
+    @uuid="cb32a4d7-2bd0-1727-a055-63aa6a545380",
+    @website="http://www.360VUZ.com">,
+   #<Crunchbase::Models::Organization:0x00007fdfc1b05b78
+    @company_type="for_profit",
+    @name="HATCHER+",
+    @short_description="Hatcher+ is a data-driven venture investment platform.",
+    @uuid="a0ed41b8-8031-adad-dbb3-2e8f8e1e6848",
+    @website="https://h2.hatcher.com">,
+   #<Crunchbase::Models::Organization:0x00007fdfc1b05290
+    @company_type="for_profit",
+    @name="Merck",
+    @short_description="Merck is a biopharmaceutical company that offers medicines and vaccines for various diseases.",
+    @uuid="2f9b212a-d3aa-a8c2-6317-516127c8ba88",
+    @website="http://www.merck.com">,
+   #<Crunchbase::Models::Organization:0x00007fdfc1b049a8
+    @company_type="for_profit",
+    @name="Archistar.ai",
+    @short_description="World-first artificial intelligence helping professionals find development sites, assess for feasibility and generate architectural designs",
+    @uuid="3be8b43a-1143-4e26-8ecb-660a5a78edc5",
+    @website="https://archistar.ai/">],
+ @entity_type="organization",
+ @kclass_name=Crunchbase::Models::Organization,
+ @total_count=44871>
+```
+
+- Get all entities:     `response.entities`
+- Get total count:      `response.total_count`
+- Get entities count:   `response.count`
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -189,7 +297,6 @@ response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ekohe/crunchbase4. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/ekohe/crunchbase4/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 

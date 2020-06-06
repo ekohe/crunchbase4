@@ -18,24 +18,42 @@ module Crunchbase
       include ::Crunchbase::Utilities::Request
       include ::Crunchbase::Utilities::CbModel
 
+      attr_accessor :total_count, :count, :entities, :entity_type, :conditions
+
       ROOT_LIST = 'searches'
       LIMIT = 100
 
-      def initialize(data_raw_body, model_name)
-        @data_raw_body = data_raw_body
-        @model_name = model_name
+      def initialize(conditions, entity_type)
+        @conditions = conditions
+        @entity_type = entity_type
       end
 
       # Will include all attribute from API document
       def searches
-        response = search(root_uri, data_raw.to_s.gsub('=>', ':'))
-
-        response.dig('entities').each_with_object([]) do |entity, objects|
-          objects << cbobject.parse_response(entity)
-        end
+        wrapping!(
+          search(
+            root_uri,
+            data_raw.to_s.gsub('=>', ':')
+          )
+        )
       end
 
       private
+
+      def wrapping!(response)
+        query_results = search_results(response.dig('entities'))
+
+        self.total_count  = response['count']
+        self.entities     = query_results
+        self.count        = query_results.size
+        self
+      end
+
+      def search_results(entities)
+        entities.each_with_object([]) do |entity, objects|
+          objects << cbobject.parse_response(entity, field_ids)
+        end
+      end
 
       def root_uri
         [ROOT_LIST, kclass_name::RESOURCE_LIST].compact.join('/')
@@ -43,19 +61,19 @@ module Crunchbase
 
       # Post request raw datas
       def field_ids
-        cbobject.basis_fields
+        @conditions['field_ids'] || cbobject.basis_fields
       end
 
-      def parse_response(response)
-        cbobject.parse_response(response)
+      def limit
+        @conditions['limit'] || LIMIT
       end
 
       def data_raw
         {
-          'field_ids' => @data_raw_body['field_ids'] || field_ids,
-          'order' => @data_raw_body['order'],
-          'query' => @data_raw_body['query'],
-          'limit' => @data_raw_body['limit'] || LIMIT
+          'field_ids' => field_ids,
+          'order' => @conditions['order'],
+          'query' => @conditions['query'],
+          'limit' => limit
         }
       end
     end

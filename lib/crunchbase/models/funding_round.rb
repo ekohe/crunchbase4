@@ -25,7 +25,6 @@ module Crunchbase
           lead_investor_identifiers
           num_partners
           num_relationships
-          permalink
           pre_money_valuation
           rank
           rank_funding_round
@@ -37,6 +36,7 @@ module Crunchbase
         %w[
           uuid
           name
+          permalink
           announced_on
           closed_on
           investment_stage

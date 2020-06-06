@@ -42,11 +42,14 @@ RSpec.describe Crunchbase::Searches::Client do
       'limit' => 10
     }
 
-    orgs = VCR.use_cassette('searches_organizations_with_funding_total_order_company_type') do
+    response = VCR.use_cassette('searches_organizations_with_funding_total_order_company_type') do
       described_class.new(post_data_raw, 'organization').searches
     end
 
-    expect(orgs.size).to eq(10)
+    orgs = response.entities
+
+    expect(response.count).to eq(10)
+    expect(response.total_count).to eq(44_867)
     expect(orgs.map(&:name)).to eq([
                                      '360VUZ', 'HATCHER+', 'Merck', 'Archistar.ai', 'Benzinga',
                                      'Schoola', 'Novartis', 'Berkshire Hathaway', 'PolicyStreet', 'ConsenSys'

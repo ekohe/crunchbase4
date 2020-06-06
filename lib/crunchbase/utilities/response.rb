@@ -10,24 +10,47 @@ module Crunchbase
       def dynamic_attributes(object, attribute_names, response)
         attribute_names.each do |attribute_name|
           attribute_value = field_value(attribute_name, response)
+          dynamic_define_method(object, attribute_name, attribute_value)
+        end
 
-          # Manually creates methods for both getter and setter and then
-          #   sends a message to the new setter with the attribute_value
-          object.class.send(:define_method, "#{attribute_name}=".to_sym) do |value|
-            instance_variable_set('@' + attribute_name, value)
+        [attribute_names & special_attributes].flatten.each do |attribute_name|
+          attribute_names.delete(attribute_name)
+          hash_datas = response&.dig(attribute_name)
+
+          values = hash_datas&.map { |k, v| v if %w[uuid permalink].include?(k) }&.compact || []
+          dynamic_define_method(object, attribute_name, values)
+          hash_datas&.keys&.each do |key|
+            next unless %w[uuid permalink].include?(key)
+
+            dynamic_define_method(object, key, hash_datas&.dig(key))
           end
-
-          object.class.send(:define_method, attribute_name.to_sym) do
-            instance_variable_get('@' + attribute_name.to_s)
-          end
-
-          object.send("#{attribute_name}=".to_sym, attribute_value)
         end
 
         object
       end
 
       private
+
+      def dynamic_define_method(object, attribute_name, attribute_value)
+        # Manually creates methods for both getter and setter and then
+        #   sends a message to the new setter with the attribute_value
+        object.class.send(:define_method, "#{attribute_name}=".to_sym) do |value|
+          instance_variable_set('@' + attribute_name, value)
+        end
+
+        object.class.send(:define_method, attribute_name.to_sym) do
+          instance_variable_get('@' + attribute_name.to_s)
+        end
+
+        object.send("#{attribute_name}=".to_sym, attribute_value)
+      end
+
+      # This is hash attributes
+      #
+      #   1. identifier
+      def special_attributes
+        %w[identifier]
+      end
 
       def field_value(name, data)
         value = data.dig(name)

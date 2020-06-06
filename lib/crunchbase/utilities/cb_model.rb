@@ -5,7 +5,7 @@ module Crunchbase
   module Utilities
     # API Request
     module CbModel
-      attr_accessor :model_name
+      attr_accessor :entity_type
 
       module_function
 
@@ -18,14 +18,14 @@ module Crunchbase
       end
 
       def exact_kclass_object
-        return model_name if model_name.is_a?(Class)
+        return entity_type if entity_type.is_a?(Class)
 
-        cb_model_name = [
+        cb_type = [
           'Crunchbase',
           'Models',
-          model_name.split('_').map(&:capitalize).join
+          entity_type.split('_').map(&:capitalize).join
         ].join('::')
-        Kernel.const_get("::#{cb_model_name}")
+        Kernel.const_get("::#{cb_type}")
       end
     end
   end

@@ -84,4 +84,101 @@ RSpec.describe Crunchbase::Client do
       expect(investment.uuid).to eq('1368da0c-07b0-46ef-9a86-b518367e60d6')
     end
   end
+
+  context 'Search API' do
+    it 'be able to search organization' do
+      post_data_raw = {
+        'field_ids' => %w[
+          name
+          website
+          uuid
+          short_description
+          company_type
+        ],
+        'order' => [
+          {
+            'field_id' => 'company_type',
+            'sort' => 'asc'
+          }
+        ],
+        'query' => [
+          {
+            'type' => 'predicate',
+            'field_id' => 'funding_total',
+            'operator_id' => 'between',
+            'values' => [
+              {
+                'value' => 1_000_000,
+                'currency' => 'usd'
+              },
+              {
+                'value' => 10_000_000,
+                'currency' => 'usd'
+              }
+            ]
+          },
+          {
+            'type' => 'predicate',
+            'field_id' => 'facet_ids',
+            'operator_id' => 'includes',
+            'values' => %w[company investor]
+          }
+        ],
+        'limit' => 10
+      }
+
+      response = VCR.use_cassette('searches_organizations_with_funding_total_order_company_type') do
+        client.search_organizations(post_data_raw)
+      end
+
+      orgs = response.entities
+      expect(response.count).to eq(10)
+      expect(response.total_count).to eq(44_867)
+      expect(orgs.map(&:name)[0]).to eq('360VUZ')
+      expect(orgs.map(&:website)[0]).to eq('http://www.360VUZ.com')
+      expect(orgs.map(&:uuid)[0]).to eq('cb32a4d7-2bd0-1727-a055-63aa6a545380')
+      expect(orgs.map(&:company_type)[0]).to eq('for_profit')
+    end
+
+    it 'be able to search funding rounds' do
+      post_data_raw = {
+        'field_ids' => %w[
+          identifier
+          announced_on
+          funded_organization_identifier
+          money_raised
+          investment_type
+        ],
+        'order' => [
+          {
+            'field_id' => 'money_raised',
+            'sort' => 'desc'
+          }
+        ],
+        'query' => [
+          {
+            'type' => 'predicate',
+            'field_id' => 'money_raised',
+            'operator_id' => 'gte',
+            'values' => [
+              '100000'
+            ]
+          }
+        ],
+        'limit' => 100
+      }
+
+      response = VCR.use_cassette('searches_funding_rounds_with_money_raised_order_money_raised') do
+        client.search_funding_rounds(post_data_raw)
+      end
+      funding_rounds = response.entities
+
+      expect(response.count).to eq(100)
+      expect(response.total_count).to eq(202_561)
+      expect(funding_rounds[0].permalink).to eq('xerox-post-ipo-equity--54708936')
+      expect(funding_rounds[0].uuid).to eq('54708936-6f24-484c-9b31-3ba530a8bfb4')
+      expect(funding_rounds[0].identifier).to eq(['xerox-post-ipo-equity--54708936', '54708936-6f24-484c-9b31-3ba530a8bfb4'])
+      expect(funding_rounds[0].money_raised).to eq(24_000_000_000)
+    end
+  end
 end

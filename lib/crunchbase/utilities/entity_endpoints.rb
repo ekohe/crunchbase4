@@ -16,73 +16,72 @@ module Crunchbase
 
       # Lookup an Organization or single card
       def organization(entity_id, card_id: nil)
-        lookup_for('Organization', entity_id, card_id)
+        lookup_for('organization', entity_id, card_id)
       end
 
       # Lookup Organization's all cards
       def organization_cards(entity_id, cards: [])
-        entities('Organization', entity_id).fetch_cards(cards)
+        entities('organization', entity_id).fetch_cards(cards)
       end
 
       # Lookup a Person or single card
       def person(entity_id, card_id: nil)
-        lookup_for('Person', entity_id, card_id)
+        lookup_for('person', entity_id, card_id)
       end
 
       # Lookup Person's all cards
       def person_cards(entity_id)
-        entities('Person', entity_id).fetch_cards
+        entities('person', entity_id).fetch_cards
       end
 
       # Lookup a Funding Round or single card
       def funding_round(entity_id, card_id: nil)
-        lookup_for('FundingRound', entity_id, card_id)
+        lookup_for('funding_round', entity_id, card_id)
       end
 
       # Lookup Funding Round's all cards
       def funding_round_cards(entity_id)
-        entities('FundingRound', entity_id).fetch_cards
+        entities('funding_round', entity_id).fetch_cards
       end
 
       # Lookup an Acquisition or Single card
       def acquisition(entity_id, card_id: nil)
-        lookup_for('Acquisition', entity_id, card_id)
+        lookup_for('acquisition', entity_id, card_id)
       end
 
       # Lookup Acquisition's all card
       def acquisition_cards(entity_id)
-        entities('Acquisition', entity_id).fetch_cards
+        entities('acquisition', entity_id).fetch_cards
       end
 
       # Lookup an Investment or Single card
       def investment(entity_id, card_id: nil)
-        lookup_for('Investment', entity_id, card_id)
+        lookup_for('investment', entity_id, card_id)
       end
 
       # Lookup Investment's all card
       def investment_cards(entity_id)
-        entities('Investment', entity_id).fetch_cards
+        entities('investment', entity_id).fetch_cards
       end
 
       # Lookup an PressReference or Single card
       def press_reference(entity_id, card_id: nil)
-        lookup_for('PressReference', entity_id, card_id)
+        lookup_for('press_reference', entity_id, card_id)
       end
 
       # Lookup PressReference's all card
       def press_reference_cards(entity_id)
-        entities('PressReference', entity_id).fetch_cards
+        entities('press_reference', entity_id).fetch_cards
       end
 
       private
 
-      def entities(kclass_name, entity_id)
-        model_name = Kernel.const_get("Crunchbase::Models::#{kclass_name}")
-        Crunchbase::Entities::Client.new(entity_id, model_name)
+      def entities(entity_type, entity_id)
+        Crunchbase::Entities::Client.new(entity_id, entity_type)
       end
 
-      def lookup_for(model_name, entity_id, card_id)
-        kobject = entities(model_name, entity_id)
+      def lookup_for(entity_type, entity_id, card_id)
+        kobject = entities(entity_type, entity_id)
         return kobject.fetch if card_id.nil?
 
         kobject.cards(card_id)

@@ -13,8 +13,10 @@ module Crunchbase
         field_ids.map(&:to_sym)
       end
 
-      def parse_response(response)
-        dynamic_attributes(self, field_ids, response.dig('properties'))
+      def parse_response(response, request_field_ids = [])
+        extract_fields = (request_field_ids.empty? ? field_ids : request_field_ids)
+
+        dynamic_attributes(self, extract_fields, response.dig('properties'))
       end
 
       def parse_cards_response(response)
