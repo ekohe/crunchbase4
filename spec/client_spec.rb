@@ -83,6 +83,15 @@ RSpec.describe Crunchbase::Client do
       expect(investment.name).to eq('Jean-Brice Abrial investment in Secondary Market - Facebook')
       expect(investment.uuid).to eq('1368da0c-07b0-46ef-9a86-b518367e60d6')
     end
+
+    it 'be able to get ipo data' do
+      ipo = VCR.use_cassette('ipo-8fd30bb3-9eb9-839d-4526-85f82c1bfdf7') do
+        client.ipo('8fd30bb3-9eb9-839d-4526-85f82c1bfdf7')
+      end
+
+      expect(ipo.permalink).to eq('facebook-ipo--8fd30bb3')
+      expect(ipo.uuid).to eq('8fd30bb3-9eb9-839d-4526-85f82c1bfdf7')
+    end
   end
 
   context 'Search API' do

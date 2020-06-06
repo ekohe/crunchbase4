@@ -12,5 +12,6 @@ module Crunchbase
     autoload :PressReference,               'crunchbase/models/press_reference'
     autoload :CategoryGroup,                'crunchbase/models/category_group'
     autoload :Category,                     'crunchbase/models/category'
+    autoload :Ipo,                          'crunchbase/models/ipo'
   end
 end

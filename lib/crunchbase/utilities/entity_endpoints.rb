@@ -74,6 +74,16 @@ module Crunchbase
         entities('press_reference', entity_id).fetch_cards
       end
 
+      # Lookup an Ipo or Single card
+      def ipo(entity_id, card_id: nil)
+        lookup_for('ipo', entity_id, card_id)
+      end
+
+      # Lookup Ipo's all card
+      def ipo_cards(entity_id)
+        entities('ipo', entity_id).fetch_cards
+      end
+
       private
 
       def entities(entity_type, entity_id)

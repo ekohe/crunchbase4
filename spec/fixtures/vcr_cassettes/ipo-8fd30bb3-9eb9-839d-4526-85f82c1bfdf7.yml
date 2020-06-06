@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/ipos/8fd30bb3-9eb9-839d-4526-85f82c1bfdf7?field_ids=created_at,entity_def_id,image_id,rank,rank_ipo,shares_outstanding,shares_sold,stock_exchange_symbol,stock_full_symbol,updated_at,uuid,permalink,identifier,amount_raised,share_price,stock_symbol,valuation,delisted_on,went_public_on,short_description
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 10:43:08 GMT
+      Etag:
+      - W/"1591440188281"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '1'
+      X-Cb-Request-Took:
+      - '3'
+      Content-Length:
+      - '879'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"stock_full_symbol":"NASDAQ:FB","permalink":"facebook-ipo--8fd30bb3","identifier":{"uuid":"8fd30bb3-9eb9-839d-4526-85f82c1bfdf7","value":"FB","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-ipo--8fd30bb3","entity_def_id":"ipo"},"image_id":"rde5yhdgakaqryj6zpu6","uuid":"8fd30bb3-9eb9-839d-4526-85f82c1bfdf7","went_public_on":"2012-05-18","rank":2352885,"short_description":"Facebook
+        went public on 2012-05-18 and raised $18400000000. Facebook was valued at
+        $104000000000","share_price":{"value":38.0,"currency":"USD","value_usd":38.0},"stock_exchange_symbol":"nasdaq","stock_symbol":"FB","valuation":{"value":104000000000,"currency":"USD","value_usd":104000000000},"rank_ipo":19178,"created_at":"2014-05-26T07:34:47Z","updated_at":"2018-02-12T23:54:07Z","entity_def_id":"ipo","amount_raised":{"value":18400000000,"currency":"USD","value_usd":18400000000}}}'
+  recorded_at: Sat, 06 Jun 2020 10:43:08 GMT
+recorded_with: VCR 6.0.0

@@ -226,4 +226,31 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(investment.updated_at).to eq('2020-04-02T12:17:59Z')
     expect(investment.uuid).to eq('1368da0c-07b0-46ef-9a86-b518367e60d6')
   end
+
+  it 'be able to get ipo data' do
+    ipo = VCR.use_cassette('ipo-8fd30bb3-9eb9-839d-4526-85f82c1bfdf7') do
+      described_class.new('8fd30bb3-9eb9-839d-4526-85f82c1bfdf7', 'ipo').fetch
+    end
+
+    expect(ipo.amount_raised).to eq(18_400_000_000)
+    expect(ipo.created_at).to eq('2014-05-26T07:34:47Z')
+    expect(ipo.delisted_on).to eq(nil)
+    expect(ipo.entity_def_id).to eq('ipo')
+    expect(ipo.identifier).to eq(['8fd30bb3-9eb9-839d-4526-85f82c1bfdf7', 'facebook-ipo--8fd30bb3'])
+    expect(ipo.image_id).to eq('rde5yhdgakaqryj6zpu6')
+    expect(ipo.permalink).to eq('facebook-ipo--8fd30bb3')
+    expect(ipo.rank).to eq(2_352_885)
+    expect(ipo.rank_ipo).to eq(19_178)
+    expect(ipo.share_price).to eq(38.0)
+    expect(ipo.shares_outstanding).to eq(nil)
+    expect(ipo.shares_sold).to eq(nil)
+    expect(ipo.short_description).to eq('Facebook went public on 2012-05-18 and raised $18400000000. Facebook was valued at $104000000000')
+    expect(ipo.stock_exchange_symbol).to eq('nasdaq')
+    expect(ipo.stock_full_symbol).to eq('NASDAQ:FB')
+    expect(ipo.stock_symbol).to eq('FB')
+    expect(ipo.updated_at).to eq('2018-02-12T23:54:07Z')
+    expect(ipo.uuid).to eq('8fd30bb3-9eb9-839d-4526-85f82c1bfdf7')
+    expect(ipo.valuation).to eq(104_000_000_000)
+    expect(ipo.went_public_on).to eq('2012-05-18')
+  end
 end
