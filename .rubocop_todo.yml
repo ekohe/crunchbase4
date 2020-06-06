@@ -35,6 +35,11 @@ Metrics/BlockLength:
   Max: 200
   Exclude:
     - spec/entities/client_spec.rb
+    - spec/client_spec.rb
 
 Layout/LineLength:
   Max: 200
+
+Metrics/ModuleLength:
+  Exclude:
+    - lib/crunchbase/utilities/veriables.rb

@@ -13,7 +13,7 @@ if File.exist?(file)
   debug   = cb_config['debug']
 else
   api_key = 'api_key'
-  debug   = false
+  debug   = true
 end
 
 Crunchbase.config.user_key = api_key

@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.crunchbase.com/api/v4/searches/people
+    body:
+      encoding: UTF-8
+      string: '{"field_ids":["first_name", "last_name", "uuid", "permalink", "name",
+        "aliases", "website", "rank"], "order":[{"field_id":"first_name", "sort":"asc",
+        "nulls":"last"}], "query":[{"type":"predicate", "field_id":"first_name", "operator_id":"contains",
+        "values":["Maxime"]}, {"type":"predicate", "field_id":"last_name", "operator_id":"contains",
+        "values":["Guilbot"]}], "limit":100}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 14:19:55 GMT
+      Etag:
+      - W/"1591453195661"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - search:elastic
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Minimum-Count:
+      - '1'
+      X-Cb-Engine-Page-Count:
+      - '1'
+      X-Cb-Engine-Took:
+      - '2'
+      X-Cb-Engine-Total-Count:
+      - '1'
+      X-Cb-Request-Took:
+      - '9'
+      Content-Length:
+      - '486'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":1,"entities":[{"uuid":"90f4c92e-3479-1f6e-6470-b2ae78805839","properties":{"first_name":"Maxime","website":{"value":"http://ekohe.com"},"name":"Maxime
+        Guilbot","permalink":"maxime-guilbot","identifier":{"permalink":"maxime-guilbot","image_id":"v1397187169/a7e868611f399d1bca03b38a852a5e3a.jpg","uuid":"90f4c92e-3479-1f6e-6470-b2ae78805839","entity_def_id":"person","value":"Maxime
+        Guilbot"},"uuid":"90f4c92e-3479-1f6e-6470-b2ae78805839","rank":1178994,"last_name":"Guilbot"}}]}'
+  recorded_at: Sat, 06 Jun 2020 14:19:55 GMT
+recorded_with: VCR 6.0.0

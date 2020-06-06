@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.crunchbase.com/api/v4/searches/people
+    body:
+      encoding: UTF-8
+      string: '{"field_ids":["first_name", "last_name", "uuid", "permalink", "name",
+        "aliases", "website", "rank"], "order":[{"field_id":"name", "sort":"asc",
+        "nulls":"last"}], "query":[{"type":"predicate", "field_id":"aliases", "operator_id":"eq",
+        "values":"Maxime Guibot"}], "limit":5}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 13:01:26 GMT
+      Server:
+      - openresty
+      X-Cb-Request-Took:
+      - '1'
+      Content-Length:
+      - '138'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"message":"insufficient permissions to sort field name","code":"MD403","entity_def_id":"person","field_id":"name","entitlement_ids":[]}]'
+  recorded_at: Sat, 06 Jun 2020 13:01:26 GMT
+recorded_with: VCR 6.0.0

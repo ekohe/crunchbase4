@@ -279,6 +279,70 @@ pry(main)> response = client.search_organizations(query_data)
 - Get total count:      `response.total_count`
 - Get entities count:   `response.count`
 
+#### Search people by query conditions and order
+
+* Step1: Needs to build the query conditions
+
+```
+query_data = {
+  'field_ids' => %w[
+    first_name
+    last_name
+    uuid
+    permalink
+    name
+  ],
+  'order' => [
+    {
+      'field_id' => 'last_name',
+      'sort' => 'asc',
+      'nulls' => 'last'
+    }
+  ],
+  'query' => [
+    {
+      'type' => 'predicate',
+      'field_id' => 'first_name',
+      'operator_id' => 'contains',
+      'values' => [
+        'Maxime'
+      ]
+    },
+    {
+      'type' => 'predicate',
+      'field_id' => 'last_name',
+      'operator_id' => 'contains',
+      'values' => [
+        'Guilbot'
+      ]
+    }
+  ],
+  'limit' => 5
+}
+```
+
+* Use `client` to send a request and parse response
+
+```
+pry(main)> response = client.search_people(query_data)
+=> #<Crunchbase::Searches::Client:0x00007f9acca12d18
+ @conditions=
+  {"field_ids"=>["first_name", "last_name", "uuid", "permalink", "name"],
+   "order"=>[{"field_id"=>"last_name", "sort"=>"asc", "nulls"=>"last"}],
+   "query"=>
+    [{"type"=>"predicate", "field_id"=>"first_name", "operator_id"=>"contains", "values"=>["Maxime"]}, {"type"=>"predicate", "field_id"=>"last_name", "operator_id"=>"contains", "values"=>["Guilbot"]}],
+   "limit"=>5},
+ @count=1,
+ @entities=[#<Crunchbase::Models::Person:0x00007f9acca43418 @first_name="Maxime", @last_name="Guilbot", @name="Maxime Guilbot", @permalink="maxime-guilbot", @uuid="90f4c92e-3479-1f6e-6470-b2ae78805839">],
+ @entity_type="person",
+ @kclass_name=Crunchbase::Models::Person,
+ @total_count=1>
+pry(main)> response.entities
+=> [#<Crunchbase::Models::Person:0x00007f9acca43418 @first_name="Maxime", @last_name="Guilbot", @name="Maxime Guilbot", @permalink="maxime-guilbot", @uuid="90f4c92e-3479-1f6e-6470-b2ae78805839">]
+pry(main)> response.total_count
+=> 1
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

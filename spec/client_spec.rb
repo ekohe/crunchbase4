@@ -19,7 +19,7 @@ RSpec.describe Crunchbase::Client do
         VCR.use_cassette('organization_ekohe-encore-2020') do
           client.person('ekohe-encore-2020')
         end
-      end.to raise_error(Crunchbase::Error, 'Not Found')
+      end.to raise_error(Crunchbase::Error, 'requested resource could not be found')
     end
 
     it 'be able to get person data' do
@@ -37,7 +37,7 @@ RSpec.describe Crunchbase::Client do
         VCR.use_cassette('person-encore-shao-2020') do
           client.person('person-encore-shao-2020')
         end
-      end.to raise_error(Crunchbase::Error, 'Not Found')
+      end.to raise_error(Crunchbase::Error, 'requested resource could not be found')
     end
 
     it 'be able to get funding round data' do
@@ -54,7 +54,7 @@ RSpec.describe Crunchbase::Client do
         VCR.use_cassette('funding_round-a01b8d46-d311-3333-7c34-aa3ae9c03f22') do
           client.funding_round('a01b8d46-d311-3333-7c34-aa3ae9c03f22')
         end
-      end.to raise_error(Crunchbase::Error, 'Not Found')
+      end.to raise_error(Crunchbase::Error, 'requested resource could not be found')
     end
 
     it 'be able to get acquisition data' do
@@ -188,6 +188,55 @@ RSpec.describe Crunchbase::Client do
       expect(funding_rounds[0].uuid).to eq('54708936-6f24-484c-9b31-3ba530a8bfb4')
       expect(funding_rounds[0].identifier).to eq(['xerox-post-ipo-equity--54708936', '54708936-6f24-484c-9b31-3ba530a8bfb4'])
       expect(funding_rounds[0].money_raised).to eq(24_000_000_000)
+    end
+
+    it 'be able search people by name' do
+      post_data_raw = {
+        'field_ids' => %w[
+          first_name
+          last_name
+          uuid
+          permalink
+          name
+        ],
+        'order' => [
+          {
+            'field_id' => 'last_name',
+            'sort' => 'asc',
+            'nulls' => 'last'
+          }
+        ],
+        'query' => [
+          {
+            'type' => 'predicate',
+            'field_id' => 'first_name',
+            'operator_id' => 'eq',
+            'values' => [
+              'Mark'
+            ]
+          },
+          {
+            'type' => 'predicate',
+            'field_id' => 'last_name',
+            'operator_id' => 'eq',
+            'values' => [
+              'Zuckerberg'
+            ]
+          }
+        ],
+        'limit' => 5
+      }
+
+      response = VCR.use_cassette('searches_people_with_first_name_and_last_name_order_last_name') do
+        client.search_people(post_data_raw)
+      end
+
+      people = response.entities
+
+      expect(response.count).to eq(1)
+      expect(response.total_count).to eq(1)
+      expect(people.map(&:name)).to eq(['Mark Zuckerberg'])
+      expect(people.map(&:uuid)).to eq(%w[a01b8d46-d311-3333-7c34-aa3ae9c03f22])
     end
   end
 end

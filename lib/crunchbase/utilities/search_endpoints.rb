@@ -14,6 +14,10 @@ module Crunchbase
         searches(raw_data, 'funding_round').searches
       end
 
+      def search_people(raw_data)
+        searches(raw_data, 'person').searches
+      end
+
       private
 
       def searches(raw_data, scope_name)

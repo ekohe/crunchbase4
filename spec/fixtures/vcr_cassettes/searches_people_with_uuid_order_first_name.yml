@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.crunchbase.com/api/v4/searches/people
+    body:
+      encoding: UTF-8
+      string: '{"field_ids":["first_name", "last_name", "uuid", "permalink", "name",
+        "aliases", "website", "description"], "order":[{"field_id":"first_name", "sort":"asc",
+        "nulls":"last"}], "query":[{"type":"predicate", "field_id":"uuid", "operator_id":"eq",
+        "values":["a01b8d46-d311-3333-7c34-aa3ae9c03f22"]}], "limit":5}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 14:04:51 GMT
+      Etag:
+      - W/"1591452291050"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - search:elastic
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Minimum-Count:
+      - '1'
+      X-Cb-Engine-Page-Count:
+      - '1'
+      X-Cb-Engine-Took:
+      - '2'
+      X-Cb-Engine-Total-Count:
+      - '1'
+      X-Cb-Request-Took:
+      - '10'
+      Content-Length:
+      - '1826'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":1,"entities":[{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","properties":{"aliases":["Zuck"],"first_name":"Mark","name":"Mark
+        Zuckerberg","permalink":"mark-zuckerberg","identifier":{"permalink":"mark-zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","entity_def_id":"person","value":"Mark
+        Zuckerberg"},"description":"Mark Zuckerberg is the founder and CEO of Facebook,
+        which he started in his college dorm room in 2004 with roomates Dustin Moskovitz
+        and Chris Hughes and from New York.\r\n\r\nZuckerberg is responsible for setting
+        the overall direction and product strategy for the company. He leads the design
+        of Facebook''s service and development of its core technology and infrastructure.
+        Mark studied computer science at Harvard University before moving the company
+        to Palo Alto, California.\r\n\r\nEarlier in life, Zuckerberg developed a music
+        recommendation system called Synapse and a peer-to-peer client called Wirehog.
+        However, he abandoned both to pursue new projects.\r\n\r\nZuckerberg attended
+        Harvard University and studied computer science before founding Facebook.\r\n\r\nWhile
+        at Harvard, Zuckerberg created Facemash, a website that compared students''
+        dorm photos side-by-side in a fashion similar to HOT or NOT. Harvard administration
+        was not amused, and Zuckerberg faced subsequent disciplinary action. Less
+        than three months later, he launched Facebook.\r\n\r\nIn September 2010, Zuckerberg
+        donated $100 million to the Newark Public School System to help renovate and
+        revamp the system.\r\n\r\nZuckerberg won the 2007 Crunchie Award for ''Best
+        Startup CEO.'' He was the Time Magazine 2010 Person Of The Year. He also won
+        the 2012 Crunchie Award for CEO of the year.","uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","last_name":"Zuckerberg"}}]}'
+  recorded_at: Sat, 06 Jun 2020 14:04:51 GMT
+recorded_with: VCR 6.0.0

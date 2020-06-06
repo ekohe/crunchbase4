@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.crunchbase.com/api/v4/searches/people
+    body:
+      encoding: UTF-8
+      string: '{"field_ids":["first_name", "last_name", "uuid", "permalink", "name"],
+        "order":[{"field_id":"last_name", "sort":"asc", "nulls":"last"}], "query":[{"type":"predicate",
+        "field_id":"first_name", "operator_id":"eq", "values":["Mark"]}, {"type":"predicate",
+        "field_id":"last_name", "operator_id":"eq", "values":["Zuckerberg"]}], "limit":5}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 06 Jun 2020 14:24:28 GMT
+      Etag:
+      - W/"1591453468186"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - search:elastic
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Minimum-Count:
+      - '1'
+      X-Cb-Engine-Page-Count:
+      - '1'
+      X-Cb-Engine-Took:
+      - '61'
+      X-Cb-Engine-Total-Count:
+      - '1'
+      X-Cb-Request-Took:
+      - '90'
+      Content-Length:
+      - '425'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":1,"entities":[{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","properties":{"first_name":"Mark","name":"Mark
+        Zuckerberg","permalink":"mark-zuckerberg","identifier":{"permalink":"mark-zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","entity_def_id":"person","value":"Mark
+        Zuckerberg"},"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","last_name":"Zuckerberg"}}]}'
+  recorded_at: Sat, 06 Jun 2020 14:24:28 GMT
+recorded_with: VCR 6.0.0

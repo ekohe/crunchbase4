@@ -25,7 +25,7 @@ module Crunchbase
 
         return response.body if response.status == 200
 
-        raise Error, response.reason_phrase
+        raise Error, response.body['error']
       end
 
       # Search endpoints
@@ -41,7 +41,7 @@ module Crunchbase
 
         return response.body if response.status == 200
 
-        raise Error, response.reason_phrase
+        raise Error, response.body[0]['message']
       end
 
       private
