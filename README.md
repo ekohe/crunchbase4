@@ -467,24 +467,44 @@ pry(main)> response.total_count
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-### Examples of API requests
+### Examples of API requests for each endpoint
 
 ```
 Crunchbase.config.user_key = 'user_key'
 client = Crunchbase::Client.new
+
+<!-- Entity -->
 response = client.organization('ekohe')
 response = client.person('mark-zuckerberg')
 response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
+
+<!-- Search -->
+client.search_organizations(query_data)
+client.search_people(query_data)
+client.search_funding_rounds(query_data)
+client.recent_updates({
+                        scope_name: 'organization',
+                        field_ids: %w[name website permalink],
+                        date: '2020-05-05',
+                        limit: 100
+                      })
+
+<!-- Autocompletes -->
+response = client.autocomplete_organizations('ekohe')
+response = client.autocomplete_people('encore')
+response = client.autocomplete_funding_rounds('facebook')
 ```
 
-## Changelogs
+## Changelog
 
-You can click [Changelog](https://github.com/ekohe/crunchbase4/blob/master/CHANGELOG.md) to view all historical changes.
+If you want to know what update, please check the [Changelog](https://github.com/ekohe/crunchbase4/blob/master/CHANGELOG.md).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ekohe/crunchbase4. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/ekohe/crunchbase4/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/ekohe/crunchbase4. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected.
+
+To see all contributors from https://github.com/ekohe/crunchbase4/graphs/contributors
 
 ## License
 
