@@ -203,7 +203,11 @@ RSpec.describe Crunchbase::Client do
       expect(response.total_count).to eq(202_561)
       expect(funding_rounds[0].permalink).to eq('xerox-post-ipo-equity--54708936')
       expect(funding_rounds[0].uuid).to eq('54708936-6f24-484c-9b31-3ba530a8bfb4')
-      expect(funding_rounds[0].identifier).to eq(['xerox-post-ipo-equity--54708936', '54708936-6f24-484c-9b31-3ba530a8bfb4'])
+      expect(funding_rounds[0].identifier).to eq([
+                                                   'xerox-post-ipo-equity--54708936',
+                                                   '54708936-6f24-484c-9b31-3ba530a8bfb4',
+                                                   'Post-IPO Equity - Xerox'
+                                                 ])
       expect(funding_rounds[0].money_raised).to eq(24_000_000_000)
     end
 
@@ -222,7 +226,11 @@ RSpec.describe Crunchbase::Client do
       expect(response.total_count).to eq(9_124)
       expect(funding_rounds[0].permalink).to eq('eventus-systems-pre-seed--fa517725')
       expect(funding_rounds[0].uuid).to eq('fa517725-6ff6-4e74-b7b8-c283efa4c400')
-      expect(funding_rounds[0].identifier).to eq(['eventus-systems-pre-seed--fa517725', 'fa517725-6ff6-4e74-b7b8-c283efa4c400'])
+      expect(funding_rounds[0].identifier).to eq([
+                                                   'eventus-systems-pre-seed--fa517725',
+                                                   'fa517725-6ff6-4e74-b7b8-c283efa4c400',
+                                                   'Pre Seed Round - Eventus Systems'
+                                                 ])
       expect(funding_rounds[0].money_raised).to eq(nil)
     end
 
@@ -292,6 +300,47 @@ RSpec.describe Crunchbase::Client do
       expect(people[0].uuid).to eq('96e7d947-ec04-41a7-8e18-4ea412f1ee62')
       expect(people[0].first_name).to eq('Kritika')
       expect(people[0].name).to eq('Kritika sharma')
+    end
+  end
+
+  context 'Autocompletes API' do
+    it 'returns matched organizations by keyword' do
+      response = VCR.use_cassette('autocomplete_organizations_by_keyword-ekohe') do
+        client.autocomplete_organizations('ekohe')
+      end
+
+      organizations = response.entities
+      expect(response.count).to eq(25)
+      expect(response.total_count).to eq(33)
+      expect(organizations[0].permalink).to eq('ekohe')
+      expect(organizations[0].uuid).to eq('9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9')
+      expect(organizations[0].identifier).to eq(%w[9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9 Ekohe ekohe])
+    end
+
+    it 'returns matched people by keyword' do
+      response = VCR.use_cassette('autocomplete_people_by_keyword-maxime') do
+        client.autocomplete_people('maxime')
+      end
+
+      people = response.entities
+      expect(response.count).to eq(25)
+      expect(response.total_count).to eq(1_395)
+      expect(people[0].permalink).to eq('maxime-leufroy-murat')
+      expect(people[0].uuid).to eq('e270e799-052d-60ba-86d4-9c0535556851')
+      expect(people[0].identifier).to eq(['e270e799-052d-60ba-86d4-9c0535556851', 'Maxime Leufroy-Murat', 'maxime-leufroy-murat'])
+    end
+
+    it 'returns matched funding rounds by facebook' do
+      response = VCR.use_cassette('autocomplete_funding_rounds_by_keyword-facebook') do
+        client.autocomplete_funding_rounds('facebook')
+      end
+
+      funding_rounds = response.entities
+      expect(response.count).to eq(25)
+      expect(response.total_count).to eq(29)
+      expect(funding_rounds[0].permalink).to eq('facebook-series-b--6fae3958')
+      expect(funding_rounds[0].uuid).to eq('6fae3958-a001-27c0-fb7e-666266aedd78')
+      expect(funding_rounds[0].identifier).to eq(['6fae3958-a001-27c0-fb7e-666266aedd78', 'Series B - Facebook', 'facebook-series-b--6fae3958'])
     end
   end
 end

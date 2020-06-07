@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/autocompletes?collection_ids=organizations&limit=25&query=ekohe
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 07 Jun 2020 07:01:43 GMT
+      Etag:
+      - W/"1591513303611"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - autocomplete:algolia
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '3'
+      X-Cb-Request-Took:
+      - '29'
+      Content-Length:
+      - '8481'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":33,"entities":[{"facet_ids":["siftery","apptopia","company","rank","builtwith","bombora","similarweb"],"identifier":{"uuid":"9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9","value":"Ekohe","image_id":"v1500646625/zhionn8nlgbkz4lj7ilz.png","permalink":"ekohe","entity_def_id":"organization"},"short_description":"Creating
+        cutting-edge, useful technical solutions to move you forward -- we deliver
+        on the promise of AI."},{"facet_ids":["rank","builtwith","company","siftery"],"identifier":{"uuid":"4994381c-3f6a-07bc-6ccf-a180cfbfbf60","value":"Ekohealth","image_id":"v1426334509/uugisufqw1aksigokoia.png","permalink":"ekohealth","entity_def_id":"organization"},"short_description":"Ekohealth
+        is an online platform, entitling the patients having Ekohealth card to avail
+        up to 50% discount on medical expense."},{"facet_ids":["siftery","apptopia","company","rank","builtwith","bombora","similarweb"],"identifier":{"uuid":"d21d2598-6f76-d6b4-458e-579bc9c3a36d","value":"EcoHealth
+        Alliance","permalink":"ecohealth-alliance","entity_def_id":"organization"},"short_description":"EcoHealth
+        Alliance is a solutions that promote conservation and prevents pandemics."},{"facet_ids":["siftery","company","rank","builtwith","similarweb"],"identifier":{"uuid":"ef51b183-7efd-e98f-eeb0-1624fd817e46","value":"Elohell","image_id":"v1397185005/c0034d4551777dc7020fb2df8faf493c.png","permalink":"elohell","entity_def_id":"organization"},"short_description":"A
+        League of Legends community build up f"},{"facet_ids":["company","rank","builtwith","similarweb"],"identifier":{"uuid":"dbc9c5a4-f773-47dc-821c-e5e6d01fead7","value":"Ekomenu","image_id":"wrjcoy8t0ztolvsva9uj","permalink":"ekomenu","entity_def_id":"organization"},"short_description":"EKOMENU
+        is the healthy meal box that makes you feel comfortable"},{"facet_ids":["company","builtwith","rank","similarweb"],"identifier":{"uuid":"3b8279be-24da-1062-eea0-59b8d92b4289","value":"Ekorent","image_id":"v1459007230/eh3ymk9outkqzthyptiw.jpg","permalink":"ekorent","entity_def_id":"organization"},"short_description":"EkoRent
+        offer affordable, easy-to-use, zero-emission car rental and sharing services."},{"facet_ids":["company","rank","builtwith","similarweb"],"identifier":{"uuid":"fcc8baec-7e51-424d-bd71-ce339cc2ea97","value":"Ekoservis","image_id":"kca45dskrywevkf2u0su","permalink":"ekoservis","entity_def_id":"organization"},"short_description":"Ekoservis
+        is a technology company dealing with wastewater treatment technology."},{"facet_ids":["ipqwery","aberdeen","company","rank","builtwith","similarweb"],"identifier":{"uuid":"9b501586-c9a0-4c3d-a81b-15439e0ad38f","value":"Ekotec
+        Sistemi","permalink":"ekotec-sistemi","entity_def_id":"organization"},"short_description":"Ekotec
+        designs, implements, and maintains fire-fighting, anti-theft, video surveillance,
+        and automation systems for home and businesses."},{"facet_ids":["siftery","company","rank","builtwith","similarweb"],"identifier":{"uuid":"9bd9772c-f044-2ddf-b56e-0c5785a411a1","value":"Ekokem
+        Corp","image_id":"v1464359209/lw3m1vnxbsdwc28hrzhe.jpg","permalink":"ekokem-corp","entity_def_id":"organization"},"short_description":"Ekokem
+        Corp is a provider of environmental management and material efficiency services
+        in Finland and internationally."},{"facet_ids":["rank","builtwith","company"],"identifier":{"uuid":"74b81cd1-20d1-9135-1328-5ebec11f54aa","value":"Ekshef","image_id":"v1397193653/182b09a4b8398e28d9d4422a47174fa6.png","permalink":"ekshef","entity_def_id":"organization"},"short_description":"Connecting
+        People with Doctors in Egypt"},{"facet_ids":["company","rank","builtwith","similarweb"],"identifier":{"uuid":"e2b41118-e7cc-4118-b751-979896e99dcd","value":"eko.net.ua","image_id":"5e7c068348e0366cb876","permalink":"eko-net-ua","entity_def_id":"organization"},"short_description":"Eko
+        is an e-commerce website offers a wide range of consumable products and gadgets."},{"facet_ids":["ipqwery","company","rank","builtwith","similarweb"],"identifier":{"uuid":"179cdb3a-6dfd-411f-a8d1-98dd7f4979b5","value":"egoHEALTH","image_id":"p41dqx6jkak0iefl0p6a","permalink":"egohealth","entity_def_id":"organization"},"short_description":"egoHEALTH
+        Ltd is specialized in research, development and production of innovative medical
+        devices with high technological value."},{"facet_ids":["company","rank","similarweb","builtwith"],"identifier":{"uuid":"b591e32c-201e-4ba1-b216-2c017345e1e0","value":"Ekovest","image_id":"31cb3a90aec57b681289","permalink":"ekovest","entity_def_id":"organization"},"short_description":"Ekovest
+        is a construction company engaged in civil engineering and building works."},{"facet_ids":["company","rank","builtwith","similarweb"],"identifier":{"uuid":"834a98e6-fe41-4bfe-9303-f3c0c9866ca4","value":"Ecoheart","image_id":"ejs4sxy4qatjyuacogzs","permalink":"ecoheart","entity_def_id":"organization"},"short_description":"Ecoheart
+        redefines the way how we use and perceive our daily use consumer products."},{"facet_ids":["company","rank","builtwith","similarweb"],"identifier":{"uuid":"32f6ce30-49a3-46aa-bee4-96c7867d7983","value":"Ekosed
+        Jakub Kasperek","image_id":"7486e03d7bf74599683d","permalink":"ekosed-jakub-kasperek","entity_def_id":"organization"},"short_description":"Ekosed.pl
+        select, assemble, and service heat pumps, photovoltaic installations and solar
+        collectors."},{"facet_ids":["aberdeen","company","rank","builtwith","similarweb"],"identifier":{"uuid":"00810c5e-2fd4-4dc4-9be7-5d57f3e984d8","value":"Ekotechnika","image_id":"r1nu6sijizjnk7dtpmsb","permalink":"ekotechnika","entity_def_id":"organization"},"short_description":"Ekotechnika
+        is offers tractors, combine harvesters, self-propelled sprayers, sowing machines,
+        and fodder harvesting machines."},{"facet_ids":["company","rank","builtwith"],"identifier":{"uuid":"edc37e77-2a07-4e05-8478-41cd38618f0d","value":"Ekorex","image_id":"b49b5e54fe9482c063b3","permalink":"ekorex","entity_def_id":"organization"},"short_description":"Ekorex
+        is a manufacturer of under port and side port burners."},{"facet_ids":["company","rank","builtwith"],"identifier":{"uuid":"7fc55bba-e745-46a8-bda5-2e1525ffb2ed","value":"EKOTECHNIKA
+        Ostrava","permalink":"ekotechnika-ostrava","entity_def_id":"organization"},"short_description":"EKOTECHNIKA
+        Ostrava operates in the field of environmental services and emission measurement."},{"facet_ids":["company","rank","builtwith"],"identifier":{"uuid":"d08f777e-6a29-4e54-be70-7b7ba8b0f97a","value":"EKOVER","image_id":"3a189bd541b9a7efef3f","permalink":"ekover","entity_def_id":"organization"},"short_description":"EKOVER
+        develops, produces and sells vegetable fuel."},{"facet_ids":["ipqwery","company","rank","builtwith","similarweb"],"identifier":{"uuid":"e2f086bb-2acf-44c2-a068-9ee3b236cf0d","value":"Ekogen
+        Oy","image_id":"ufgwssxt7guom4ikei9e","permalink":"ekogen-oy","entity_def_id":"organization"},"short_description":"Ekogen
+        Oy offers innovative solutions, systems and services ."},{"facet_ids":["company","rank","builtwith"],"identifier":{"uuid":"8c2a6458-5bc4-4227-bdfa-18c00aa203ec","value":"EKOEURO.SE","permalink":"ekoeuro-se","entity_def_id":"organization"},"short_description":"EKOEURO.SE
+        provides consulting services in the marketing of environmental technology."},{"facet_ids":["ipqwery","company","rank","builtwith","similarweb"],"identifier":{"uuid":"3d9a0045-78ac-484c-9c58-9c53c36e09c0","value":"Ecohelix","image_id":"ilcnyk1tifiusquh4y3j","permalink":"ecohelix","entity_def_id":"organization"},"short_description":"Ecohelix
+        technology produces a biopolymer that can replace oil based products on the
+        marketplace."},{"facet_ids":["company","rank","similarweb","builtwith"],"identifier":{"uuid":"a5816490-54e0-4daf-aa1a-ec56fc26a440","value":"Ekotek","permalink":"ekotek","entity_def_id":"organization"},"short_description":"Ekotek
+        engineering and consultancy company specializing in the delivery of innovative
+        solutions in the environmental and energy sectors."},{"facet_ids":["company","rank","builtwith"],"identifier":{"uuid":"c09c5cdf-0dab-4894-9fcd-95df8cdd84bb","value":"EKONET","image_id":"9cd2fd2b967514c63718","permalink":"ekonet","entity_def_id":"organization"},"short_description":"EKONET
+        provides IT solutions and services."},{"facet_ids":["company","rank","builtwith","similarweb"],"identifier":{"uuid":"6e67e1d7-dc26-fcbd-0f5c-bf4a072d8f37","value":"EkoVeikals","permalink":"sia-creative-media-group","entity_def_id":"organization"},"short_description":"EkoVeikals
+        is an online ecological and natural food store."}]}'
+  recorded_at: Sun, 07 Jun 2020 07:01:43 GMT
+recorded_with: VCR 6.0.0

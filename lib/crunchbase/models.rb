@@ -4,6 +4,7 @@ module Crunchbase
   # Models
   module Models
     autoload :Entity,                       'crunchbase/models/entity'
+    autoload :AutocompleteEntity,           'crunchbase/models/autocomplete_entity'
     autoload :Organization,                 'crunchbase/models/organization'
     autoload :Person,                       'crunchbase/models/person'
     autoload :FundingRound,                 'crunchbase/models/funding_round'

@@ -17,7 +17,7 @@ module Crunchbase
           attribute_names.delete(attribute_name)
           hash_datas = response&.dig(attribute_name)
 
-          values = hash_datas&.map { |k, v| v if %w[uuid permalink].include?(k) }&.compact || []
+          values = hash_datas&.map { |k, v| v if %w[uuid permalink value].include?(k) }&.compact || []
           dynamic_define_method(object, attribute_name, values)
           hash_datas&.keys&.each do |key|
             next unless %w[uuid permalink].include?(key)

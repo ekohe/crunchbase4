@@ -41,7 +41,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(org.num_employees_enum).to eq('c_00011_00050')
     expect(org.num_current_positions).to eq(1)
     expect(org.name).to eq('Ekohe')
-    expect(org.identifier).to eq(%w[9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9 ekohe])
+    expect(org.identifier).to eq(%w[9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9 Ekohe ekohe])
     expect(org.image_id).to eq('v1500646625/zhionn8nlgbkz4lj7ilz.png')
     expect(org.image_url).to eq('https://res.cloudinary.com/crunchbase-production/image/upload/v1500646625/zhionn8nlgbkz4lj7ilz.png')
     expect(org.location_identifiers).to eq(%w[Shanghai Shanghai China Asia])
@@ -60,7 +60,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(person.uuid).to eq('a01b8d46-d311-3333-7c34-aa3ae9c03f22')
     expect(person.aliases).to eq(['Zuck'])
     expect(person.born_on).to eq('1984-05-14')
-    expect(person.identifier).to eq(%w[a01b8d46-d311-3333-7c34-aa3ae9c03f22 mark-zuckerberg])
+    expect(person.identifier).to eq(['a01b8d46-d311-3333-7c34-aa3ae9c03f22', 'Mark Zuckerberg', 'mark-zuckerberg'])
     expect(person.first_name).to eq('Mark')
     expect(person.last_name).to eq('Zuckerberg')
     expect(person.gender).to eq('male')
@@ -120,7 +120,11 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(funding_round.funded_organization_identifier).to eq('Facebook')
     expect(funding_round.funded_organization_location).to eq(['Menlo Park', 'California', 'United States', 'North America'])
     expect(funding_round.funded_organization_revenue_range).to eq('r_10000000')
-    expect(funding_round.identifier).to eq(['371c20af-8aa9-4bcb-a8da-0694d138f247', 'facebook-secondary-market--371c20af'])
+    expect(funding_round.identifier).to eq([
+                                             '371c20af-8aa9-4bcb-a8da-0694d138f247',
+                                             'Secondary Market - Facebook',
+                                             'facebook-secondary-market--371c20af'
+                                           ])
     expect(funding_round.image_id).to eq('rde5yhdgakaqryj6zpu6')
     expect(funding_round.investment_stage).to eq(nil)
     expect(funding_round.investment_type).to eq('secondary_market')
@@ -168,7 +172,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(acquisition.created_at).to eq('2020-05-15T15:44:26Z')
     expect(acquisition.disposition_of_acquired).to eq('subsidiary')
     expect(acquisition.entity_def_id).to eq('acquisition')
-    expect(acquisition.identifier).to eq(['7638eae9-07b7-4fc6-ad20-5d99de3ff928', 'facebook-acquires-giphy--7638eae9'])
+    expect(acquisition.identifier).to eq(['7638eae9-07b7-4fc6-ad20-5d99de3ff928', 'Giphy acquired by Facebook', 'facebook-acquires-giphy--7638eae9'])
     expect(acquisition.num_relationships).to eq(nil)
     expect(acquisition.permalink).to eq('facebook-acquires-giphy--7638eae9')
     expect(acquisition.price).to eq(400_000_000)
@@ -190,7 +194,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(press_reference.author).to eq(nil)
     expect(press_reference.created_at).to eq('2020-06-05T17:41:10Z')
     expect(press_reference.entity_def_id).to eq('press_reference')
-    expect(press_reference.identifier).to eq(['0171b30e-9cf8-4ad5-8288-2993e4308e0f'])
+    expect(press_reference.identifier).to eq(['0171b30e-9cf8-4ad5-8288-2993e4308e0f', 'Jio Platforms to receive $1.2b from Abu Dhabi’s sovereign investment firm'])
     expect(press_reference.posted_on).to eq('2020-06-05')
     expect(press_reference.publisher).to eq('Tech in Asia')
     expect(press_reference.thumbnail_url).to eq('https://cdn.techinasia.com/wp-content/uploads/2016/07/Flickr_-_World_Economic_Forum_-_Ambani.jpg')
@@ -212,6 +216,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(investment.funding_round_money_raised).to eq(nil)
     expect(investment.identifier).to eq([
                                           '1368da0c-07b0-46ef-9a86-b518367e60d6',
+                                          'Jean-Brice Abrial investment in Secondary Market - Facebook',
                                           'jean-brice-abrial-invested-in-facebook-secondary-market--371c20af--1368da0c'
                                         ])
     expect(investment.investor_identifier).to eq('Jean-Brice Abrial')
@@ -236,7 +241,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(ipo.created_at).to eq('2014-05-26T07:34:47Z')
     expect(ipo.delisted_on).to eq(nil)
     expect(ipo.entity_def_id).to eq('ipo')
-    expect(ipo.identifier).to eq(['8fd30bb3-9eb9-839d-4526-85f82c1bfdf7', 'facebook-ipo--8fd30bb3'])
+    expect(ipo.identifier).to eq(['8fd30bb3-9eb9-839d-4526-85f82c1bfdf7', 'FB', 'facebook-ipo--8fd30bb3'])
     expect(ipo.image_id).to eq('rde5yhdgakaqryj6zpu6')
     expect(ipo.permalink).to eq('facebook-ipo--8fd30bb3')
     expect(ipo.rank).to eq(2_352_885)

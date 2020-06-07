@@ -13,19 +13,16 @@ module Crunchbase
     module Request
       module_function
 
+      # Autocompletes endpoint
+      def get(uri, *args)
+        fetch_request(uri, *args)
+      end
+
       # Entity endpoints
       #
       #   https://app.swaggerhub.com/apis-docs/Crunchbase/crunchbase-enterprise_api/1.0.1#/Entity/get_entities_organizations__entity_id_
       def entity(uri, *args)
-        response = Faraday.new(url: BASE_URI, headers: headers) do |faraday|
-          faraday.adapter Faraday.default_adapter
-          faraday.response :json
-          faraday.response :logger, ::Logger.new(STDOUT), bodies: true if debug_mode?
-        end.get(uri, *args)
-
-        return response.body if response.status == 200
-
-        raise Error, response.body['error']
+        fetch_request(uri, *args)
       end
 
       # Search endpoints
@@ -45,6 +42,18 @@ module Crunchbase
       end
 
       private
+
+      def fetch_request(uri, *args)
+        response = Faraday.new(url: BASE_URI, headers: headers) do |faraday|
+          faraday.adapter Faraday.default_adapter
+          faraday.response :json
+          faraday.response :logger, ::Logger.new(STDOUT), bodies: true if debug_mode?
+        end.get(uri, *args)
+
+        return response.body if response.status == 200
+
+        raise Error, response.body['error']
+      end
 
       def debug_mode?
         Crunchbase.config.debug || false

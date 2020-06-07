@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/autocompletes?collection_ids=funding_rounds&limit=25&query=facebook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 07 Jun 2020 07:01:44 GMT
+      Etag:
+      - W/"1591513304944"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - autocomplete:algolia
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '19'
+      X-Cb-Request-Took:
+      - '44'
+      Content-Length:
+      - '8153'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":29,"entities":[{"facet_ids":["rank"],"identifier":{"uuid":"6fae3958-a001-27c0-fb7e-666266aedd78","value":"Series
+        B - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-b--6fae3958","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $27500000 on 2006-04-01 in Series B"},{"facet_ids":["rank"],"identifier":{"uuid":"d950d7a5-79ff-fb93-ca87-13386b0e2feb","value":"Series
+        A - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-a--d950d7a5","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $12700000 on 2005-05-01 in Series A"},{"facet_ids":["rank"],"identifier":{"uuid":"59971bc0-0935-be60-e279-a9db5e787169","value":"Secondary
+        Market - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-secondary-market--59971bc0","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $120000000 on 2010-06-28 in Secondary Market"},{"facet_ids":["rank"],"identifier":{"uuid":"8a945939-18e0-cc9d-27b9-bf33817b2818","value":"Angel
+        Round - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-angel--8a945939","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $500000 on 2004-09-01 in Angel Round"},{"facet_ids":["rank"],"identifier":{"uuid":"85246d86-383d-5f3c-0611-8f0a092cdc28","value":"Series
+        C - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-c--85246d86","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $15000000 on 2008-01-15 in Series C"},{"facet_ids":["rank"],"identifier":{"uuid":"c26d2da6-9801-e163-2ded-617dcd0a9a65","value":"Series
+        C - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-c--c26d2da6","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $240000000 on 2007-10-24 in Series C"},{"facet_ids":["rank"],"identifier":{"uuid":"b0e3eb99-9048-d301-0892-26cedab900a7","value":"Series
+        D - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-d--b0e3eb99","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $200000000 on 2009-05-26 in Series D"},{"facet_ids":["rank"],"identifier":{"uuid":"7ac749d3-11a7-8706-1484-9c9ea8e3593f","value":"Series
+        C - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-c--7ac749d3","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $60000000 on 2008-03-27 in Series C"},{"facet_ids":["rank"],"identifier":{"uuid":"4e8faa5e-0b4f-03da-75f5-654ce3bed6bc","value":"Debt
+        Financing - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-debt-financing--4e8faa5e","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $100000000 on 2008-05-01 in Debt Financing"},{"facet_ids":["rank"],"identifier":{"uuid":"0f0d6b3a-2bc5-28b8-7303-381e373a9751","value":"Series
+        C - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-series-c--0f0d6b3a","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $60000000 on 2007-11-30 in Series C"},{"facet_ids":["rank"],"identifier":{"uuid":"d5397319-e68b-48a9-8cf3-89e699dd8f92","value":"Secondary
+        Market - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-secondary-market--d5397319","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised an undisclosed amount on 2011-05-10 in Secondary Market"},{"facet_ids":["rank"],"identifier":{"uuid":"371c20af-8aa9-4bcb-a8da-0694d138f247","value":"Secondary
+        Market - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-secondary-market--371c20af","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised an undisclosed amount on 2013-06-30 in Secondary Market"},{"facet_ids":["rank"],"identifier":{"uuid":"06388fe0-168a-4ff5-8644-1441f144f2ed","value":"Secondary
+        Market - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-secondary-market--06388fe0","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised an undisclosed amount on 2012-03-10 in Secondary Market"},{"facet_ids":["rank"],"identifier":{"uuid":"37bd05f9-61af-726b-a3c1-b279da842805","value":"Private
+        Equity Round - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-private-equity--37bd05f9","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised $1500000000 on 2011-01-21 in Private Equity Round"},{"facet_ids":["rank"],"identifier":{"uuid":"657814da-5105-4118-8a42-ab03b556afe0","value":"Private
+        Equity Round - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-private-equity--657814da","entity_def_id":"funding_round"},"short_description":"Facebook
+        raised an undisclosed amount on 2011-03-04 in Private Equity Round"},{"facet_ids":["rank"],"identifier":{"uuid":"f50f7b19-5e23-97d2-4cd0-42b6b9fa5f16","value":"Series
+        A - QponQrush - Facebook meets Groupon","image_id":"v1458925184/ftn0oxos40kdiksu0top.png","permalink":"qponqrush-series-a--f50f7b19","entity_def_id":"funding_round"},"short_description":"QponQrush
+        - Facebook meets Groupon raised an undisclosed amount on 2016-03-01 in Series
+        A"},{"facet_ids":["rank"],"identifier":{"uuid":"73f23463-745c-8d23-a539-888e337e34b5","value":"Seed
+        Round - QponQrush - Facebook meets Groupon","image_id":"v1458925184/ftn0oxos40kdiksu0top.png","permalink":"qponqrush-seed--73f23463","entity_def_id":"funding_round"},"short_description":"QponQrush
+        - Facebook meets Groupon raised $500000 on 2015-03-15 in Seed Round"},{"facet_ids":["rank"],"identifier":{"uuid":"cfa95785-4f26-256c-223e-204369e9c056","value":"Seed
+        Round - Confirm.io (Acquired by Facebook)","image_id":"v1446271911/n3wqewjjbhrmqgylifz5.png","permalink":"confirm-seed--cfa95785","entity_def_id":"funding_round"},"short_description":"Confirm.io
+        (Acquired by Facebook) raised $4000000 on 2016-01-21 in Seed Round"},{"facet_ids":["rank"],"identifier":{"uuid":"06207dfb-9824-4e1c-b692-c5093dc5f41d","value":"Grant
+        - Fairbooks","image_id":"epiiujvj3pkhcxvfdq1p","permalink":"fairbooks-com-grant--06207dfb","entity_def_id":"funding_round"},"short_description":"Fairbooks
+        raised an undisclosed amount on 2011-11-01 in Grant"},{"facet_ids":["rank"],"identifier":{"uuid":"502be847-7169-d8c6-48e7-e3fab8310a16","value":"Venture
+        Round - Fastbooking","image_id":"v1460474982/qokbm7tc0i2wfvjdfr5y.png","permalink":"fastbooking-series-unknown--502be847","entity_def_id":"funding_round"},"short_description":"Fastbooking
+        raised $50442379 on 2007-10-29 in Venture Round"},{"facet_ids":["rank"],"identifier":{"uuid":"57d9d916-fd4a-98c5-219e-d26f2fc8f2ed","value":"Seed
+        Round - fanbook Inc.","image_id":"v1397196964/e0761f66ffdf26f77b05a586306d93b6.gif","permalink":"fanbook-seed--57d9d916","entity_def_id":"funding_round"},"short_description":"fanbook
+        Inc. raised $106357 on 2011-04-05 in Seed Round"},{"facet_ids":["rank"],"identifier":{"uuid":"bdc6e0ff-4256-45a2-bd5b-3b148fbed737","value":"Seed
+        Round - DACEBOOK DIGITAL ASSET CLASS DATA & SOFTWARE INC.","image_id":"gc9zi2xpemsnph4htsps","permalink":"dacebook-digital-asset-class-data-software-inc-seed--bdc6e0ff","entity_def_id":"funding_round"},"short_description":"DACEBOOK
+        DIGITAL ASSET CLASS DATA & SOFTWARE INC. raised an undisclosed amount on 2018-08-29
+        in Seed Round"},{"facet_ids":["rank"],"identifier":{"uuid":"df4eac9c-a79f-5bd4-6189-582b9fca2d1c","value":"Seed
+        Round - gamebook","image_id":"udndb3t9whdducfwwdg1","permalink":"experimental-game-seed--df4eac9c","entity_def_id":"funding_round"},"short_description":"gamebook
+        raised $1379125 on 2014-03-23 in Seed Round"},{"facet_ids":["rank"],"identifier":{"uuid":"f272a67c-52bf-93a2-489f-65006cc23db7","value":"Venture
+        Round - AbeBooks","image_id":"v1397190957/188445de5f50eb76107d86b29f464ebb.png","permalink":"abebooks-series-unknown--f272a67c","entity_def_id":"funding_round"},"short_description":"AbeBooks
+        raised an undisclosed amount on 2003-09-01 in Venture Round"},{"facet_ids":["rank"],"identifier":{"uuid":"ef5733b5-693b-70b1-030c-bad07e3382e1","value":"Seed
+        Round - gamebook","image_id":"udndb3t9whdducfwwdg1","permalink":"experimental-game-seed--ef5733b5","entity_def_id":"funding_round"},"short_description":"gamebook
+        raised $162309 on 2015-03-21 in Seed Round"}]}'
+  recorded_at: Sun, 07 Jun 2020 07:01:45 GMT
+recorded_with: VCR 6.0.0

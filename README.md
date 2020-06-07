@@ -362,6 +362,107 @@ pry(main)> response.total_count
 => 1
 ```
 
+## Autocompletes
+
+### Allow users to filter by keyword from these endpoints
+
+Search by keyword has been supported in "Organization", "People" and "Fund Round"
+
+1. Example: Search in an organization by keyword
+
+```
+pry(main)> response = client.autocomplete_organizations('ekohe')
+=> #<Crunchbase::Autocompletes::Client:0x00007fecb34ce1e8
+ @conditions={:query=>"ekohe", :collection_ids=>"organizations"},
+ @count=25,
+ @entities=
+  [#<Crunchbase::Models::AutocompleteEntity:0x00007fecb3976cb8
+    @facet_ids=["siftery", "apptopia", "company", "rank", "builtwith", "bombora", "similarweb"],
+    @identifier=["9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9", "Ekohe", "ekohe"],
+    @permalink="ekohe",
+    @short_description="Creating cutting-edge, useful technical solutions to move you forward -- we deliver on the promise of AI.",
+    @uuid="9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9">,
+   #<Crunchbase::Models::AutocompleteEntity:0x00007fecb3975980
+    @facet_ids=["rank", "builtwith", "company", "siftery"],
+    @identifier=["4994381c-3f6a-07bc-6ccf-a180cfbfbf60", "Ekohealth", "ekohealth"],
+    @permalink="ekohealth",
+    @short_description="Ekohealth is an online platform, entitling the patients having Ekohealth card to avail up to 50% discount on medical expense.",
+    @uuid="4994381c-3f6a-07bc-6ccf-a180cfbfbf60">,
+   #<Crunchbase::Models::AutocompleteEntity:0x00007fecb3974cb0
+    @facet_ids=["siftery", "apptopia", "company", "rank", "builtwith", "bombora", "similarweb"],
+    @identifier=["d21d2598-6f76-d6b4-458e-579bc9c3a36d", "EcoHealth Alliance", "ecohealth-alliance"],
+    @permalink="ecohealth-alliance",
+    @short_description="EcoHealth Alliance is a solutions that promote conservation and prevents pandemics.",
+    @uuid="d21d2598-6f76-d6b4-458e-579bc9c3a36d">,
+    ...]
+pry(main)> response.entities
+pry(main)> response.count
+pry(main)> response.total_count
+```
+
+2. Example: Search in an people by keyword
+
+```
+pry(main)> response = client.autocomplete_people('maxime')
+=> #<Crunchbase::Autocompletes::Client:0x00007fecb474f9c0
+ @conditions={:query=>"maxime", :collection_ids=>"people"},
+ @count=25,
+ @entities=
+  [#<Crunchbase::Models::AutocompleteEntity:0x00007fecb477db40
+    @facet_ids=["rank"],
+    @identifier=["e270e799-052d-60ba-86d4-9c0535556851", "Maxime Leufroy-Murat", "maxime-leufroy-murat"],
+    @permalink="maxime-leufroy-murat",
+    @short_description="Maxime Leufroy-Murat - CEO @ FG Properties",
+    @uuid="e270e799-052d-60ba-86d4-9c0535556851">,
+   #<Crunchbase::Models::AutocompleteEntity:0x00007fecb477ce70
+    @facet_ids=["rank"],
+    @identifier=["0b71cab9-43dc-4f03-9267-4dcbc191ec30", "Maxime Schwab", "maxime-schwab"],
+    @permalink="maxime-schwab",
+    @short_description="Co-Founder",
+    @uuid="0b71cab9-43dc-4f03-9267-4dcbc191ec30">,
+   #<Crunchbase::Models::AutocompleteEntity:0x00007fecb477c1f0
+    @facet_ids=["rank"],
+    @identifier=["527a4a8e-46e4-d808-c7df-b540bd8fedab", "Maxime Lombardini", "maxime-lombardini"],
+    @permalink="maxime-lombardini",
+    @short_description="Maxime Lombardini is Chief Executive Officer and Member of the board of Iliad since 2007. \r\n\r\nBefore joining Iliad, Maxime Lombardini use to...",
+    @uuid="527a4a8e-46e4-d808-c7df-b540bd8fedab">,
+    ...]
+pry(main)> response.entities
+pry(main)> response.count
+pry(main)> response.total_count
+```
+2. Example: Search in an funding rounds by keyword
+
+```
+pry(main)> pry(main)> response = client.autocomplete_funding_rounds('facebook')
+=> #<Crunchbase::Autocompletes::Client:0x00007fecb4dd66b8
+ @conditions={:query=>"facebook", :collection_ids=>"funding_rounds"},
+ @count=25,
+ @entities=
+  [#<Crunchbase::Models::AutocompleteEntity:0x00007fecb4e04950
+    @facet_ids=["rank"],
+    @identifier=["6fae3958-a001-27c0-fb7e-666266aedd78", "Series B - Facebook", "facebook-series-b--6fae3958"],
+    @permalink="facebook-series-b--6fae3958",
+    @short_description="Facebook raised $27500000 on 2006-04-01 in Series B",
+    @uuid="6fae3958-a001-27c0-fb7e-666266aedd78">,
+   #<Crunchbase::Models::AutocompleteEntity:0x00007fecb4e17c30
+    @facet_ids=["rank"],
+    @identifier=["d950d7a5-79ff-fb93-ca87-13386b0e2feb", "Series A - Facebook", "facebook-series-a--d950d7a5"],
+    @permalink="facebook-series-a--d950d7a5",
+    @short_description="Facebook raised $12700000 on 2005-05-01 in Series A",
+    @uuid="d950d7a5-79ff-fb93-ca87-13386b0e2feb">,
+   #<Crunchbase::Models::AutocompleteEntity:0x00007fecb4e16f60
+    @facet_ids=["rank"],
+    @identifier=["59971bc0-0935-be60-e279-a9db5e787169", "Secondary Market - Facebook", "facebook-secondary-market--59971bc0"],
+    @permalink="facebook-secondary-market--59971bc0",
+    @short_description="Facebook raised $120000000 on 2010-06-28 in Secondary Market",
+    @uuid="59971bc0-0935-be60-e279-a9db5e787169">,
+    ...]
+pry(main)> response.entities
+pry(main)> response.count
+pry(main)> response.total_count
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

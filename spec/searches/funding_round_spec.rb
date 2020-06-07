@@ -39,7 +39,11 @@ RSpec.describe Crunchbase::Searches::Client do
     expect(response.total_count).to eq(83_005)
     expect(funding_rounds[0].permalink).to eq('harpers-environmental-debt-financing--3e99d4e3')
     expect(funding_rounds[0].uuid).to eq('3e99d4e3-1aab-4eb3-88ab-ce1c2fc23105')
-    expect(funding_rounds[0].identifier).to eq(['harpers-environmental-debt-financing--3e99d4e3', '3e99d4e3-1aab-4eb3-88ab-ce1c2fc23105'])
+    expect(funding_rounds[0].identifier).to eq([
+                                                 'harpers-environmental-debt-financing--3e99d4e3',
+                                                 '3e99d4e3-1aab-4eb3-88ab-ce1c2fc23105',
+                                                 'Debt Financing - Harpers Environmental'
+                                               ])
     expect(funding_rounds[0].money_raised).to eq(2_000_000)
   end
 
@@ -81,7 +85,7 @@ RSpec.describe Crunchbase::Searches::Client do
     expect(response.total_count).to eq(202_561)
     expect(funding_rounds[0].permalink).to eq('xerox-post-ipo-equity--54708936')
     expect(funding_rounds[0].uuid).to eq('54708936-6f24-484c-9b31-3ba530a8bfb4')
-    expect(funding_rounds[0].identifier).to eq(['xerox-post-ipo-equity--54708936', '54708936-6f24-484c-9b31-3ba530a8bfb4'])
+    expect(funding_rounds[0].identifier).to eq(['xerox-post-ipo-equity--54708936', '54708936-6f24-484c-9b31-3ba530a8bfb4', 'Post-IPO Equity - Xerox'])
     expect(funding_rounds[0].money_raised).to eq(24_000_000_000)
   end
 end
