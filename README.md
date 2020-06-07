@@ -186,6 +186,25 @@ pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
 }
 ```
 
+#### Get the latest updated entities
+
+Allow user using the method `recent_updates(args)` to get recent updates for each endpoint on searches
+
+# Example to get recent updated organizations
+
+```
+args = {
+  scope_name: 'organization',             # must
+  date: '2020-05-05',                     # must
+  field_ids: %w[name website permalink],  # default %[uuid created_at updated_at]
+  sort: 'desc'                            # default `desc`
+  before_id: 'uuid'                       # optional
+  after_id: 'uuid'                        # optional
+}
+
+response = client.recent_updates(args)
+```
+
 #### Search organizations by query conditions and order
 
 * Step1: Needs to build the query conditions

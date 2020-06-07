@@ -149,6 +149,23 @@ RSpec.describe Crunchbase::Client do
       expect(orgs.map(&:company_type)[0]).to eq('for_profit')
     end
 
+    it 'returns all recently updated organizations' do
+      response = VCR.use_cassette('searches_organizations_with_recently_updated_and_limit') do
+        client.recent_updates({
+                                scope_name: 'organization',
+                                field_ids: %w[name website permalink],
+                                date: '2020-05-05',
+                                limit: 100
+                              })
+      end
+
+      orgs = response.entities
+      expect(response.count).to eq(100)
+      expect(response.total_count).to eq(61_556)
+      expect(orgs[0].name).to eq('Anavara Limited')
+      expect(orgs[0].website).to eq('http://anavara.com/')
+    end
+
     it 'be able to search funding rounds' do
       post_data_raw = {
         'field_ids' => %w[
@@ -188,6 +205,25 @@ RSpec.describe Crunchbase::Client do
       expect(funding_rounds[0].uuid).to eq('54708936-6f24-484c-9b31-3ba530a8bfb4')
       expect(funding_rounds[0].identifier).to eq(['xerox-post-ipo-equity--54708936', '54708936-6f24-484c-9b31-3ba530a8bfb4'])
       expect(funding_rounds[0].money_raised).to eq(24_000_000_000)
+    end
+
+    it 'returns all recently updated funding rounds' do
+      response = VCR.use_cassette('searches_funding_rounds_with_recently_updated_and_limit') do
+        client.recent_updates({
+                                scope_name: 'funding_round',
+                                field_ids: %w[identifier money_raised permalink],
+                                date: '2020-05-05',
+                                limit: 100
+                              })
+      end
+
+      funding_rounds = response.entities
+      expect(response.count).to eq(100)
+      expect(response.total_count).to eq(9_124)
+      expect(funding_rounds[0].permalink).to eq('eventus-systems-pre-seed--fa517725')
+      expect(funding_rounds[0].uuid).to eq('fa517725-6ff6-4e74-b7b8-c283efa4c400')
+      expect(funding_rounds[0].identifier).to eq(['eventus-systems-pre-seed--fa517725', 'fa517725-6ff6-4e74-b7b8-c283efa4c400'])
+      expect(funding_rounds[0].money_raised).to eq(nil)
     end
 
     it 'be able search people by name' do
@@ -237,6 +273,25 @@ RSpec.describe Crunchbase::Client do
       expect(response.total_count).to eq(1)
       expect(people.map(&:name)).to eq(['Mark Zuckerberg'])
       expect(people.map(&:uuid)).to eq(%w[a01b8d46-d311-3333-7c34-aa3ae9c03f22])
+    end
+
+    it 'returns all recently updated people' do
+      response = VCR.use_cassette('searches_people_with_recently_updated_and_limit') do
+        client.recent_updates({
+                                scope_name: 'person',
+                                field_ids: %w[name first_name last_name permalink],
+                                date: '2020-05-05',
+                                limit: 100
+                              })
+      end
+
+      people = response.entities
+      expect(response.count).to eq(100)
+      expect(response.total_count).to eq(19_270)
+      expect(people[0].permalink).to eq('kritika-sharma-ee62')
+      expect(people[0].uuid).to eq('96e7d947-ec04-41a7-8e18-4ea412f1ee62')
+      expect(people[0].first_name).to eq('Kritika')
+      expect(people[0].name).to eq('Kritika sharma')
     end
   end
 end
