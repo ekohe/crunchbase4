@@ -1,6 +1,6 @@
 # Crunchbase
 
-Crunchbase is a ruby wrapper base on Crunchbase V4 API. It provides easy to get the API data by each endpoint. [CB-v4 doc](https://app.swaggerhub.com/apis/Crunchbase/crunchbase-enterprise_api/1.0.1)
+Crunchbase is a ruby wrapper based on Crunchbase V4 API. it provides easy to get the API data by each endpoint. [CB v4 DOC](https://app.swaggerhub.com/apis/Crunchbase/crunchbase-enterprise_api/1.0.1)
 
 [![Gem Version](https://badge.fury.io/rb/crunchbase4.svg)](https://badge.fury.io/rb/crunchbase4)
 [![Build Status](https://travis-ci.org/encoreshao/crunchbase4.svg?branch=master)](https://travis-ci.org/encoreshao/crunchbase4)
@@ -23,34 +23,91 @@ Or install it yourself as:
 
 ## Getting Started
 
-### Configure your API certificate
+#### Configure your certificate for API
 
-```
+```ruby
 require 'crunchbase4'
 
 CB_CONFIG = YAML.load(File.read('crunchbase.yml'))
-Crunchbase.config do |c|
-  c.user_key = CB_CONFIG['user_key']
-end
-
-OR
-
 Crunchbase.config.user_key = CB_CONFIG['user_key']
 ```
 
 ## Usage
 
-### The first step is to build an API client
+#### Class: `Client` for API
 
 ```
 pry(main)> client = Crunchbase::Client.new
+```
+
+#### API request for endpoint we completed
+
+- [Get Entity](https://github.com/ekohe/crunchbase4#entity)
+- [Get Searches](https://github.com/ekohe/crunchbase4#search)
+- [Get Autocompletes](https://github.com/ekohe/crunchbase4#autocompletes)
+- [Get Deleted Entities](https://github.com/ekohe/crunchbase4#deleted_entities)
+
+```ruby
+<!-- Entity -->
+response = client.organization('ekohe')
+response = client.person('mark-zuckerberg')
+response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
+response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
+
+<!-- Search -->
+client.search_organizations(query_data)
+client.search_people(query_data)
+client.search_funding_rounds(query_data)
+client.recent_updates({
+                        scope_name: 'organization',
+                        field_ids: %w[name website permalink],
+                        date: '2020-05-05',
+                        limit: 100
+                      })
+
+<!-- Autocompletes -->
+response = client.autocomplete_organizations('ekohe')
+response = client.autocomplete_people('encore')
+response = client.autocomplete_funding_rounds('facebook')
+
+<!-- Deleted Entities -->
+response = client.deledeted_organizations
+response = client.deledeted_people
+response = client.deledeted_funding_rounds
+```
+
+#### Module: Utils
+
+* We return all the original data from CrunchBase without any conversion. So you want to use the converted data, you can use this tool to convert.
+
+```ruby
+pry(main)> Crunchbase::Utils.constants
+=> [:QUERY_OPERATORS,
+ :COMPANY_TYPES,
+ :FACET_IDS,
+ :IPO_STATUS,
+ :FUNDING_STAGES,
+ :FUNDING_TYPES,
+ :CURRENCY_ENUM,
+ :DATE_PRECISIONS,
+ :LAYOUT_IDS,
+ :NUM_EMPLOYEES_ENUM,
+ :OPERATING_STATUS,
+ :PROGRAM_TYPES,
+ :REVENUE_RANGES,
+ :SCHOOL_METHODS,
+ :SCHOOL_TYPES,
+ :STATUS,
+ :STOCK_EXCHANGE_SYMBOLS]
+pry(main)> Crunchbase::Utils::COMPANY_TYPES
+=> {"for_profit"=>"For Profit", "non_profit"=>"Non-profit"}
 ```
 
 ### Entity
 
 ####  Get the organization data
 
-```
+```ruby
 pry(main)> response = client.organization('ekohe')
 => #<Crunchbase::Models::Organization:0x00007fbc5cfdf2f8
  @categories=["Apps", "Artificial Intelligence", "Big Data", "E-Commerce", "Enterprise Software", "FinTech", "iOS", "Retail", "UX Design"],
@@ -68,9 +125,9 @@ pry(main)> response.permalink
 
 Or, if you want to use json data, please call `response.as_json` in your project.
 
-#### Get the person data
+##### Get the person data
 
-```
+```ruby
 pry(main)> response = client.person('mark-zuckerberg')
 => #<Crunchbase::Models::Person:0x00007ffbf201d178
  @aliases=["Zuck"],
@@ -89,9 +146,9 @@ pry(main)> response.permalink
 => "mark-zuckerberg"
 ```
 
-#### Get the funding round data
+##### Get the funding round data
 
-```
+```ruby
 => #<Crunchbase::Client:0x00007f8806824c28>
 pry(main)> response = client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247')
 => #<Crunchbase::Models::FundingRound:0x00007f8806b55ca8
@@ -113,9 +170,9 @@ pry(main)> response.uuid
 => "371c20af-8aa9-4bcb-a8da-0694d138f247"
 ```
 
-#### Get the acquisition data
+##### Get the acquisition data
 
-```
+```ruby
 pry(main)> response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 => #<Crunchbase::Models::Acquisition:0x00007fa01134da60
  @acquiree_categories=["Communities", "Internet", "Photo Sharing", "Publishing", "Search Engine", "Social Media"],
@@ -130,9 +187,9 @@ pry(main)> response.acquiree_funding_total
 => 150949998
 ```
 
-#### Get the press reference data
+##### Get the press reference data
 
-```
+```ruby
 pry(main)> response = client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e0f')
 => #<Crunchbase::Models::PressReference:0x00007fce2d33dbc0
  @activity_entities=["Facebook", "General Atlantic", "KKR", "Reliance Industries", "Vista Equity Partners"],
@@ -149,9 +206,9 @@ pry(main)> response = client.press_reference('0171b30e-9cf8-4ad5-8288-2993e4308e
  @uuid="0171b30e-9cf8-4ad5-8288-2993e4308e0f">
 ```
 
-#### Get the investment data
+##### Get the investment data
 
-```
+```ruby
 pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
 => #<Crunchbase::Models::Investment:0x00007f8c15105830
  @announced_on="2013-06-30",
@@ -177,7 +234,7 @@ pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
 
 * Search query parameters for each endpoint
 
-```
+```ruby
 {
   "field_ids": [],
   "query": [],
@@ -186,13 +243,13 @@ pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
 }
 ```
 
-#### Get the latest updated entities
+##### Get the latest updated entities
 
 Allow user using the method `recent_updates(args)` to get recent updates for each endpoint on searches
 
-# Example to get recent updated organizations
+* Example to get recent updated organizations
 
-```
+```ruby
 args = {
   scope_name: 'organization',             # must
   date: '2020-05-05',                     # must
@@ -205,11 +262,11 @@ args = {
 response = client.recent_updates(args)
 ```
 
-#### Search organizations by query conditions and order
+##### Search organizations by query conditions and order
 
-* Step1: Needs to build the query conditions
+* building the query conditions
 
-```
+```ruby
 query_data = {
   'field_ids' => %w[
     name
@@ -253,7 +310,7 @@ query_data = {
 
 * Use `client` to send a request and parse response
 
-```
+```ruby
 pry(main)> response = client.search_organizations(query_data)
 => #<Crunchbase::Searches::Client:0x00007fdfc1ad6eb8
  @conditions=
@@ -294,15 +351,15 @@ pry(main)> response = client.search_organizations(query_data)
  @total_count=44871>
 ```
 
-- Get all entities:     `response.entities`
-- Get total count:      `response.total_count`
-- Get entities count:   `response.count`
+- Get entities: response.entities
+- Get total count: response.total_count
+- Get entities count: response.count
 
-#### Search people by query conditions and order
+##### Search people by query conditions and order
 
-* Step1: Needs to build the query conditions
+* building the query conditions
 
-```
+```ruby
 query_data = {
   'field_ids' => %w[
     first_name
@@ -342,7 +399,7 @@ query_data = {
 
 * Use `client` to send a request and parse response
 
-```
+```ruby
 pry(main)> response = client.search_people(query_data)
 => #<Crunchbase::Searches::Client:0x00007f9acca12d18
  @conditions=
@@ -362,15 +419,15 @@ pry(main)> response.total_count
 => 1
 ```
 
-## Autocompletes
+### Autocompletes
 
-### Allow users to filter by keyword from these endpoints
+##### Allow users to filter by keyword from these endpoints
 
 Search by keyword has been supported in "Organization", "People" and "Fund Round"
 
-1. Example: Search in an organization by keyword
+* Search in an organization by keyword
 
-```
+```ruby
 pry(main)> response = client.autocomplete_organizations('ekohe')
 => #<Crunchbase::Autocompletes::Client:0x00007fecb34ce1e8
  @conditions={:query=>"ekohe", :collection_ids=>"organizations"},
@@ -400,9 +457,9 @@ pry(main)> response.count
 pry(main)> response.total_count
 ```
 
-2. Example: Search in an people by keyword
+* Search in an people by keyword
 
-```
+```ruby
 pry(main)> response = client.autocomplete_people('maxime')
 => #<Crunchbase::Autocompletes::Client:0x00007fecb474f9c0
  @conditions={:query=>"maxime", :collection_ids=>"people"},
@@ -431,10 +488,11 @@ pry(main)> response.entities
 pry(main)> response.count
 pry(main)> response.total_count
 ```
-2. Example: Search in an funding rounds by keyword
 
-```
-pry(main)> pry(main)> response = client.autocomplete_funding_rounds('facebook')
+* Search in an funding rounds by keyword
+
+```ruby
+pry(main)> response = client.autocomplete_funding_rounds('facebook')
 => #<Crunchbase::Autocompletes::Client:0x00007fecb4dd66b8
  @conditions={:query=>"facebook", :collection_ids=>"funding_rounds"},
  @count=25,
@@ -463,38 +521,42 @@ pry(main)> response.count
 pry(main)> response.total_count
 ```
 
+### Deleted Entities
+
+* Get deleted entities by collection_ids
+
+```ruby
+pry(main)> response = client.deleted_organizations
+=> #<Crunchbase::DeletedEntities::Client:0x00007fa9196b6498
+ @conditions={:collection_ids=>"organizations"},
+ @count=1000,
+ @entities=
+  [#<Crunchbase::Models::DeletedEntity:0x00007fa9197f9df0 @deleted_at="2020-06-06T11:51:34Z", @entity_def_id="organization", @identifier=[], @uuid="31e5d1dd-3a7d-4c8c-b7dc-4780d391bbc3">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa9197f8fb8 @deleted_at="2020-06-06T10:43:10Z", @entity_def_id="organization", @identifier=[], @uuid="31d2ba51-ef94-4039-a6fc-22e5c1f0ed80">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa9197f86a8 @deleted_at="2020-06-05T18:32:20Z", @entity_def_id="organization", @identifier=[], @uuid="3f105ec3-606c-4779-85c8-29ec78d67d2d">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981fd48 @deleted_at="2020-06-05T15:01:59Z", @entity_def_id="organization", @identifier=[], @uuid="e66d053a-86fa-4f5f-9c98-1d4b3ed0778d">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981f438 @deleted_at="2020-06-05T13:17:39Z", @entity_def_id="organization", @identifier=[], @uuid="014de711-a0b0-4e29-a8ce-5f8c2696d9af">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981eb28 @deleted_at="2020-06-05T13:09:11Z", @entity_def_id="organization", @identifier=[], @uuid="8b3102a2-04cc-4fb2-85cb-b2aa55662291">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981e218 @deleted_at="2020-06-05T11:47:50Z", @entity_def_id="organization", @identifier=[], @uuid="62ae4ffc-a999-4c09-8c42-eef26be606aa">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981d908 @deleted_at="2020-06-05T11:47:34Z", @entity_def_id="organization", @identifier=[], @uuid="7aa08989-f6ef-427c-96ac-7e1482a7eec1">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981cff8 @deleted_at="2020-06-05T11:46:13Z", @entity_def_id="organization", @identifier=[], @uuid="7a6a5e41-d396-437a-9dfb-8539ef554268">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91981c6e8 @deleted_at="2020-06-05T11:45:21Z", @entity_def_id="organization", @identifier=[], @uuid="10db5120-a638-40eb-b636-e7cca20708e0">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91982fd88 @deleted_at="2020-06-05T11:45:01Z", @entity_def_id="organization", @identifier=[], @uuid="86c09840-b344-4687-a5ee-e5ea851b0b94">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91982f478 @deleted_at="2020-06-05T11:44:07Z", @entity_def_id="organization", @identifier=[], @uuid="2ac345e0-f6a0-4352-b66b-3254d4616c87">,
+   #<Crunchbase::Models::DeletedEntity:0x00007fa91982eb68 @deleted_at="2020-06-05T11:43:23Z", @entity_def_id="organization", @identifier=[], @uuid="9fa9c806-bc1b-49e6-81f4-719cbfd7928e">,
+   ....]
+pry(main)> response.entities
+pry(main)> response.count
+pry(main)> response.total_count
+
+# Get deleted people and funding rounds
+pry(main)> response = client.deleted_people
+pry(main)> response = client.deleted_funding_rounds
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-### Examples of API requests for each endpoint
-
-```
-Crunchbase.config.user_key = 'user_key'
-client = Crunchbase::Client.new
-
-<!-- Entity -->
-response = client.organization('ekohe')
-response = client.person('mark-zuckerberg')
-response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
-response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
-
-<!-- Search -->
-client.search_organizations(query_data)
-client.search_people(query_data)
-client.search_funding_rounds(query_data)
-client.recent_updates({
-                        scope_name: 'organization',
-                        field_ids: %w[name website permalink],
-                        date: '2020-05-05',
-                        limit: 100
-                      })
-
-<!-- Autocompletes -->
-response = client.autocomplete_organizations('ekohe')
-response = client.autocomplete_people('encore')
-response = client.autocomplete_funding_rounds('facebook')
-```
 
 ## Changelog
 
