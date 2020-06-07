@@ -18,6 +18,10 @@ module Crunchbase
         fetch_request(uri, *args)
       end
 
+      def deleted(uri, *args)
+        fetch_request(uri, *args)
+      end
+
       # Entity endpoints
       #
       #   https://app.swaggerhub.com/apis-docs/Crunchbase/crunchbase-enterprise_api/1.0.1#/Entity/get_entities_organizations__entity_id_

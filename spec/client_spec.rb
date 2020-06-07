@@ -343,4 +343,45 @@ RSpec.describe Crunchbase::Client do
       expect(funding_rounds[0].identifier).to eq(['6fae3958-a001-27c0-fb7e-666266aedd78', 'Series B - Facebook', 'facebook-series-b--6fae3958'])
     end
   end
+
+  context 'Deleted Entities' do
+    it 'returns deleted organizations' do
+      response = VCR.use_cassette('deleted_entities_of_organizations') do
+        client.deleted_organizations
+      end
+
+      entities = response.entities
+      expect(response.count).to eq(1000)
+      expect(response.total_count).to eq(1000)
+      expect(entities[0].uuid).to eq('31e5d1dd-3a7d-4c8c-b7dc-4780d391bbc3')
+      expect(entities[0].entity_def_id).to eq('organization')
+      expect(entities[0].deleted_at).to eq('2020-06-06T11:51:34Z')
+    end
+
+    it 'returns deleted people' do
+      response = VCR.use_cassette('deleted_entities_of_people') do
+        client.deleted_people
+      end
+
+      entities = response.entities
+      expect(response.count).to eq(1000)
+      expect(response.total_count).to eq(1000)
+      expect(entities[0].uuid).to eq('784c1e28-6fab-2f54-1bbe-b27c8817eaaa')
+      expect(entities[0].entity_def_id).to eq('person')
+      expect(entities[0].deleted_at).to eq('2020-06-04T22:07:42Z')
+    end
+
+    it 'returns deleted funding rounds' do
+      response = VCR.use_cassette('deleted_entities_of_funding_rounds') do
+        client.deleted_funding_rounds
+      end
+
+      entities = response.entities
+      expect(response.count).to eq(1000)
+      expect(response.total_count).to eq(1000)
+      expect(entities[0].uuid).to eq('a7c30804-eb6f-4828-a0a7-b2fd5fa3c789')
+      expect(entities[0].entity_def_id).to eq('funding_round')
+      expect(entities[0].deleted_at).to eq('2020-06-05T22:33:32Z')
+    end
+  end
 end
