@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2020-06-09
+
+### Added
+- Implemented `deleted_entities` API to allow user get deleted entities by collection_ids
+- Implemented `fetch(entity_id, card_id)` API, allow user get the entity with card_id data
+
 ## [0.1.2] - 2020-06-07
 
 ### Added
@@ -9,7 +15,7 @@ All notable changes to this project will be documented in this file.
   - organzations
   - people
   - funding rounds
-- Implemented autocomplete API to allow user filter entities by keyword
+- Implemented `autocompletes` API to allow user filter entities by keyword
   - organzations
   - people
   - funding rounds
@@ -31,4 +37,4 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.0] - 2020-06-01
 
-- Learning the Crunchbase V4 document and ready to create the new Gem
+- Learning the Crunchbase V4 API changes then creating the Gem

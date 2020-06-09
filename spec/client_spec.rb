@@ -92,6 +92,62 @@ RSpec.describe Crunchbase::Client do
       expect(ipo.permalink).to eq('facebook-ipo--8fd30bb3')
       expect(ipo.uuid).to eq('8fd30bb3-9eb9-839d-4526-85f82c1bfdf7')
     end
+
+    it 'be able to get organization data with ipos' do
+      organization = VCR.use_cassette('organization-facebook-with-ipos') do
+        client.organization('facebook', card_id: 'ipos')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.ipos.size).to eq(1)
+      expect(organization.ipos[0].uuid).to eq('8fd30bb3-9eb9-839d-4526-85f82c1bfdf7')
+      expect(organization.ipos[0].amount_raised).to eq(18_400_000_000)
+    end
+
+    it 'raise error when with a invalid card_id' do
+      expect do
+        VCR.use_cassette('organization-facebook-with-funding_rounds') do
+          client.organization('facebook', card_id: 'funding_rounds')
+        end
+      end.to raise_error(Crunchbase::Error, 'Invalid card_id')
+    end
+
+    it 'be able to get organization data with raised_funding_rounds' do
+      organization = VCR.use_cassette('organization-facebook-with-raised_funding_rounds') do
+        client.organization('facebook', card_id: 'raised_funding_rounds')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.raised_funding_rounds.size).to eq(15)
+      expect(organization.raised_funding_rounds[0].announced_on).to eq('2013-06-30')
+      expect(organization.raised_funding_rounds[0].investment_type).to eq('secondary_market')
+      expect(organization.raised_funding_rounds[0].uuid).to eq('371c20af-8aa9-4bcb-a8da-0694d138f247')
+    end
+
+    it 'be able to get a funding_round with investments data' do
+      funding_round = VCR.use_cassette('funding_round-371c20af-8aa9-4bcb-a8da-0694d138f247-with_investments') do
+        client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247', card_id: 'investments')
+      end
+
+      expect(funding_round.uuid).to eq('371c20af-8aa9-4bcb-a8da-0694d138f247')
+      expect(funding_round.investments.size).to eq(1)
+      expect(funding_round.investments[0].uuid).to eq('1368da0c-07b0-46ef-9a86-b518367e60d6')
+      expect(funding_round.investments[0].announced_on).to eq('2013-06-30')
+      expect(funding_round.investments[0].investor_type).to eq(['angel'])
+      expect(funding_round.investments[0].organization_identifier).to eq('Facebook')
+    end
+
+    it 'be able to get a person with participated_investments data' do
+      person = VCR.use_cassette('people-mark-zuckerberg-with-participated_investments') do
+        client.person('mark-zuckerberg', card_id: 'participated_investments')
+      end
+
+      expect(person.uuid).to eq('a01b8d46-d311-3333-7c34-aa3ae9c03f22')
+      expect(person.participated_investments.size).to eq(8)
+      expect(person.participated_investments[0].uuid).to eq('53b33599-f875-47e8-8671-22683122aaba')
+      expect(person.participated_investments[0].investor_stage).to eq(['seed'])
+      expect(person.participated_investments[0].name).to eq('Mark Zuckerberg investment in Angel Round - LEANLAB Education')
+    end
   end
 
   context 'Search API' do

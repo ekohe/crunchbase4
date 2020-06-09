@@ -30,8 +30,8 @@ module Crunchbase
       end
 
       # Lookup Person's all cards
-      def person_cards(entity_id)
-        entities('person', entity_id).fetch_cards
+      def person_cards(entity_id, cards: [])
+        entities('person', entity_id).fetch_cards(cards)
       end
 
       # Lookup a Funding Round or single card
@@ -40,8 +40,8 @@ module Crunchbase
       end
 
       # Lookup Funding Round's all cards
-      def funding_round_cards(entity_id)
-        entities('funding_round', entity_id).fetch_cards
+      def funding_round_cards(entity_id, cards: [])
+        entities('funding_round', entity_id).fetch_cards(cards)
       end
 
       # Lookup an Acquisition or Single card
@@ -50,8 +50,8 @@ module Crunchbase
       end
 
       # Lookup Acquisition's all card
-      def acquisition_cards(entity_id)
-        entities('acquisition', entity_id).fetch_cards
+      def acquisition_cards(entity_id, cards: [])
+        entities('acquisition', entity_id).fetch_cards(cards)
       end
 
       # Lookup an Investment or Single card
@@ -60,8 +60,8 @@ module Crunchbase
       end
 
       # Lookup Investment's all card
-      def investment_cards(entity_id)
-        entities('investment', entity_id).fetch_cards
+      def investment_cards(entity_id, cards: [])
+        entities('investment', entity_id).fetch_cards(cards)
       end
 
       # Lookup an PressReference or Single card
@@ -70,8 +70,8 @@ module Crunchbase
       end
 
       # Lookup PressReference's all card
-      def press_reference_cards(entity_id)
-        entities('press_reference', entity_id).fetch_cards
+      def press_reference_cards(entity_id, cards: [])
+        entities('press_reference', entity_id).fetch_cards(cards)
       end
 
       # Lookup an Ipo or Single card
@@ -80,8 +80,8 @@ module Crunchbase
       end
 
       # Lookup Ipo's all card
-      def ipo_cards(entity_id)
-        entities('ipo', entity_id).fetch_cards
+      def ipo_cards(entity_id, cards: [])
+        entities('ipo', entity_id).fetch_cards(cards)
       end
 
       private

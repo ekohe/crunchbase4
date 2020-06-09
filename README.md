@@ -42,16 +42,22 @@ pry(main)> client = Crunchbase::Client.new
 
 #### API request for endpoint we completed
 
-- [Get Entity](https://github.com/ekohe/crunchbase4#entity)
-- [Get Searches](https://github.com/ekohe/crunchbase4#search)
-- [Get Autocompletes](https://github.com/ekohe/crunchbase4#autocompletes)
-- [Get Deleted Entities](https://github.com/ekohe/crunchbase4#deleted_entities)
+- [Entity](https://github.com/ekohe/crunchbase4#entity)
+  - organizations
+  - people
+  - funding_rounds
+- [Searches](https://github.com/ekohe/crunchbase4#search)
+- [Autocompletes](https://github.com/ekohe/crunchbase4#autocompletes)
+- [Deleted Entities](https://github.com/ekohe/crunchbase4#deleted-entities)
 
 ```ruby
 <!-- Entity -->
 response = client.organization('ekohe')
+response = client.organization('ekohe', 'ipos')
 response = client.person('mark-zuckerberg')
+response = client.person('mark-zuckerberg', 'participated_investments')
 response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
+response = client.funding_round('371c20af8aa94bcba8da0694d138f247', 'investments')
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 
 <!-- Search -->

@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/people/mark-zuckerberg/cards/participated_investments?card_field_ids=created_at,entity_def_id,identifier,investor_identifier,is_lead_investor,funding_round_identifier,updated_at,uuid,name,permalink,money_invested,investor_stage,investor_type,funding_round_money_raised,organization_identifier,partner_identifiers,announced_on&field_ids=uuid,permalink,permalink_aliases,name,aliases,website,rank,short_description,description
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 09 Jun 2020 14:38:17 GMT
+      Etag:
+      - W/"1591713497337"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '4'
+      X-Cb-Request-Took:
+      - '14'
+      Content-Length:
+      - '12996'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"aliases":["Zuck"],"name":"Mark Zuckerberg","permalink":"mark-zuckerberg","identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"},"description":"Mark
+        Zuckerberg is the founder and CEO of Facebook, which he started in his college
+        dorm room in 2004 with roomates Dustin Moskovitz and Chris Hughes and from
+        New York.\r\n\r\nZuckerberg is responsible for setting the overall direction
+        and product strategy for the company. He leads the design of Facebook''s service
+        and development of its core technology and infrastructure. Mark studied computer
+        science at Harvard University before moving the company to Palo Alto, California.\r\n\r\nEarlier
+        in life, Zuckerberg developed a music recommendation system called Synapse
+        and a peer-to-peer client called Wirehog. However, he abandoned both to pursue
+        new projects.\r\n\r\nZuckerberg attended Harvard University and studied computer
+        science before founding Facebook.\r\n\r\nWhile at Harvard, Zuckerberg created
+        Facemash, a website that compared students'' dorm photos side-by-side in a
+        fashion similar to HOT or NOT. Harvard administration was not amused, and
+        Zuckerberg faced subsequent disciplinary action. Less than three months later,
+        he launched Facebook.\r\n\r\nIn September 2010, Zuckerberg donated $100 million
+        to the Newark Public School System to help renovate and revamp the system.\r\n\r\nZuckerberg
+        won the 2007 Crunchie Award for ''Best Startup CEO.'' He was the Time Magazine
+        2010 Person Of The Year. He also won the 2012 Crunchie Award for CEO of the
+        year.","uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","rank":22346,"short_description":"Mark
+        Zuckerberg is the founder and CEO of Facebook, which he started in his college
+        dorm room in 2004 with roomates Dustin Moskovitz and Chr...","permalink_aliases":[]},"cards":{"participated_investments":[{"name":"Mark
+        Zuckerberg investment in Angel Round - LEANLAB Education","is_lead_investor":true,"permalink":"mark-zuckerberg-invested-in-leanlab-education-angel--928cd7c1--53b33599","identifier":{"uuid":"53b33599-f875-47e8-8671-22683122aaba","value":"Mark
+        Zuckerberg investment in Angel Round - LEANLAB Education","permalink":"mark-zuckerberg-invested-in-leanlab-education-angel--928cd7c1--53b33599","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2019-04-17","uuid":"53b33599-f875-47e8-8671-22683122aaba","organization_identifier":{"uuid":"fada5796-6d75-487d-81ef-1f22dd7c6e63","value":"LEANLAB
+        Education","image_id":"velwttkftjrm02ao1xez","permalink":"leanlab-education","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"928cd7c1-cefc-4b1a-9445-3aed8b84c983","value":"Angel
+        Round - LEANLAB Education","image_id":"velwttkftjrm02ao1xez","permalink":"leanlab-education-angel--928cd7c1","entity_def_id":"funding_round"},"investor_type":["investment_partner","angel"],"created_at":"2019-04-17T09:28:09Z","updated_at":"2019-04-17T09:28:09Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Grant - Code.org","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-code-org-grant--3a190434--cb984377","identifier":{"uuid":"cb984377-1203-c00b-5099-da7ed57ef642","value":"Mark
+        Zuckerberg investment in Grant - Code.org","permalink":"mark-zuckerberg-invested-in-code-org-grant--3a190434--cb984377","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2016-04-26","uuid":"cb984377-1203-c00b-5099-da7ed57ef642","organization_identifier":{"uuid":"3adf8365-01a3-c703-a274-8bc22fbbf4b3","value":"Code.org","image_id":"v1397195815/8f56cb6f52abc278589ec53e5a62ef65.png","permalink":"code-org","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"3a190434-31f5-04b4-8856-66ff6eee1b3e","value":"Grant
+        - Code.org","image_id":"v1397195815/8f56cb6f52abc278589ec53e5a62ef65.png","permalink":"code-org-grant--3a190434","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":23000000,"currency":"USD","value_usd":23000000},"investor_type":["investment_partner","angel"],"created_at":"2016-10-13T10:14:38Z","updated_at":"2018-02-13T00:55:38Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Series C - Intercom","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-intercom-series-c--07a0141d--0951cfcb","identifier":{"uuid":"0951cfcb-bbb9-7216-982b-36e003efc8a1","value":"Mark
+        Zuckerberg investment in Series C - Intercom","permalink":"mark-zuckerberg-invested-in-intercom-series-c--07a0141d--0951cfcb","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2016-04-07","uuid":"0951cfcb-bbb9-7216-982b-36e003efc8a1","organization_identifier":{"uuid":"53e64a6a-f954-7bf3-b505-345db3d6c7bb","value":"Intercom","image_id":"ohsxr1q7rp02n18hli8v","permalink":"intercom","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"07a0141d-2d3e-2694-469c-77f1ce6c46e8","value":"Series
+        C - Intercom","image_id":"ohsxr1q7rp02n18hli8v","permalink":"intercom-series-c--07a0141d","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":50000000,"currency":"USD","value_usd":50000000},"investor_type":["investment_partner","angel"],"created_at":"2016-04-07T07:12:34Z","updated_at":"2018-02-13T00:51:17Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Series C - Asana","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-asana-series-c--2f534549--c2c49bc3","identifier":{"uuid":"c2c49bc3-a2a4-7045-159b-1f533978a000","value":"Mark
+        Zuckerberg investment in Series C - Asana","permalink":"mark-zuckerberg-invested-in-asana-series-c--2f534549--c2c49bc3","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2016-03-30","uuid":"c2c49bc3-a2a4-7045-159b-1f533978a000","organization_identifier":{"uuid":"c2d47d05-9e78-de77-084c-dd5171251ff1","value":"Asana","image_id":"c6nyeztkgoowovn2td9t","permalink":"asana","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"2f534549-8699-4d2b-7212-7daa2d78ca8b","value":"Series
+        C - Asana","image_id":"c6nyeztkgoowovn2td9t","permalink":"asana-series-c--2f534549","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":50000000,"currency":"USD","value_usd":50000000},"investor_type":["investment_partner","angel"],"created_at":"2016-03-30T18:17:40Z","updated_at":"2018-02-13T00:55:26Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Grant - EducationSuperHighway","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-educationsuperhighway-grant--6b30dadd--333a9cae","identifier":{"uuid":"333a9cae-c859-065a-47ea-e8d654b02903","value":"Mark
+        Zuckerberg investment in Grant - EducationSuperHighway","permalink":"mark-zuckerberg-invested-in-educationsuperhighway-grant--6b30dadd--333a9cae","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2015-11-20","uuid":"333a9cae-c859-065a-47ea-e8d654b02903","organization_identifier":{"uuid":"81bd1216-90e2-f449-6054-ad9360403d14","value":"EducationSuperHighway","image_id":"v1397186771/19364b557b84321707fb766e9466328f.png","permalink":"educationsuperhighway","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"6b30dadd-414d-600f-bb51-5308fba2539b","value":"Grant
+        - EducationSuperHighway","image_id":"v1397186771/19364b557b84321707fb766e9466328f.png","permalink":"educationsuperhighway-grant--6b30dadd","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":20000000,"currency":"USD","value_usd":20000000},"investor_type":["investment_partner","angel"],"created_at":"2016-10-17T09:49:34Z","updated_at":"2018-02-13T00:52:11Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Series B - Vicarious","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-vicarious-systems-inc-series-b--501d0470--018bd48a","identifier":{"uuid":"018bd48a-d763-040c-0a9e-cf553f48afb8","value":"Mark
+        Zuckerberg investment in Series B - Vicarious","permalink":"mark-zuckerberg-invested-in-vicarious-systems-inc-series-b--501d0470--018bd48a","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2014-11-06","uuid":"018bd48a-d763-040c-0a9e-cf553f48afb8","organization_identifier":{"uuid":"d9f418da-28f5-8b04-97f7-086b4ffbf048","value":"Vicarious","image_id":"v1501079506/ezc95wdolvzv7pzrwqpa.png","permalink":"vicarious-systems-inc","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"501d0470-7034-1e0c-660e-821d50bd5239","value":"Series
+        B - Vicarious","image_id":"v1501079506/ezc95wdolvzv7pzrwqpa.png","permalink":"vicarious-systems-inc-series-b--501d0470","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":12000000,"currency":"USD","value_usd":12000000},"investor_type":["investment_partner","angel"],"created_at":"2016-01-12T05:42:03Z","updated_at":"2018-02-13T00:51:09Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Series B - Vicarious","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-vicarious-systems-inc-series-b--a3b33e3f--b8c91354","identifier":{"uuid":"b8c91354-313e-4fde-6ee8-e20168366735","value":"Mark
+        Zuckerberg investment in Series B - Vicarious","permalink":"mark-zuckerberg-invested-in-vicarious-systems-inc-series-b--a3b33e3f--b8c91354","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2014-03-21","uuid":"b8c91354-313e-4fde-6ee8-e20168366735","organization_identifier":{"uuid":"d9f418da-28f5-8b04-97f7-086b4ffbf048","value":"Vicarious","image_id":"v1501079506/ezc95wdolvzv7pzrwqpa.png","permalink":"vicarious-systems-inc","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"a3b33e3f-68d4-205c-bf61-c2cc3b1f4e4a","value":"Series
+        B - Vicarious","image_id":"v1501079506/ezc95wdolvzv7pzrwqpa.png","permalink":"vicarious-systems-inc-series-b--a3b33e3f","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":40000000,"currency":"USD","value_usd":40000000},"investor_type":["investment_partner","angel"],"created_at":"2014-03-24T03:58:32Z","updated_at":"2018-02-13T00:55:13Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}},{"name":"Mark
+        Zuckerberg investment in Seed Round - Panorama Education","is_lead_investor":false,"permalink":"mark-zuckerberg-invested-in-panorama-education-seed--d21097d9--9e6a6340","identifier":{"uuid":"9e6a6340-3059-e6e2-dc51-4b55c9d88bfd","value":"Mark
+        Zuckerberg investment in Seed Round - Panorama Education","permalink":"mark-zuckerberg-invested-in-panorama-education-seed--d21097d9--9e6a6340","entity_def_id":"investment"},"investor_stage":["seed"],"announced_on":"2013-10-21","uuid":"9e6a6340-3059-e6e2-dc51-4b55c9d88bfd","organization_identifier":{"uuid":"3dd712f8-0f6d-2a6e-a007-4f503cc823b0","value":"Panorama
+        Education","image_id":"v1397180215/befc9801553b0a0415ccb560f2d93f9e.png","permalink":"panorama-education","entity_def_id":"organization"},"funding_round_identifier":{"uuid":"d21097d9-a325-3a5f-588a-9d2c561f4d17","value":"Seed
+        Round - Panorama Education","image_id":"v1397180215/befc9801553b0a0415ccb560f2d93f9e.png","permalink":"panorama-education-seed--d21097d9","entity_def_id":"funding_round"},"funding_round_money_raised":{"value":4000000,"currency":"USD","value_usd":4000000},"investor_type":["investment_partner","angel"],"created_at":"2014-03-07T06:44:38Z","updated_at":"2018-02-13T00:54:30Z","entity_def_id":"investment","investor_identifier":{"uuid":"a01b8d46-d311-3333-7c34-aa3ae9c03f22","value":"Mark
+        Zuckerberg","image_id":"v1448830269/gzcifut4c2xah95x0ewd.jpg","permalink":"mark-zuckerberg","entity_def_id":"person"}}]}}'
+  recorded_at: Tue, 09 Jun 2020 14:38:17 GMT
+recorded_with: VCR 6.0.0

@@ -28,17 +28,21 @@ module Crunchbase
 
       # Only include a part basis fields of endpoint
       def fetch_cards(card_names = [])
-        cbobject.parse_cards_response(entity(
-                                        root_uri,
-                                        field_ids: cbobject.basis_fields.join(','),
-                                        cards: (cbobject.full_cards & card_names).join(',')
-                                      ))
+        cbobject.parse_response(entity(
+                                  root_uri,
+                                  field_ids: cbobject.basis_fields.join(','),
+                                  cards: (cbobject.full_cards & card_names).join(',')
+                                ), cbobject.basis_fields, card_names)
       end
 
       def cards(card_id)
+        raise Crunchbase::Error, 'Invalid card_id' unless cbobject.full_cards.include?(card_id)
+
         cbobject.parse_response(entity(
-                                  root_uri(name: __method__, id: card_id)
-                                ))
+                                  root_uri(name: __method__, id: card_id),
+                                  field_ids: cbobject.basis_fields.join(','),
+                                  card_field_ids: cbobject.card_model_mappings[card_id].new.field_ids.join(',')
+                                ), cbobject.basis_fields, [card_id])
       end
 
       private
