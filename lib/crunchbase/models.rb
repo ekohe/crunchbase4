@@ -16,5 +16,6 @@ module Crunchbase
     autoload :Category,                     'crunchbase/models/category'
     autoload :Ipo,                          'crunchbase/models/ipo'
     autoload :Fund,                         'crunchbase/models/fund'
+    autoload :Ownership,                    'crunchbase/models/ownership'
   end
 end

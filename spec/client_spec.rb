@@ -179,6 +179,40 @@ RSpec.describe Crunchbase::Client do
       expect(fund.permalink).to eq('the-news-integrity-initiative-raised-the-news-integrity-initiative-fund-i--aeaac12b')
       expect(fund.uuid).to eq('aeaac12b-df56-7039-40f9-f1992f88e20e')
     end
+
+    it 'be able to get organization data with parent_ownership' do
+      organization = VCR.use_cassette('organization-facebook-with-parent_ownership') do
+        client.organization('facebook', card_id: 'parent_ownership')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.parent_ownership.size).to eq(0)
+    end
+
+    it 'be able to get organization data with child_ownerships' do
+      organization = VCR.use_cassette('organization-facebook-with-child_ownerships') do
+        client.organization('facebook', card_id: 'child_ownerships')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.child_ownerships.size).to eq(4)
+      expect(organization.child_ownerships[0].permalink).to eq('facebook-owns-instagram--4506d9ce')
+      expect(organization.child_ownerships[0].uuid).to eq('4506d9ce-85d3-4a8f-89cd-07a225359d55')
+      expect(organization.child_ownerships[0].name).to eq('Facebook owns Instagram')
+      expect(organization.child_ownerships[0].ownee_identifier).to eq('Instagram')
+      expect(organization.child_ownerships[0].owner_identifier).to eq('Facebook')
+    end
+
+    it 'be able to get ownership data' do
+      ownership = VCR.use_cassette('ownership-4506d9ce-85d3-4a8f-89cd-07a225359d55') do
+        client.ownership('4506d9ce-85d3-4a8f-89cd-07a225359d55')
+      end
+
+      expect(ownership.permalink).to eq('facebook-owns-instagram--4506d9ce')
+      expect(ownership.uuid).to eq('4506d9ce-85d3-4a8f-89cd-07a225359d55')
+      expect(ownership.ownee_identifier).to eq('Instagram')
+      expect(ownership.owner_identifier).to eq('Facebook')
+    end
   end
 
   context 'Search API' do

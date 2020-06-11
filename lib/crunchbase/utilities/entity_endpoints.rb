@@ -94,6 +94,16 @@ module Crunchbase
         entities('fund', entity_id).fetch_cards(cards)
       end
 
+      # Lookup an fund or Single card
+      def ownership(entity_id, card_id: nil)
+        lookup_for('ownership', entity_id, card_id)
+      end
+
+      # Lookup fund's all card
+      def ownership_cards(entity_id, cards: [])
+        entities('ownership', entity_id).fetch_cards(cards)
+      end
+
       private
 
       def entities(entity_type, entity_id)

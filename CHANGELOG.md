@@ -3,7 +3,8 @@
 ## [Draft] - 2020-06-11
 
 ### Added
-- Implemented Entity API to get the fund data of Entity (`client.fund(entity_id)`)
+- Implemented a API to get the fund data of Entity (`client.fund(entity_id)`)
+- Implemented a API to get the ownership data of Entity (`client.ownership(entity_id)`)
 
 ## [0.1.3] - 2020-06-09
 

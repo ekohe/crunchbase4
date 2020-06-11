@@ -60,6 +60,7 @@ response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
 response = client.funding_round('371c20af8aa94bcba8da0694d138f247', 'investments')
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 response = client.fund('aeaac12b-df56-7039-40f9-f1992f88e20e')
+response = client.ownership('4506d9ce-85d3-4a8f-89cd-07a225359d55')
 
 <!-- Get the JSON response of Entity -->
 
@@ -262,6 +263,27 @@ pry(main)> response = client.investment('1368da0c-07b0-46ef-9a86-b518367e60d6')
  @permalink="jean-brice-abrial-invested-in-facebook-secondary-market--371c20af--1368da0c",
  @updated_at="2020-04-02T12:17:59Z",
  @uuid="1368da0c-07b0-46ef-9a86-b518367e60d6">
+```
+
+##### Get the ownership data
+
+```ruby
+pry(main)> response = client.ownership('4506d9ce-85d3-4a8f-89cd-07a225359d55')
+=> #<Crunchbase::Models::Ownership:0x00007fbf2fdb78b0
+ @created_at="2015-03-04T20:04:23Z",
+ @entity_def_id="ownership",
+ @identifier=["4506d9ce-85d3-4a8f-89cd-07a225359d55", "Facebook owns Instagram", "facebook-owns-instagram--4506d9ce"],
+ @name="Facebook owns Instagram",
+ @ownee_identifier="Instagram",
+ @owner_identifier="Facebook",
+ @ownership_type="subsidiary",
+ @permalink="facebook-owns-instagram--4506d9ce",
+ @updated_at="2018-02-13T01:18:10Z",
+ @uuid="4506d9ce-85d3-4a8f-89cd-07a225359d55">
+pry(main)> response.name
+=> "Facebook owns Instagram"
+pry(main)> response.uuid
+=> "4506d9ce-85d3-4a8f-89cd-07a225359d55"
 ```
 
 ### Search

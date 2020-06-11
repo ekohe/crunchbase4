@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/ownerships/4506d9ce-85d3-4a8f-89cd-07a225359d55?field_ids=created_at,entity_def_id,identifier,updated_at,uuid,permalink,name,ownee_identifier,owner_identifier,ownership_type
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 11 Jun 2020 15:23:14 GMT
+      Etag:
+      - W/"1591888994662"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '1'
+      X-Cb-Request-Took:
+      - '5'
+      Content-Length:
+      - '810'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"ownee_identifier":{"uuid":"08644a69-76ed-ce2d-afff-b236a22efa69","value":"Instagram","image_id":"v1463000485/i9x0bs0gb1juzulofjzh.jpg","permalink":"instagram","entity_def_id":"organization"},"name":"Facebook
+        owns Instagram","permalink":"facebook-owns-instagram--4506d9ce","identifier":{"uuid":"4506d9ce-85d3-4a8f-89cd-07a225359d55","value":"Facebook
+        owns Instagram","permalink":"facebook-owns-instagram--4506d9ce","entity_def_id":"ownership"},"owner_identifier":{"uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},"uuid":"4506d9ce-85d3-4a8f-89cd-07a225359d55","created_at":"2015-03-04T20:04:23Z","updated_at":"2018-02-13T01:18:10Z","entity_def_id":"ownership","ownership_type":"subsidiary"}}'
+  recorded_at: Thu, 11 Jun 2020 15:23:14 GMT
+recorded_with: VCR 6.0.0

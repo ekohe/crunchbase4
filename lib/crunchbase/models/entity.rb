@@ -57,8 +57,8 @@ module Crunchbase
           'ipos' => Crunchbase::Models::Ipo,
           # 'event_appearances' => Crunchbase::Models::EventAppearance,
           'acquiree_acquisitions' => Crunchbase::Models::Acquisition,
-          # 'parent_ownership' => Crunchbase::Models::Ownership,
-          # 'child_ownerships' => Crunchbase::Models::Ownership,
+          'parent_ownership' => Crunchbase::Models::Ownership,
+          'child_ownerships' => Crunchbase::Models::Ownership,
           # 'jobs' => Crunchbase::Models::Job,
           # 'founders' => Crunchbase::Models::Founder,
           'press_references' => Crunchbase::Models::PressReference
