@@ -59,6 +59,11 @@ response = client.person('mark-zuckerberg', 'participated_investments')
 response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
 response = client.funding_round('371c20af8aa94bcba8da0694d138f247', 'investments')
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
+response = client.fund('aeaac12b-df56-7039-40f9-f1992f88e20e')
+
+<!-- Get the JSON response of Entity -->
+
+response.as_json
 
 <!-- Search -->
 client.search_organizations(query_data)
@@ -155,7 +160,6 @@ pry(main)> response.permalink
 ##### Get the funding round data
 
 ```ruby
-=> #<Crunchbase::Client:0x00007f8806824c28>
 pry(main)> response = client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247')
 => #<Crunchbase::Models::FundingRound:0x00007f8806b55ca8
  @announced_on="2013-06-30",
@@ -174,6 +178,30 @@ pry(main)> response.name
 => "Secondary Market - Facebook"
 pry(main)> response.uuid
 => "371c20af-8aa9-4bcb-a8da-0694d138f247"
+```
+##### Get the fund data
+
+```ruby
+pry(main)> response = client.fund('aeaac12b-df56-7039-40f9-f1992f88e20e')
+=> #<Crunchbase::Models::Fund:0x00007ffa6a5a4080
+ @announced_on="2017-04-03",
+ @created_at="2017-04-04T04:40:49Z",
+ @entity_def_id="fund",
+ @image_id="v1491280776/azwvvy68ap2o29ffcnn7.png",
+ @investor_identifiers=["Betaworks", "Craig Newmark Philanthropies", "Democracy Fund", "Facebook", "Ford Foundation", "Knight Foundation", "Mozilla", "Tow Foundation"],
+ @money_raised=14000000,
+ @name="The News Integrity Initiative Fund I",
+ @num_investors=8,
+ @owner_identifier="The News Integrity Initiative",
+ @permalink="the-news-integrity-initiative-raised-the-news-integrity-initiative-fund-i--aeaac12b",
+ @short_description="The News Integrity Initiative raises new  The News Integrity Initiative Fund I on 2017-04-03",
+ @started_on=nil,
+ @updated_at="2018-02-12T22:18:54Z",
+ @uuid="aeaac12b-df56-7039-40f9-f1992f88e20e">
+pry(main)> response.name
+=> "The News Integrity Initiative Fund I"
+pry(main)> response.uuid
+=> "aeaac12b-df56-7039-40f9-f1992f88e20e"
 ```
 
 ##### Get the acquisition data

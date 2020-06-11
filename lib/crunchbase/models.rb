@@ -15,5 +15,6 @@ module Crunchbase
     autoload :CategoryGroup,                'crunchbase/models/category_group'
     autoload :Category,                     'crunchbase/models/category'
     autoload :Ipo,                          'crunchbase/models/ipo'
+    autoload :Fund,                         'crunchbase/models/fund'
   end
 end

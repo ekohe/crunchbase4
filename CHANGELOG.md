@@ -1,6 +1,9 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
+## [Draft] - 2020-06-11
+
+### Added
+- Implemented Entity API to get the fund data of Entity (`client.fund(entity_id)`)
 
 ## [0.1.3] - 2020-06-09
 

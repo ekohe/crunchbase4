@@ -84,6 +84,16 @@ module Crunchbase
         entities('ipo', entity_id).fetch_cards(cards)
       end
 
+      # Lookup an fund or Single card
+      def fund(entity_id, card_id: nil)
+        lookup_for('fund', entity_id, card_id)
+      end
+
+      # Lookup fund's all card
+      def fund_cards(entity_id, cards: [])
+        entities('fund', entity_id).fetch_cards(cards)
+      end
+
       private
 
       def entities(entity_type, entity_id)

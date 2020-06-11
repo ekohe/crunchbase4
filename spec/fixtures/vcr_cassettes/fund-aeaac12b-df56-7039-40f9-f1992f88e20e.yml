@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/funds/aeaac12b-df56-7039-40f9-f1992f88e20e?field_ids=created_at,entity_def_id,image_id,investor_identifiers,num_investors,owner_identifier,short_description,started_on,updated_at,uuid,name,announced_on,money_raised,permalink
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 11 Jun 2020 14:13:06 GMT
+      Etag:
+      - W/"1591884786690"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '1'
+      X-Cb-Request-Took:
+      - '5'
+      Content-Length:
+      - '2520'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"name":"The News Integrity Initiative Fund I","permalink":"the-news-integrity-initiative-raised-the-news-integrity-initiative-fund-i--aeaac12b","identifier":{"uuid":"aeaac12b-df56-7039-40f9-f1992f88e20e","value":"The
+        News Integrity Initiative Fund I","image_id":"v1491280776/azwvvy68ap2o29ffcnn7.png","permalink":"the-news-integrity-initiative-raised-the-news-integrity-initiative-fund-i--aeaac12b","entity_def_id":"fund"},"image_id":"v1491280776/azwvvy68ap2o29ffcnn7.png","owner_identifier":{"role":"investee","uuid":"03d0d266-8b4f-a563-139c-0d2b5685134d","value":"The
+        News Integrity Initiative","image_id":"v1491280776/azwvvy68ap2o29ffcnn7.png","permalink":"the-news-integrity-initiative","entity_def_id":"organization"},"announced_on":"2017-04-03","uuid":"aeaac12b-df56-7039-40f9-f1992f88e20e","money_raised":{"value":14000000,"currency":"USD","value_usd":14000000},"short_description":"The
+        News Integrity Initiative raises new  The News Integrity Initiative Fund I
+        on 2017-04-03","num_investors":8,"investor_identifiers":[{"uuid":"b6e5fec6-35f4-df51-ffdc-9923c850572b","value":"Betaworks","image_id":"v1400861359/poxaztswzc0eiprenooe.jpg","permalink":"betaworks","entity_def_id":"organization"},{"uuid":"8daf3692-49c0-8d67-46f2-9bad23ef2bd1","value":"Craig
+        Newmark Philanthropies","image_id":"ucjam0j1fhfrl6blk1qo","permalink":"craig-newmark-philanthropic-fund","entity_def_id":"organization"},{"uuid":"36be681d-cad1-de20-eb3f-c16132d2c907","value":"Democracy
+        Fund","image_id":"v1491754737/h5cifvqfa4gmhlmglnk3.png","permalink":"democracy-fund","entity_def_id":"organization"},{"uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},{"uuid":"0ee8cd71-bfd9-bf6b-fb96-a38012b1e001","value":"Ford
+        Foundation","image_id":"v1397187355/9cb98679ecc78add2fcde9287becf7f5.png","permalink":"ford-foundation","entity_def_id":"organization"},{"uuid":"08247735-1b8d-7c99-5c6a-6805b80de8bd","value":"Knight
+        Foundation","image_id":"v1489159692/apgsko7hbhhajisky5l7.jpg","permalink":"knight-foundation","entity_def_id":"organization"},{"uuid":"dcd7ef59-6123-3601-cc7f-3051dfbe018c","value":"Mozilla","image_id":"j4ejz6cfa47ujznpojp4","permalink":"mozilla","entity_def_id":"organization"},{"uuid":"b00734a0-4ddd-d8c6-067f-227878528ba9","value":"Tow
+        Foundation","permalink":"tow-foundation","entity_def_id":"organization"}],"created_at":"2017-04-04T04:40:49Z","updated_at":"2018-02-12T22:18:54Z","entity_def_id":"fund"}}'
+  recorded_at: Thu, 11 Jun 2020 14:13:06 GMT
+recorded_with: VCR 6.0.0

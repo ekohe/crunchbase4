@@ -148,6 +148,37 @@ RSpec.describe Crunchbase::Client do
       expect(person.participated_investments[0].investor_stage).to eq(['seed'])
       expect(person.participated_investments[0].name).to eq('Mark Zuckerberg investment in Angel Round - LEANLAB Education')
     end
+
+    it 'be able to get organization data with raised_funds' do
+      organization = VCR.use_cassette('organization-facebook-with-raised_funds') do
+        client.organization('facebook', card_id: 'raised_funds')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.raised_funds.size).to eq(0)
+    end
+
+    it 'be able to get organization data with participated_funds' do
+      organization = VCR.use_cassette('organization-facebook-with-participated_funds') do
+        client.organization('facebook', card_id: 'participated_funds')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.participated_funds.size).to eq(1)
+      expect(organization.participated_funds[0].permalink).to eq('the-news-integrity-initiative-raised-the-news-integrity-initiative-fund-i--aeaac12b')
+      expect(organization.participated_funds[0].uuid).to eq('aeaac12b-df56-7039-40f9-f1992f88e20e')
+      expect(organization.participated_funds[0].money_raised).to eq(14_000_000)
+      expect(organization.participated_funds[0].announced_on).to eq('2017-04-03')
+    end
+
+    it 'be able to get fund data' do
+      fund = VCR.use_cassette('fund-aeaac12b-df56-7039-40f9-f1992f88e20e') do
+        client.fund('aeaac12b-df56-7039-40f9-f1992f88e20e')
+      end
+
+      expect(fund.permalink).to eq('the-news-integrity-initiative-raised-the-news-integrity-initiative-fund-i--aeaac12b')
+      expect(fund.uuid).to eq('aeaac12b-df56-7039-40f9-f1992f88e20e')
+    end
   end
 
   context 'Search API' do
