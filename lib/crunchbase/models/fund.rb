@@ -3,7 +3,7 @@
 module Crunchbase
   # Get the Entities data from API
   module Models
-    # Get the person data from API
+    # Get the Fund data from API
     class Fund < Entity
       RESOURCE_LIST = 'funds'
 

@@ -3,15 +3,17 @@
 module Crunchbase
   # Get the Entities data from API
   module Models
-    # Get the Ownership data from API
-    class Ownership < Entity
-      RESOURCE_LIST = 'ownerships'
+    # Get the Principal data from API
+    class Job < Entity
+      RESOURCE_LIST = 'jobs'
 
       def field_ids
         %w[
           created_at
+          employee_featured_order
           entity_def_id
           identifier
+          short_description
           updated_at
         ] + basis_fields
       end
@@ -19,19 +21,20 @@ module Crunchbase
       def basis_fields
         %w[
           uuid
-          permalink
           name
-          ownee_identifier
-          owner_identifier
-          ownership_type
+          title
+          started_on
+          ended_on
+          permalink
+          job_type
+          is_current
+          organization_identifier
+          person_identifier
         ]
       end
 
       def full_cards
         %w[
-          child_organization
-          parent_organization
-          press_references
         ]
       end
     end

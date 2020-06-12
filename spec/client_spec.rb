@@ -213,6 +213,89 @@ RSpec.describe Crunchbase::Client do
       expect(ownership.ownee_identifier).to eq('Instagram')
       expect(ownership.owner_identifier).to eq('Facebook')
     end
+
+    it 'be able to get organization data with founders' do
+      organization = VCR.use_cassette('organization-facebook-with-founders') do
+        client.organization('facebook', card_id: 'founders')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.founders.size).to eq(5)
+      expect(organization.founders.map(&:name)).to eq(['Andrew McCollum', 'Chris Hughes', 'Dustin Moskovitz', 'Eduardo Saverin', 'Mark Zuckerberg'])
+      expect(organization.founders.map(&:uuid)).to eq(%w[
+                                                        76742b37-a375-321b-1ddc-de1c929894fa
+                                                        5ac8203a-540a-ab6c-46ee-84463834fe72
+                                                        084aaa07-0795-1fe8-9c46-98bbeb02cd64
+                                                        fb5b458c-0aab-a977-71b9-ecf78d3ec756
+                                                        a01b8d46-d311-3333-7c34-aa3ae9c03f22
+                                                      ])
+      expect(organization.founders[0].permalink).to eq('andrew-mccollum')
+    end
+
+    it 'be able to get organization data with event_appearances' do
+      organization = VCR.use_cassette('organization-facebook-with-event_appearances') do
+        client.organization('facebook', card_id: 'event_appearances')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.event_appearances.size).to eq(100)
+      expect(organization.event_appearances[0].appearance_type).to eq('sponsor')
+      expect(organization.event_appearances[0].event_starts_on).to eq('2020-12-09')
+      expect(organization.event_appearances[0].identifier).to eq([
+                                                                   '7f9884b3-31be-4c1f-b911-546da9913d35',
+                                                                   "The AI Summit New York 2020's sponsor - Facebook",
+                                                                   'facebook-sponsor-the-ai-summit-new-york-2020--7f9884b3'
+                                                                 ])
+      expect(organization.event_appearances[0].name).to eq("The AI Summit New York 2020's sponsor - Facebook")
+      expect(organization.event_appearances[0].permalink).to eq('facebook-sponsor-the-ai-summit-new-york-2020--7f9884b3')
+    end
+
+    it 'be able to get organization data with investors' do
+      organization = VCR.use_cassette('organization-facebook-with-investors') do
+        client.organization('facebook', card_id: 'investors')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.investors.size).to eq(25)
+      expect(organization.investors[0].aliases).to eq(['Accel Partners'])
+      expect(organization.investors[0].categories).to eq(['Finance', 'Online Portals', 'Venture Capital'])
+      expect(organization.investors[0].facebook).to eq('http://www.facebook.com/accel')
+      expect(organization.investors[0].linkedin).to eq('https://www.linkedin.com/company/accel-vc/')
+      expect(organization.investors[0].name).to eq('Accel')
+      expect(organization.investors[0].website).to eq('http://www.accel.com')
+      expect(organization.investors[0].uuid).to eq('b08efc27-da40-505a-6f9d-c9e14247bf36')
+    end
+
+    it 'be able to get organization data with jobs' do
+      organization = VCR.use_cassette('organization-facebook-with-jobs') do
+        client.organization('facebook', card_id: 'jobs')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.jobs.size).to eq(100)
+      expect(organization.jobs[0].title).to eq('Founder & CEO')
+      expect(organization.jobs[0].started_on).to eq('2004-01-01')
+      expect(organization.jobs[0].person_identifier).to eq('Mark Zuckerberg')
+      expect(organization.jobs[0].permalink).to eq('mark-zuckerberg-executive-facebook--befc22de')
+      expect(organization.jobs[0].organization_identifier).to eq('Facebook')
+      expect(organization.jobs[0].name).to eq('Mark Zuckerberg Founder & CEO @ Facebook')
+      expect(organization.jobs[0].is_current).to eq(true)
+      expect(organization.jobs[0].job_type).to eq('executive')
+    end
+
+    it 'be able to get organization data with headquarters_address' do
+      organization = VCR.use_cassette('organization-facebook-with-headquarters_address') do
+        client.organization('facebook', card_id: 'headquarters_address')
+      end
+
+      expect(organization.permalink).to eq('facebook')
+      expect(organization.headquarters_address.size).to eq(1)
+      expect(organization.headquarters_address[0].identifier).to eq(%w[fb31a5f3-80fd-4298-becd-6224e7174c28 Headquarters])
+      expect(organization.headquarters_address[0].location_identifiers).to eq(['Menlo Park', 'California', 'United States', 'North America'])
+      expect(organization.headquarters_address[0].name).to eq('Headquarters')
+      expect(organization.headquarters_address[0].street_1).to eq('1 Hacker Way')
+      expect(organization.headquarters_address[0].uuid).to eq('fb31a5f3-80fd-4298-becd-6224e7174c28')
+    end
   end
 
   context 'Search API' do

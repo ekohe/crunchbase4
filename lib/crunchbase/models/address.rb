@@ -3,15 +3,14 @@
 module Crunchbase
   # Get the Entities data from API
   module Models
-    # Get the Ownership data from API
-    class Ownership < Entity
-      RESOURCE_LIST = 'ownerships'
+    # Get the person data from API
+    class Address < Entity
+      RESOURCE_LIST = 'addresses'
 
       def field_ids
         %w[
           created_at
           entity_def_id
-          identifier
           updated_at
         ] + basis_fields
       end
@@ -19,19 +18,17 @@ module Crunchbase
       def basis_fields
         %w[
           uuid
-          permalink
           name
-          ownee_identifier
-          owner_identifier
-          ownership_type
+          postal_code
+          street_1
+          street_2
+          identifier
+          location_identifiers
         ]
       end
 
       def full_cards
         %w[
-          child_organization
-          parent_organization
-          press_references
         ]
       end
     end

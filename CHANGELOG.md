@@ -1,10 +1,15 @@
 # Change Log
 
-## [Draft] - 2020-06-11
+## [0.1.4] - 2020-06-12
 
 ### Added
 - Implemented a API to get the fund data of Entity (`client.fund(entity_id)`)
 - Implemented a API to get the ownership data of Entity (`client.ownership(entity_id)`)
+- Implemented a API to get the founders data of Entity (`client.founders(entity_id)`)
+- Implemented a API to get the event_appearances data of Entity (`client.event_appearances(entity_id)`)
+- Implemented a API to get the investors data of Entity (`client.investors(entity_id)`)
+- Implemented a API to get the jobs data of Entity (`client.jobs(entity_id)`)
+- Implemented a API to get the headquarters_address data of Entity (`client.headquarters_address(entity_id)`)
 
 ## [0.1.3] - 2020-06-09
 

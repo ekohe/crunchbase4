@@ -3,7 +3,7 @@
 Crunchbase is a ruby wrapper based on Crunchbase V4 API. it provides easy to get the API data by each endpoint. [CB v4 DOC](https://app.swaggerhub.com/apis/Crunchbase/crunchbase-enterprise_api/1.0.1)
 
 [![Gem Version](https://badge.fury.io/rb/crunchbase4.svg)](https://badge.fury.io/rb/crunchbase4)
-[![Build Status](https://travis-ci.org/encoreshao/crunchbase4.svg?branch=master)](https://travis-ci.org/encoreshao/crunchbase4)
+[![Build Status](https://travis-ci.org/ekohe/crunchbase4.svg?branch=master)](https://travis-ci.org/ekohe/crunchbase4)
 
 ## Installation
 
@@ -30,6 +30,7 @@ require 'crunchbase4'
 
 CB_CONFIG = YAML.load(File.read('crunchbase.yml'))
 Crunchbase.config.user_key = CB_CONFIG['user_key']
+Crunchbase.config.user_key = false # If you want to know the request information, can set the debug = true
 ```
 
 ## Usage
@@ -43,9 +44,13 @@ pry(main)> client = Crunchbase::Client.new
 #### API request for endpoint we completed
 
 - [Entity](https://github.com/ekohe/crunchbase4#entity)
-  - organizations
-  - people
-  - funding_rounds
+  - Organization
+    - fields
+    - cards: [raised_investments, participated_funds, child_organizations, participated_investments, investors, parent_organization, raised_funding_rounds, ipos, event_appearances, raised_funds, acquiree_acquisitions, acquirer_acquisitions, parent_ownership, jobs, founders, child_ownerships, participated_funding_rounds, press_references, headquarters_address]
+  - Person
+    - fields
+  - FundingRound
+    - fields
 - [Searches](https://github.com/ekohe/crunchbase4#search)
 - [Autocompletes](https://github.com/ekohe/crunchbase4#autocompletes)
 - [Deleted Entities](https://github.com/ekohe/crunchbase4#deleted-entities)

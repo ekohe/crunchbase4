@@ -41,7 +41,7 @@ module Crunchbase
         cbobject.parse_response(entity(
                                   root_uri(name: __method__, id: card_id),
                                   field_ids: cbobject.basis_fields.join(','),
-                                  card_field_ids: cbobject.card_model_mappings[card_id].new.field_ids.join(',')
+                                  card_field_ids: cbobject.model_mappings[card_id].new.field_ids.join(',')
                                 ), cbobject.basis_fields, [card_id])
       end
 

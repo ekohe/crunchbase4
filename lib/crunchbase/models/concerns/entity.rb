@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../utilities/response'
+require_relative '../../utilities/response'
+require_relative './mappings'
 
 module Crunchbase
   # Get the Organization data from API
@@ -8,6 +9,7 @@ module Crunchbase
     # Root
     class Entity
       include ::Crunchbase::Utilities::Response
+      include Mappings
 
       def fields
         field_ids.map(&:to_sym)
@@ -24,7 +26,7 @@ module Crunchbase
       def setup_relationships(object, request_card_ids, response_cards)
         request_card_ids.each do |card_id|
           card_data = response_cards.dig(card_id)
-          card_model = card_model_mappings[card_id]
+          card_model = model_mappings[card_id]
           card_objects = if card_data.is_a?(Array)
                            card_data.each_with_object([]) do |data, objects|
                              new_card_instance = card_model.new
@@ -40,30 +42,6 @@ module Crunchbase
 
       def as_json
         fields.each_with_object({}) { |item, hash| hash[item] = send(item) }
-      end
-
-      def card_model_mappings
-        {
-          'investments' => Crunchbase::Models::Investment,
-          'raised_investments' => Crunchbase::Models::Investment,
-          'participated_investments' => Crunchbase::Models::Investment,
-          'participated_funds' => Crunchbase::Models::Fund,
-          'raised_funds' => Crunchbase::Models::Fund,
-          'child_organizations' => Crunchbase::Models::Organization,
-          'parent_organization' => Crunchbase::Models::Organization,
-          # 'investors' => Crunchbase::Models::Investor,
-          'raised_funding_rounds' => Crunchbase::Models::FundingRound,
-          'participated_funding_rounds' => Crunchbase::Models::FundingRound,
-          'ipos' => Crunchbase::Models::Ipo,
-          # 'event_appearances' => Crunchbase::Models::EventAppearance,
-          'acquiree_acquisitions' => Crunchbase::Models::Acquisition,
-          'parent_ownership' => Crunchbase::Models::Ownership,
-          'child_ownerships' => Crunchbase::Models::Ownership,
-          # 'jobs' => Crunchbase::Models::Job,
-          # 'founders' => Crunchbase::Models::Founder,
-          'press_references' => Crunchbase::Models::PressReference
-          # 'headquarters_address' => Crunchbase::Models::Address,
-        }
       end
     end
   end

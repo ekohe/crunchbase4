@@ -3,7 +3,7 @@
 module Crunchbase
   # Models
   module Models
-    autoload :Entity,                       'crunchbase/models/entity'
+    autoload :Entity,                       'crunchbase/models/concerns/entity'
     autoload :AutocompleteEntity,           'crunchbase/models/autocomplete_entity'
     autoload :DeletedEntity,                'crunchbase/models/deleted_entity'
     autoload :Organization,                 'crunchbase/models/organization'
@@ -17,5 +17,9 @@ module Crunchbase
     autoload :Ipo,                          'crunchbase/models/ipo'
     autoload :Fund,                         'crunchbase/models/fund'
     autoload :Ownership,                    'crunchbase/models/ownership'
+    autoload :EventAppearance,              'crunchbase/models/event_appearance'
+    autoload :Principal,                    'crunchbase/models/principal'
+    autoload :Job,                          'crunchbase/models/job'
+    autoload :Address,                      'crunchbase/models/address'
   end
 end
