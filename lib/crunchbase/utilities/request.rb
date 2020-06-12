@@ -9,7 +9,11 @@ require_relative '../errors'
 module Crunchbase
   # Utilities
   module Utilities
-    # API Request
+    # Key Reminder
+    #
+    #   entity_id must be provided in the request
+    #   entity_id can be the uuid or the permalink of the entity
+    #   you can pass your API key in the request's header if you do not want to pass the API key in the URL
     module Request
       module_function
 

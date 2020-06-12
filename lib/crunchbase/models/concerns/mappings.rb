@@ -28,6 +28,10 @@ module Crunchbase
           'headquarters_address' => Address
         }
       end
+
+      def card_num_field(card_id)
+        field_ids & ["num_#{card_id}"]
+      end
     end
   end
 end

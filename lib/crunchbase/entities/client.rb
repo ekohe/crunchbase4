@@ -6,7 +6,7 @@ require_relative '../utilities/cb_model'
 module Crunchbase
   # Whole entities endpoints
   module Entities
-    # Send request for entities endpoints
+    # using Crunchbase's Entity Lookup API endpoints
     class Client
       include ::Crunchbase::Utilities::Request
       include ::Crunchbase::Utilities::CbModel
@@ -35,14 +35,18 @@ module Crunchbase
                                 ), cbobject.basis_fields, card_names)
       end
 
+      # Auto combine the card num field to request field_ids
+      #
+      #   Example: if card_id is investors, will auto add num_investors
       def cards(card_id)
         raise Crunchbase::Error, 'Invalid card_id' unless cbobject.full_cards.include?(card_id)
 
+        field_ids = cbobject.basis_fields.concat(cbobject.card_num_field(card_id))
         cbobject.parse_response(entity(
                                   root_uri(name: __method__, id: card_id),
-                                  field_ids: cbobject.basis_fields.join(','),
+                                  field_ids: field_ids.join(','),
                                   card_field_ids: cbobject.model_mappings[card_id].new.field_ids.join(',')
-                                ), cbobject.basis_fields, [card_id])
+                                ), field_ids, [card_id])
       end
 
       private

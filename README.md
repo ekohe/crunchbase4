@@ -56,17 +56,15 @@ pry(main)> client = Crunchbase::Client.new
 - [Deleted Entities](https://github.com/ekohe/crunchbase4#deleted-entities)
 
 ```ruby
-<!-- Entity -->
-response = client.organization('ekohe')
-
-<!-- Single card of Entity -->
-- ipos: (`client.organization('ekohe', 'ipos')`)
-- fund: (`client.organization('ekohe', 'fund')`)
-- ownership: (`client.organization('ekohe', 'ownership')`)
-- founders: (`client.organization('ekohe', 'founders')`)
-- investors: (`client.organization('ekohe', 'investors')`)
-- jobs: (`client.organization('ekohe', 'jobs')`)
-- headquarters_address: (`client.organization('ekohe', 'headquarters_address')`)
+<!-- Entity and Single Card -->
+response              = client.organization('ekohe')
+ipos                  = client.organization('ekohe', 'ipos')
+fund                  = client.organization('ekohe', 'fund')
+ownership             = client.organization('ekohe', 'ownership')
+founders              = client.organization('ekohe', 'founders')
+investors             = client.organization('ekohe', 'investors')
+jobs                  = client.organization('ekohe', 'jobs')
+headquarters_address  = client.organization('ekohe', 'headquarters_address')
 
 response = client.person('mark-zuckerberg')
 response = client.person('mark-zuckerberg', 'participated_investments')

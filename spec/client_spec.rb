@@ -221,6 +221,7 @@ RSpec.describe Crunchbase::Client do
 
       expect(organization.permalink).to eq('facebook')
       expect(organization.founders.size).to eq(5)
+      expect(organization.num_founders).to eq(5)
       expect(organization.founders.map(&:name)).to eq(['Andrew McCollum', 'Chris Hughes', 'Dustin Moskovitz', 'Eduardo Saverin', 'Mark Zuckerberg'])
       expect(organization.founders.map(&:uuid)).to eq(%w[
                                                         76742b37-a375-321b-1ddc-de1c929894fa
@@ -238,6 +239,7 @@ RSpec.describe Crunchbase::Client do
       end
 
       expect(organization.permalink).to eq('facebook')
+      expect(organization.num_event_appearances).to eq(230)
       expect(organization.event_appearances.size).to eq(100)
       expect(organization.event_appearances[0].appearance_type).to eq('sponsor')
       expect(organization.event_appearances[0].event_starts_on).to eq('2020-12-09')
@@ -257,6 +259,7 @@ RSpec.describe Crunchbase::Client do
 
       expect(organization.permalink).to eq('facebook')
       expect(organization.investors.size).to eq(25)
+      expect(organization.num_investors).to eq(25)
       expect(organization.investors[0].aliases).to eq(['Accel Partners'])
       expect(organization.investors[0].categories).to eq(['Finance', 'Online Portals', 'Venture Capital'])
       expect(organization.investors[0].facebook).to eq('http://www.facebook.com/accel')
