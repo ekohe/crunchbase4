@@ -3,13 +3,13 @@
 ## [0.1.4] - 2020-06-12
 
 ### Added
-- Implemented a API to get the fund data of Entity (`client.fund(entity_id)`)
-- Implemented a API to get the ownership data of Entity (`client.ownership(entity_id)`)
-- Implemented a API to get the founders data of Entity (`client.founders(entity_id)`)
-- Implemented a API to get the event_appearances data of Entity (`client.event_appearances(entity_id)`)
-- Implemented a API to get the investors data of Entity (`client.investors(entity_id)`)
-- Implemented a API to get the jobs data of Entity (`client.jobs(entity_id)`)
-- Implemented a API to get the headquarters_address data of Entity (`client.headquarters_address(entity_id)`)
+- Implemented APIs to get the cards data of Entity
+  - fund: (`client.organization(entity_id, 'fund')`)
+  - ownership: (`client.organization(entity_id, 'ownership')`)
+  - founders: (`client.organization(entity_id, 'founders')`)
+  - investors: (`client.organization(entity_id, 'investors')`)
+  - jobs: (`client.organization(entity_id, 'jobs')`)
+  - headquarters_address: (`client.organization(entity_id, 'headquarters_address')`)
 
 ## [0.1.3] - 2020-06-09
 

@@ -58,7 +58,16 @@ pry(main)> client = Crunchbase::Client.new
 ```ruby
 <!-- Entity -->
 response = client.organization('ekohe')
-response = client.organization('ekohe', 'ipos')
+
+<!-- Single card of Entity -->
+- ipos: (`client.organization('ekohe', 'ipos')`)
+- fund: (`client.organization('ekohe', 'fund')`)
+- ownership: (`client.organization('ekohe', 'ownership')`)
+- founders: (`client.organization('ekohe', 'founders')`)
+- investors: (`client.organization('ekohe', 'investors')`)
+- jobs: (`client.organization('ekohe', 'jobs')`)
+- headquarters_address: (`client.organization('ekohe', 'headquarters_address')`)
+
 response = client.person('mark-zuckerberg')
 response = client.person('mark-zuckerberg', 'participated_investments')
 response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
