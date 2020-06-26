@@ -12,7 +12,7 @@ module Crunchbase
       include Mappings
 
       def fields
-        field_ids.map(&:to_sym)
+        field_ids.concat(custom_fields).map(&:to_sym)
       end
 
       def parse_response(response, request_field_ids = [], cards = [])
@@ -42,6 +42,11 @@ module Crunchbase
 
       def as_json
         fields.each_with_object({}) { |item, hash| hash[item] = send(item) }
+      end
+
+      private
+      def custom_fields
+        []
       end
     end
   end

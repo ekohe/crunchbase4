@@ -9,12 +9,12 @@
     * After
       - Get organzation's fund: (`client.organization(entity_id, card_id: 'fund')`)
 - Method for uniformly obtaining deleted entities data and support more query condition
-    * Get deleted organzations
-      - Before:  (`client.deleted_organzations`)
+    * Get deleted organizations
+      - Before:  (`client.deleted_organizations`)
       - After :  (`client.deleted_entities(collection_ids: 'organizations', limit: 20)`)
 - Method for uniformly obtaining autocompletes entities data and support more query condition
-    * Get autocompletes organzations
-      - Before:  (`client.autocomplete_organzations`)
+    * Get autocompletes organizations
+      - Before:  (`client.autocomplete_organizations`)
       - After :  (`client.autocomplete('ekohe', collection_ids: 'organizations', limit: 3)`)
 
 ## [0.1.4] - 2020-06-12
@@ -38,11 +38,11 @@
 
 ### Added
 - Implemented searches APIs to get the recent updates entities on Search
-  - organzations
+  - organizations
   - people
   - funding rounds
 - Implemented `autocompletes` API to allow user filter entities by keyword
-  - organzations
+  - organizations
   - people
   - funding rounds
 
@@ -50,7 +50,7 @@
 
 ### Added
 - Implemented APIs to get acquisition and investment of Entity
-- Implemented APIs to search organzations and funding rounds of Search
+- Implemented APIs to search organizations and funding rounds of Search
 
 ### Changed
 - Refactor the API client to support search API

@@ -134,6 +134,15 @@ module Crunchbase
           headquarters_address
         ]
       end
+
+      def employees_range
+        Crunchbase::Utils::NUM_EMPLOYEES_ENUM[num_employees_enum]
+      end
+
+      private
+      def custom_fields
+        %w[employees_range]
+      end
     end
   end
 end

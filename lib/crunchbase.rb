@@ -17,7 +17,7 @@ module Crunchbase
   # Defined Veriables for the data Category or Types
   #
   # Crunchbase::Utils.constants => [
-  #   :OPERATING_STATUS,
+  #  :OPERATING_STATUS,
   #  :PROGRAM_TYPES,
   #  :REVENUE_RANGES,
   #  :COMPANY_TYPES,

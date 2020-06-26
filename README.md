@@ -56,7 +56,7 @@ pry(main)> client = Crunchbase::Client.new
 - [Deleted Entities](https://github.com/ekohe/crunchbase4#deleted-entities)
 
 ```ruby
-<!-- Entity and Single Card -->
+<!-- Examples of organization and single card -->
 response                = client.organization('ekohe')
 ipos                    = client.organization('ekohe', card_id: 'ipos')
 fund                    = client.organization('ekohe', card_id: 'fund')
@@ -67,15 +67,25 @@ jobs                    = client.organization('ekohe', card_id: 'jobs')
 headquarters_address    = client.organization('ekohe', card_id: 'headquarters_address')
 top_2_press_references  = client.organization('ekohe', card_id: 'press_references', limit: 2)
 
+<!-- Examples to get the funding rounds of the organization through paging -->
+response = client.organization(
+  'facebook', card_id: 'participated_funding_rounds',
+  limit: 5,
+  order: 'announced_on:desc',
+  after_id: '3cdfcecd-5377-439b-acab-cefcf6fe21a5'
+)
+
+<!-- Examples of person and single card -->
+
 response = client.person('mark-zuckerberg')
 response = client.person('mark-zuckerberg', card_id: 'participated_investments')
-response = client.funding_round('371c20af8aa94bcba8da0694d138f247')
-response = client.funding_round('371c20af8aa94bcba8da0694d138f247', card_id: 'investors')
+response = client.funding_round('3cdfcecd-5377-439b-acab-cefcf6fe21a5')
+response = client.funding_round('3cdfcecd-5377-439b-acab-cefcf6fe21a5', card_id: 'investors')
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 response = client.fund('aeaac12b-df56-7039-40f9-f1992f88e20e')
 response = client.ownership('4506d9ce-85d3-4a8f-89cd-07a225359d55')
 
-<!-- Get the JSON response of Entity -->
+<!-- Get the JSON response of entity -->
 
 response.as_json
 

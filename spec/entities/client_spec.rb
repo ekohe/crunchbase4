@@ -39,6 +39,7 @@ RSpec.describe Crunchbase::Entities::Client do
     expect(org.num_founders).to eq(1)
     expect(org.num_event_appearances).to eq(1)
     expect(org.num_employees_enum).to eq('c_00011_00050')
+    expect(org.employees_range).to eq('11-50')
     expect(org.num_current_positions).to eq(1)
     expect(org.name).to eq('Ekohe')
     expect(org.identifier).to eq(%w[9fe491b2-b6a1-5c87-0f4d-226dd0cc97a9 Ekohe ekohe])
