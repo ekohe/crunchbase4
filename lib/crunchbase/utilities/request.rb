@@ -60,7 +60,7 @@ module Crunchbase
 
         return response.body if response.status == 200
 
-        raise Error, response.body['error']
+        raise Error, response.status == 400 ? response.body[0]['message'] : response.body['error']
       end
 
       def debug_mode?

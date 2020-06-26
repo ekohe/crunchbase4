@@ -33,30 +33,14 @@ module Crunchbase
       #   deleted_at_order: string
       #     Direction of sorting by deleted_at property
       #       Available values : asc, desc
-      def deleted_organizations(args = {})
-        deleted_entities(wrapper_deleted_entities_data(args, 'organizations'))
-      end
-
-      def deleted_people(args = {})
-        deleted_entities(wrapper_deleted_entities_data(args, 'people'))
-      end
-
-      def deleted_funding_rounds(args = {})
-        deleted_entities(wrapper_deleted_entities_data(args, 'funding_rounds'))
-      end
-
-      def deleted_press_references(args = {})
-        deleted_entities(wrapper_deleted_entities_data(args, 'press_references'))
+      def deleted_entities(**args)
+        crunchbase_deleted_entities(args)
       end
 
       private
 
-      def deleted_entities(raw_data)
-        Crunchbase::DeletedEntities::Client.new(raw_data).deleted_entities
-      end
-
-      def wrapper_deleted_entities_data(args, collection_ids = nil)
-        args.merge!(collection_ids: collection_ids)
+      def crunchbase_deleted_entities(args)
+        Crunchbase::DeletedEntities::Client.new(args).deleted_entities
       end
     end
   end

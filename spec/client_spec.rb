@@ -513,7 +513,7 @@ RSpec.describe Crunchbase::Client do
   context 'Autocompletes API' do
     it 'returns matched organizations by keyword' do
       response = VCR.use_cassette('autocomplete_organizations_by_keyword-ekohe') do
-        client.autocomplete_organizations('ekohe')
+        client.autocomplete('ekohe', collection_ids: 'organizations')
       end
 
       organizations = response.entities
@@ -526,7 +526,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'returns matched people by keyword' do
       response = VCR.use_cassette('autocomplete_people_by_keyword-maxime') do
-        client.autocomplete_people('maxime')
+        client.autocomplete('maxime', collection_ids: 'people')
       end
 
       people = response.entities
@@ -539,7 +539,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'returns matched funding rounds by facebook' do
       response = VCR.use_cassette('autocomplete_funding_rounds_by_keyword-facebook') do
-        client.autocomplete_funding_rounds('facebook')
+        client.autocomplete('facebook', collection_ids: 'funding_rounds')
       end
 
       funding_rounds = response.entities
@@ -554,7 +554,7 @@ RSpec.describe Crunchbase::Client do
   context 'Deleted Entities' do
     it 'returns deleted organizations' do
       response = VCR.use_cassette('deleted_entities_of_organizations') do
-        client.deleted_organizations
+        client.deleted_entities(collection_ids: 'organizations')
       end
 
       entities = response.entities
@@ -567,7 +567,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'returns deleted people' do
       response = VCR.use_cassette('deleted_entities_of_people') do
-        client.deleted_people
+        client.deleted_entities(collection_ids: 'people')
       end
 
       entities = response.entities
@@ -580,7 +580,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'returns deleted funding rounds' do
       response = VCR.use_cassette('deleted_entities_of_funding_rounds') do
-        client.deleted_funding_rounds
+        client.deleted_entities(collection_ids: 'funding_rounds')
       end
 
       entities = response.entities

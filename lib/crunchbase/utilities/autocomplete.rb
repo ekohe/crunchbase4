@@ -33,33 +33,18 @@ module Crunchbase
       #     query: keyword,
       #     collection_ids: 'organizations'
       #  }
-      def autocomplete_organizations(keyword)
-        autocompletes(wrapper_autocompletes_data(keyword, 'organizations'))
-      end
-
-      def autocomplete_people(keyword)
-        autocompletes(wrapper_autocompletes_data(keyword, 'people'))
-      end
-
-      def autocomplete_funding_rounds(keyword)
-        autocompletes(wrapper_autocompletes_data(keyword, 'funding_rounds'))
-      end
-
-      def autocomplete_press_references(keyword)
-        autocompletes(wrapper_autocompletes_data(keyword, 'press_references'))
+      def autocomplete(keyword, **args)
+        crunchbase_autocompletes(wrapper_autocompletes_data(keyword, args))
       end
 
       private
 
-      def autocompletes(raw_data)
+      def crunchbase_autocompletes(raw_data)
         Crunchbase::Autocompletes::Client.new(raw_data).autocompletes
       end
 
-      def wrapper_autocompletes_data(keyword, collection_ids)
-        {
-          query: keyword,
-          collection_ids: collection_ids
-        }
+      def wrapper_autocompletes_data(keyword, **args)
+        { query: keyword }.merge(args)
       end
     end
   end

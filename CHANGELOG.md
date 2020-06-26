@@ -1,5 +1,22 @@
 # Change Log
 
+## [0.1.5] - 2020-06-26
+
+### Refactoring
+- Add more query condition support for card query (limit, order, before_id, after_id)
+    * Before
+      - Get organzation's fund: (`client.organization(entity_id, 'fund')`)
+    * After
+      - Get organzation's fund: (`client.organization(entity_id, card_id: 'fund')`)
+- Method for uniformly obtaining deleted entities data and support more query condition
+    * Get deleted organzations
+      - Before:  (`client.deleted_organzations`)
+      - After :  (`client.deleted_entities(collection_ids: 'organizations', limit: 20)`)
+- Method for uniformly obtaining autocompletes entities data and support more query condition
+    * Get autocompletes organzations
+      - Before:  (`client.autocomplete_organzations`)
+      - After :  (`client.autocomplete('ekohe', collection_ids: 'organizations', limit: 3)`)
+
 ## [0.1.4] - 2020-06-12
 
 ### Added
