@@ -142,7 +142,7 @@ module Crunchbase
         'online_and_on_campus' => 'Online and On Campus'
       }.freeze
 
-      SCHOOL_METHODS = {
+      SCHOOL_PROGRAMS = {
         'bootcamp' => 'Bootcamp',
         'community_college' => 'Community College',
         'four_year_university' => 'Four Year University',
