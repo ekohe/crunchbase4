@@ -45,6 +45,7 @@ module Crunchbase
       end
 
       private
+
       def custom_fields
         []
       end

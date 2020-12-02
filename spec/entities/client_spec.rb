@@ -191,7 +191,7 @@ RSpec.describe Crunchbase::Entities::Client do
       described_class.new('0171b30e-9cf8-4ad5-8288-2993e4308e0f', Crunchbase::Models::PressReference).fetch
     end
 
-    expect(press_reference.activity_entities).to eq(['Facebook', 'General Atlantic', 'KKR', 'Reliance Industries', 'Vista Equity Partners'])
+    expect(press_reference.activity_entities.map(&:name)).to eq(['Facebook', 'General Atlantic', 'KKR', 'Reliance Industries', 'Vista Equity Partners'])
     expect(press_reference.author).to eq(nil)
     expect(press_reference.created_at).to eq('2020-06-05T17:41:10Z')
     expect(press_reference.entity_def_id).to eq('press_reference')

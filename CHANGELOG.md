@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.1.7] - 2020-12-02
+
+### Improve press_reference API response for activity_entities
+- Returns relationship data for activity_entities
+    * Before returns all names for activity_entities
+    * After returns related organzation or person object
+
 ## [0.1.5] - 2020-06-26
 
 ### Refactoring

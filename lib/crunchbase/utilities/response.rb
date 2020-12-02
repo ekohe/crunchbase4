@@ -56,10 +56,29 @@ module Crunchbase
         value = data.dig(name)
 
         return value if value.nil? || value.is_a?(String)
-        return value.collect { |e| e.dig('value') } if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
+        return parse_items(value, name) if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
         return value.dig('value') if value.is_a?(Hash) && value.keys.include?('value')
 
         value
+      end
+
+      def parse_items(items, field_name)
+        return items.collect { |e| e.dig('value') } unless field_name == 'activity_entities'
+
+        # Sepcial case for activity_entities
+        items.each_with_object([]) do |item, objects|
+          card_model = case item['entity_def_id']
+                       when 'person' then ::Crunchbase::Models::Person
+                       when 'organization' then ::Crunchbase::Models::Organization
+                       end
+          # Alias: value is name
+          item['name'] ||= item['value']
+
+          next if card_model.nil?
+
+          new_card_instance = card_model.new
+          objects << dynamic_attributes(new_card_instance, new_card_instance.basis_fields, item)
+        end
       end
     end
   end

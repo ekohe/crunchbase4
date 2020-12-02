@@ -140,6 +140,7 @@ module Crunchbase
       end
 
       private
+
       def custom_fields
         %w[employees_range]
       end
