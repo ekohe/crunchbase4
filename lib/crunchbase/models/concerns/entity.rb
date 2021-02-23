@@ -30,7 +30,7 @@ module Crunchbase
           card_objects = if card_data.is_a?(Array)
                            card_data.each_with_object([]) do |data, objects|
                              new_card_instance = card_model.new
-                             objects << dynamic_attributes(new_card_instance, new_card_instance.basis_fields, data)
+                             objects << dynamic_attributes(new_card_instance, new_card_instance.field_ids, data)
                            end
                          else
                            card_data.nil? ? nil : dynamic_attributes(card_model.new, extract_fields, data)

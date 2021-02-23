@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.1.8] - 2021-02-23
+
+### Add new fields on funding_rounds
+- Adding diversity_spotlights and pre_money_valuation on raised_funding_rounds endpoint
+
 ## [0.1.7] - 2020-12-02
 
 ### Improve press_reference API response for activity_entities

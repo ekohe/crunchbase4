@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crunchbase.com/api/v4/entities/organizations/calendly/cards/raised_funding_rounds?card_field_ids=created_at,entity_def_id,funded_organization_categories,funded_organization_description,funded_organization_funding_stage,funded_organization_funding_total,funded_organization_identifier,funded_organization_location,funded_organization_revenue_range,funded_organization_diversity_spotlights,identifier,image_id,investor_identifiers,is_equity,lead_investor_identifiers,num_partners,num_relationships,pre_money_valuation,rank,rank_funding_round,updated_at,uuid,name,permalink,announced_on,closed_on,investment_stage,investment_type,money_raised,target_money_raised,num_investors,short_description&field_ids=uuid,identifier,permalink,permalink_aliases,name,legal_name,aliases,website,linkedin,twitter,rank_org,short_description,description,rank_org_company
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 23 Feb 2021 00:31:18 GMT
+      Etag:
+      - W/"1614040278550"
+      Server:
+      - openresty
+      X-Cb-Engine:
+      - card:streaming
+      X-Cb-Engine-Cached:
+      - 'false'
+      X-Cb-Engine-Took:
+      - '3'
+      X-Cb-Request-Took:
+      - '8'
+      Content-Length:
+      - '8291'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"website":{"value":"https://calendly.com"},"name":"Calendly","permalink":"calendly","identifier":{"uuid":"2f6131ca-1a42-5894-6195-a55053fff7a1","value":"Calendly","image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","permalink":"calendly","entity_def_id":"organization"},"description":"Calendly
+        is a scheduling software that delights customers and makes life easy for business
+        professionals.\n\nCalendly users sell more, sell faster, and provide high-quality
+        service by eliminating email and phone tag for scheduling meetings and appointments.
+        Calendly is committed to creating an elegant and frustration-free scheduling
+        experience possible, so users can save time, impress their contacts and say
+        goodbye to busywork.","linkedin":{"value":"https://www.linkedin.com/company/calendly/"},"uuid":"2f6131ca-1a42-5894-6195-a55053fff7a1","short_description":"Calendly
+        is an automated scheduling tool that takes the work out of connecting with
+        others so that its users can accomplish more.","rank_org":4,"permalink_aliases":[],"legal_name":"Calendly
+        LLC","twitter":{"value":"http://twitter.com/calendly"}},"cards":{"raised_funding_rounds":[{"funded_organization_diversity_spotlights":[{"uuid":"21c8920b-a65a-4513-9898-17d36efa93de","value":"Black
+        / African American Founded","permalink":"black-or-african-american-founded","entity_def_id":"diversity_spotlight"},{"uuid":"a2f3d37e-1e76-4cac-99d1-8372e8d9560e","value":"Black
+        / African American Led","permalink":"black-or-african-american-led","entity_def_id":"diversity_spotlight"}],"name":"Series
+        B - Calendly","num_partners":1,"permalink":"calendly-series-b--67403774","funded_organization_revenue_range":"r_00050000","pre_money_valuation":{"value":2650000000,"currency":"USD","value_usd":2650000000},"identifier":{"uuid":"67403774-2c42-4a6b-9961-229486248b25","value":"Series
+        B - Calendly","image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","permalink":"calendly-series-b--67403774","entity_def_id":"funding_round"},"rank_funding_round":638,"image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","announced_on":"2021-01-26","uuid":"67403774-2c42-4a6b-9961-229486248b25","money_raised":{"value":350000000,"currency":"USD","value_usd":350000000},"rank":1310307,"short_description":"Calendly
+        raised $350000000 on 2021-01-26 in Series B","funded_organization_funding_stage":"early_stage_venture","investment_stage":"early_stage_venture","num_investors":2,"is_equity":true,"funded_organization_categories":[{"uuid":"f55dc7f6-6a38-750c-333b-c265f3761fe1","value":"Productivity
+        Tools","permalink":"productivity-tools","entity_def_id":"category"},{"uuid":"4996175c-0c92-f204-2b55-f940bc1cc6d6","value":"Recruiting","permalink":"recruiting","entity_def_id":"category"},{"uuid":"d2ac92bc-3c9e-918d-dcb4-8ce0a1abb12c","value":"Scheduling","permalink":"scheduling","entity_def_id":"category"},{"uuid":"c08b5441-a05b-9777-b7a6-012728caddd9","value":"Software","permalink":"software","entity_def_id":"category"}],"closed_on":{"value":"2021-02-01","precision":"day"},"funded_organization_location":[{"uuid":"d8030351-c1d2-0ace-2b33-794a95c99b7c","value":"Atlanta","permalink":"atlanta-georgia","entity_def_id":"location","location_type":"city"},{"uuid":"e5e9da40-cf54-5c78-963b-e6d5a2efe686","value":"Georgia","permalink":"georgia-united-states","entity_def_id":"location","location_type":"region"},{"uuid":"f110fca2-1055-99f6-996d-011c198b3928","value":"United
+        States","permalink":"united-states","entity_def_id":"location","location_type":"country"},{"uuid":"b25caef9-a1b8-3a5d-6232-93b2dfb6a1d1","value":"North
+        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"funded_organization_funding_total":{"value":350550000,"currency":"USD","value_usd":350550000},"investment_type":"series_b","lead_investor_identifiers":[{"uuid":"f92cbcf0-2a22-45f6-fd36-dacee145b2ed","value":"OpenView","image_id":"v1464869668/lrlk66iawygb25bcybq2.png","permalink":"openview-venture-partners","entity_def_id":"organization"}],"investor_identifiers":[{"role":"investor","uuid":"56ce1add-17a4-31a2-4a79-be837593018b","value":"ICONIQ
+        Capital","image_id":"v1397178857/6a354f7b8520d8a14c6f387c600529c7.png","permalink":"iconiq-capital","entity_def_id":"organization"},{"role":"investor","uuid":"f92cbcf0-2a22-45f6-fd36-dacee145b2ed","value":"OpenView","image_id":"v1464869668/lrlk66iawygb25bcybq2.png","permalink":"openview-venture-partners","entity_def_id":"organization"}],"funded_organization_identifier":{"role":"investee","uuid":"2f6131ca-1a42-5894-6195-a55053fff7a1","value":"Calendly","image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","permalink":"calendly","entity_def_id":"organization"},"created_at":"2021-01-27T13:13:53Z","funded_organization_description":"Calendly
+        is an automated scheduling tool that takes the work out of connecting with
+        others so that its users can accomplish more.","updated_at":"2021-02-03T06:44:44Z","entity_def_id":"funding_round"},{"funded_organization_diversity_spotlights":[{"uuid":"21c8920b-a65a-4513-9898-17d36efa93de","value":"Black
+        / African American Founded","permalink":"black-or-african-american-founded","entity_def_id":"diversity_spotlight"},{"uuid":"a2f3d37e-1e76-4cac-99d1-8372e8d9560e","value":"Black
+        / African American Led","permalink":"black-or-african-american-led","entity_def_id":"diversity_spotlight"}],"name":"Seed
+        Round - Calendly","num_partners":1,"permalink":"calendly-seed--860d7907","funded_organization_revenue_range":"r_00050000","identifier":{"uuid":"860d7907-7d32-3818-f77f-7341ab793fb4","value":"Seed
+        Round - Calendly","image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","permalink":"calendly-seed--860d7907","entity_def_id":"funding_round"},"rank_funding_round":67043,"image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","announced_on":"2014-04-25","uuid":"860d7907-7d32-3818-f77f-7341ab793fb4","money_raised":{"value":550000,"currency":"USD","value_usd":550000},"rank":2322792,"short_description":"Calendly
+        raised $550000 on 2014-04-25 in Seed Round","funded_organization_funding_stage":"early_stage_venture","investment_stage":"seed","num_investors":1,"is_equity":true,"funded_organization_categories":[{"uuid":"f55dc7f6-6a38-750c-333b-c265f3761fe1","value":"Productivity
+        Tools","permalink":"productivity-tools","entity_def_id":"category"},{"uuid":"4996175c-0c92-f204-2b55-f940bc1cc6d6","value":"Recruiting","permalink":"recruiting","entity_def_id":"category"},{"uuid":"d2ac92bc-3c9e-918d-dcb4-8ce0a1abb12c","value":"Scheduling","permalink":"scheduling","entity_def_id":"category"},{"uuid":"c08b5441-a05b-9777-b7a6-012728caddd9","value":"Software","permalink":"software","entity_def_id":"category"}],"funded_organization_location":[{"uuid":"d8030351-c1d2-0ace-2b33-794a95c99b7c","value":"Atlanta","permalink":"atlanta-georgia","entity_def_id":"location","location_type":"city"},{"uuid":"e5e9da40-cf54-5c78-963b-e6d5a2efe686","value":"Georgia","permalink":"georgia-united-states","entity_def_id":"location","location_type":"region"},{"uuid":"f110fca2-1055-99f6-996d-011c198b3928","value":"United
+        States","permalink":"united-states","entity_def_id":"location","location_type":"country"},{"uuid":"b25caef9-a1b8-3a5d-6232-93b2dfb6a1d1","value":"North
+        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"funded_organization_funding_total":{"value":350550000,"currency":"USD","value_usd":350550000},"investment_type":"seed","lead_investor_identifiers":[{"uuid":"40617797-55ea-bd30-a058-aad82c02e40e","value":"Atlanta
+        Ventures","image_id":"cmz1kzgcz1soeub0br0f","permalink":"atlanta-ventures","entity_def_id":"organization"}],"investor_identifiers":[{"role":"investor","uuid":"40617797-55ea-bd30-a058-aad82c02e40e","value":"Atlanta
+        Ventures","image_id":"cmz1kzgcz1soeub0br0f","permalink":"atlanta-ventures","entity_def_id":"organization"}],"funded_organization_identifier":{"role":"investee","uuid":"2f6131ca-1a42-5894-6195-a55053fff7a1","value":"Calendly","image_id":"v1467257042/ysmcpzp0tkc0ixsdrhvp.png","permalink":"calendly","entity_def_id":"organization"},"created_at":"2014-04-25T11:58:12Z","funded_organization_description":"Calendly
+        is an automated scheduling tool that takes the work out of connecting with
+        others so that its users can accomplish more.","updated_at":"2020-11-21T22:24:31Z","entity_def_id":"funding_round"}]}}'
+  recorded_at: Tue, 23 Feb 2021 00:31:18 GMT
+recorded_with: VCR 6.0.0

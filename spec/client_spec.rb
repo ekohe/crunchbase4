@@ -45,7 +45,7 @@ RSpec.describe Crunchbase::Client do
         client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247')
       end
 
-      expect(funding_round.permalink).to eq('facebook-secondary-market--371c20af')
+      expect(funding_round.permalink).to eq('facebook-post-ipo-secondary--371c20af')
       expect(funding_round.uuid).to eq('371c20af-8aa9-4bcb-a8da-0694d138f247')
     end
 
@@ -118,10 +118,30 @@ RSpec.describe Crunchbase::Client do
       end
 
       expect(organization.permalink).to eq('facebook')
-      expect(organization.raised_funding_rounds.size).to eq(15)
-      expect(organization.raised_funding_rounds[0].announced_on).to eq('2013-06-30')
-      expect(organization.raised_funding_rounds[0].investment_type).to eq('secondary_market')
-      expect(organization.raised_funding_rounds[0].uuid).to eq('371c20af-8aa9-4bcb-a8da-0694d138f247')
+      expect(organization.raised_funding_rounds.size).to eq(17)
+      expect(organization.raised_funding_rounds[0].announced_on).to eq('2014-10-17')
+      expect(organization.raised_funding_rounds[0].investment_type).to eq('post_ipo_equity')
+      expect(organization.raised_funding_rounds[0].uuid).to eq('0a7ca04f-9bd5-4134-b06b-112deaaa4dc8')
+      expect(organization.raised_funding_rounds.map(&:pre_money_valuation).compact).to eq(
+        [48_500_000_000, 13_800_000_000, 9_800_000_000, 14_760_000_000, 14_760_000_000, 475_000_000, 85_300_000]
+      )
+      expect(organization.raised_funding_rounds.map(&:funded_organization_diversity_spotlights).compact.flatten!).to eq(
+        nil
+      )
+    end
+
+    it 'be able to get pre_money_valuation and diversity_spotlights data from raised_funding_rounds' do
+      organization = VCR.use_cassette('organization-calendly-with-raised_funding_rounds') do
+        client.organization('calendly', card_id: 'raised_funding_rounds')
+      end
+
+      expect(organization.permalink).to eq('calendly')
+      expect(organization.raised_funding_rounds.map(&:pre_money_valuation).compact).to eq(
+        [2_650_000_000]
+      )
+      expect(organization.raised_funding_rounds.map(&:funded_organization_diversity_spotlights).compact.flatten!.uniq).to eq(
+        ['Black / African American Founded', 'Black / African American Led']
+      )
     end
 
     it 'be able to get a funding_round with investments data' do

@@ -18,6 +18,7 @@ module Crunchbase
           funded_organization_identifier
           funded_organization_location
           funded_organization_revenue_range
+          funded_organization_diversity_spotlights
           identifier
           image_id
           investor_identifiers

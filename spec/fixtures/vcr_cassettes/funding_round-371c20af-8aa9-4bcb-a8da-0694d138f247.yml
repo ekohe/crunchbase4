@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.crunchbase.com/api/v4/entities/funding_rounds/371c20af-8aa9-4bcb-a8da-0694d138f247?field_ids=created_at,entity_def_id,funded_organization_categories,funded_organization_description,funded_organization_funding_stage,funded_organization_funding_total,funded_organization_identifier,funded_organization_location,funded_organization_revenue_range,identifier,image_id,investor_identifiers,is_equity,lead_investor_identifiers,num_partners,num_relationships,pre_money_valuation,rank,rank_funding_round,updated_at,uuid,name,permalink,announced_on,closed_on,investment_stage,investment_type,money_raised,target_money_raised,num_investors,short_description
+    uri: https://api.crunchbase.com/api/v4/entities/funding_rounds/371c20af-8aa9-4bcb-a8da-0694d138f247?field_ids=created_at,entity_def_id,funded_organization_categories,funded_organization_description,funded_organization_funding_stage,funded_organization_funding_total,funded_organization_identifier,funded_organization_location,funded_organization_revenue_range,funded_organization_diversity_spotlights,identifier,image_id,investor_identifiers,is_equity,lead_investor_identifiers,num_partners,num_relationships,pre_money_valuation,rank,rank_funding_round,updated_at,uuid,name,permalink,announced_on,closed_on,investment_stage,investment_type,money_raised,target_money_raised,num_investors,short_description
     body:
       encoding: US-ASCII
       string: ''
@@ -23,9 +23,9 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 06 Jun 2020 08:08:41 GMT
+      - Tue, 23 Feb 2021 00:24:52 GMT
       Etag:
-      - W/"1591430921855"
+      - W/"1614039892538"
       Server:
       - openresty
       X-Cb-Engine:
@@ -37,19 +37,22 @@ http_interactions:
       X-Cb-Request-Took:
       - '4'
       Content-Length:
-      - '2142'
+      - '2679'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"properties":{"name":"Secondary Market - Facebook","permalink":"facebook-secondary-market--371c20af","funded_organization_revenue_range":"r_10000000","identifier":{"uuid":"371c20af-8aa9-4bcb-a8da-0694d138f247","value":"Secondary
-        Market - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-secondary-market--371c20af","entity_def_id":"funding_round"},"rank_funding_round":21791,"image_id":"rde5yhdgakaqryj6zpu6","announced_on":"2013-06-30","uuid":"371c20af-8aa9-4bcb-a8da-0694d138f247","rank":1882797,"short_description":"Facebook
-        raised an undisclosed amount on 2013-06-30 in Secondary Market","funded_organization_funding_stage":"ipo","num_investors":1,"is_equity":false,"funded_organization_location":[{"uuid":"1f8abfef-5379-b26b-7020-05a09908492f","value":"Menlo
+      string: '{"properties":{"name":"Post-IPO Secondary - Facebook","permalink":"facebook-post-ipo-secondary--371c20af","funded_organization_revenue_range":"r_10000000","identifier":{"uuid":"371c20af-8aa9-4bcb-a8da-0694d138f247","value":"Post-IPO
+        Secondary - Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook-post-ipo-secondary--371c20af","entity_def_id":"funding_round"},"rank_funding_round":88656,"image_id":"rde5yhdgakaqryj6zpu6","announced_on":"2013-06-30","uuid":"371c20af-8aa9-4bcb-a8da-0694d138f247","rank":2394928,"short_description":"Facebook
+        raised an undisclosed amount on 2013-06-30 in Post-IPO Secondary","funded_organization_funding_stage":"ipo","num_investors":1,"is_equity":false,"funded_organization_categories":[{"uuid":"78f709ae-d8fb-cd28-218a-f090789f628f","value":"Mobile
+        Apps","permalink":"mobile-apps","entity_def_id":"category"},{"uuid":"80de9bf4-789e-b80e-051c-dc079493803f","value":"Social","permalink":"social","entity_def_id":"category"},{"uuid":"5349a2f2-14d8-9727-c32a-19ebea5db78c","value":"Social
+        Media","permalink":"social-media","entity_def_id":"category"},{"uuid":"714d833f-2234-98bf-19bf-9ff70a5e2d17","value":"Social
+        Network","permalink":"social-network-714d","entity_def_id":"category"}],"funded_organization_location":[{"uuid":"1f8abfef-5379-b26b-7020-05a09908492f","value":"Menlo
         Park","permalink":"menlo-park-california","entity_def_id":"location","location_type":"city"},{"uuid":"eb879a83-c91a-121e-0bb8-829782dbcf04","value":"California","permalink":"california-united-states","entity_def_id":"location","location_type":"region"},{"uuid":"f110fca2-1055-99f6-996d-011c198b3928","value":"United
         States","permalink":"united-states","entity_def_id":"location","location_type":"country"},{"uuid":"b25caef9-a1b8-3a5d-6232-93b2dfb6a1d1","value":"North
-        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"funded_organization_funding_total":{"value":2335700000,"currency":"USD","value_usd":2335700000},"investment_type":"secondary_market","investor_identifiers":[{"role":"investor","uuid":"54b3835f-5ad4-458c-949e-54d1c00d562a","value":"Jean-Brice
-        Abrial","image_id":"k04g0i6ofn8jgrhjlknk","permalink":"jean-brice-abrial","entity_def_id":"person"}],"funded_organization_identifier":{"role":"investee","uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},"created_at":"2020-04-02T12:17:59Z","funded_organization_description":"Facebook
+        America","permalink":"north-america","entity_def_id":"location","location_type":"continent"}],"funded_organization_funding_total":{"value":16122817488,"currency":"USD","value_usd":16122817488},"investment_type":"post_ipo_secondary","investor_identifiers":[{"role":"investor","uuid":"54b3835f-5ad4-458c-949e-54d1c00d562a","value":"Jon
+        Hassan","image_id":"k04g0i6ofn8jgrhjlknk","permalink":"jean-brice-abrial","entity_def_id":"person"}],"funded_organization_identifier":{"role":"investee","uuid":"df662812-7f97-0b43-9d3e-12f64f504fbb","value":"Facebook","image_id":"rde5yhdgakaqryj6zpu6","permalink":"facebook","entity_def_id":"organization"},"created_at":"2020-04-02T12:17:59Z","funded_organization_description":"Facebook
         is an online social networking service that enables its users to connect with
-        friends and family.","updated_at":"2020-04-02T12:17:59Z","entity_def_id":"funding_round"}}'
-  recorded_at: Sat, 06 Jun 2020 08:08:41 GMT
+        friends and family.","updated_at":"2020-11-03T17:59:34Z","entity_def_id":"funding_round"}}'
+  recorded_at: Tue, 23 Feb 2021 00:24:52 GMT
 recorded_with: VCR 6.0.0

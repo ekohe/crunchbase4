@@ -52,15 +52,18 @@ module Crunchbase
         %w[identifier]
       end
 
+      # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       def field_value(name, data)
         value = data.dig(name)
 
         return value if value.nil? || value.is_a?(String)
         return parse_items(value, name) if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
+        return value.dig('value_usd') if value.is_a?(Hash) && value.keys.include?('value_usd')
         return value.dig('value') if value.is_a?(Hash) && value.keys.include?('value')
 
         value
       end
+      # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
       def parse_items(items, field_name)
         return items.collect { |e| e.dig('value') } unless field_name == 'activity_entities'
