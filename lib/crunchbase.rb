@@ -7,12 +7,14 @@ require 'crunchbase/client'
 require 'crunchbase/models'
 require 'crunchbase/entities'
 require 'crunchbase/searches'
+require 'crunchbase/downloads'
 require 'crunchbase/utilities/veriables'
 
 # CB v4
 module Crunchbase
   API_VERSION   = 'v4'
-  BASE_URI      = "https://api.crunchbase.com/api/#{API_VERSION}/"
+  API_DOMAIN    = 'https://api.crunchbase.com'
+  BASE_URI      = "#{API_DOMAIN}/api/#{API_VERSION}/"
 
   # Defined Veriables for the data Category or Types
   #

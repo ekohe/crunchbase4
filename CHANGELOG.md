@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.9] - 2021-10-04
+
+### Allow to export Daily CSV bulk
+- Implement new API to export daily CSV bulk. related document https://data.crunchbase.com/docs/daily-csv-export
+  - download_bulk: (`client.download_bulk(dir, extract: true)`)
+
 ## [0.1.8] - 2021-02-23
 
 ### Add new fields on funding_rounds

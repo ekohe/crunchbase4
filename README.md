@@ -711,6 +711,17 @@ pry(main)> response = client.deleted_entities(collection_ids: 'people')
 pry(main)> response = client.deleted_entities(collection_ids: 'funding_rounds')
 ```
 
+### Daily CSV Export
+
+* https://api.crunchbase.com/bulk/v4/bulk_export.tar.gz?user_key=user_key
+
+
+```ruby
+pry(main)> response = client.download_bulk(dir, extract: true)
+```
+
+After running the download operation, you will see `bulk_export.tar.gz` in your provided folder.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
