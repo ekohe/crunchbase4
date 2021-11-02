@@ -26,12 +26,17 @@ Or install it yourself as:
 #### Configure your certificate for API
 
 ```ruby
-require 'crunchbase4'
+require 'crunchbase'
 
-CB_CONFIG = YAML.load(File.read('crunchbase.yml'))
-Crunchbase.config.user_key = CB_CONFIG['user_key']
-Crunchbase.config.user_key = false # If you want to know the request information, can set the debug = true
+config = YAML.load(File.read('spec/crunchbase.yml'))
+Crunchbase.config.user_key = config['user_key']
+Crunchbase.config.debug = config['debug'] || false # If you want to know the request information, can set the debug = true
 ```
+
+#### If you want to use it in Rails Application, simple way to create a file `crunchbase.rb` in `config/initializers`
+
+- and put the above info(https://github.com/ekohe/crunchbase4#configure-your-certificate-for-api) into the new file
+
 
 ## Usage
 
