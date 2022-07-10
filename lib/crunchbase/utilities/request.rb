@@ -44,9 +44,11 @@ module Crunchbase
           faraday.response :logger, ::Logger.new(STDOUT), bodies: true if debug_mode?
         end.post(uri, args)
 
-        return response.body if response.status == 200
+        resp_body = response.body
+        resp_status = response.status
+        return resp_body if resp_status == 200
 
-        raise Error, response.body[0]['message']
+        raise Error, resp_body.is_a?(Array) ? resp_body[0]['message'] : resp_body['error']
       end
 
       private
@@ -58,9 +60,11 @@ module Crunchbase
           faraday.response :logger, ::Logger.new(STDOUT), bodies: true if debug_mode?
         end.get(uri, *args)
 
-        return response.body if response.status == 200
+        resp_body = response.body
+        resp_status = response.status
+        return resp_body if resp_status == 200
 
-        raise Error, response.status == 400 ? response.body[0]['message'] : response.body['error']
+        raise Error, resp_body.is_a?(Array) ? resp_body[0]['message'] : resp_body['error']
       end
 
       def debug_mode?
