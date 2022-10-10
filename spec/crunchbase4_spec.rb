@@ -2,6 +2,6 @@
 
 RSpec.describe Crunchbase do
   it 'has a version number' do
-    expect(Crunchbase::VERSION).to eq('0.1.7')
+    expect(Crunchbase::VERSION).to eq('0.2.1')
   end
 end

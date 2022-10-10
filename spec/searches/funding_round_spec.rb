@@ -44,7 +44,7 @@ RSpec.describe Crunchbase::Searches::Client do
                                                  '3e99d4e3-1aab-4eb3-88ab-ce1c2fc23105',
                                                  'Debt Financing - Harpers Environmental'
                                                ])
-    expect(funding_rounds[0].money_raised).to eq(2_000_000)
+    expect(funding_rounds[0].money_raised).to eq(2_509_996)
   end
 
   it 'be able search funding rounds order by money_raised' do

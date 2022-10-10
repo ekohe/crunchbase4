@@ -4,6 +4,7 @@ module Crunchbase
   # Get the Organization data from API
   module Models
     # Build Organization API
+    # rubocop:disable Metrics/ClassLength, Metrics/MethodLength
     class Organization < Entity
       RESOURCE_LIST = 'organizations'
 
@@ -28,6 +29,11 @@ module Crunchbase
 
       def field_ids
         %w[
+          diversity_spotlights
+          num_diversity_spotlight_investments
+          valuation
+          valuation_date
+          website_url
           acquirer_identifier
           categories
           category_groups
@@ -47,6 +53,7 @@ module Crunchbase
           funding_stage
           funding_total
           funds_total
+          hub_tags
           image_id
           image_url
           investor_identifiers
@@ -58,6 +65,8 @@ module Crunchbase
           last_funding_at
           last_funding_total
           last_funding_type
+          last_key_employee_change_date
+          last_layoff_date
           layout_id
           listed_stock_symbol
           location_group_identifiers
@@ -145,5 +154,6 @@ module Crunchbase
         %w[employees_range]
       end
     end
+    # rubocop:enable Metrics/ClassLength, Metrics/MethodLength
   end
 end

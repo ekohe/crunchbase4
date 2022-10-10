@@ -1,5 +1,16 @@
 # Change Log
 
+## [0.2.1] - 2022-10-10
+
+### New fields in organization and API version
+- Add the following fields to the organization model
+  - diversity_spotlights
+  - num_diversity_spotlight_investments
+  - valuation
+  - valuation_date
+  - website_url
+- Corrected API URL version number from 1.0.1 to 1.0.3
+
 ## [0.1.9] - 2021-10-04
 
 ### Allow to export Daily CSV bulk

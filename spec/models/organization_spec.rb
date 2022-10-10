@@ -9,7 +9,7 @@ RSpec.describe Crunchbase::Models::Organization do
     it 'returns all fields' do
       org = described_class.new
 
-      expect(org.field_ids.size).to eq(94)
+      expect(org.field_ids.size).to eq(102)
       expect(org.field_ids).to include('name')
       expect(org.field_ids).to include('permalink')
       expect(org.field_ids).to include('uuid')

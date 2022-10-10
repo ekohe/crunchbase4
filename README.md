@@ -1,6 +1,6 @@
-# Crunchbase
+# Crunchbase4
 
-Crunchbase is a ruby wrapper based on Crunchbase V4 API. it provides easy to get the API data by each endpoint. [CB v4 DOC](https://app.swaggerhub.com/apis/Crunchbase/crunchbase-enterprise_api/1.0.1)
+Crunchbase4 is a ruby wrapper based on Crunchbase V4 API, it provides easy to get the API data by each endpoint. [Crunchbase Enterprise API, 2021-07-16](https://app.swaggerhub.com/apis/Crunchbase/crunchbase-enterprise_api/1.0.3)
 
 [![Gem Version](https://badge.fury.io/rb/crunchbase4.svg)](https://badge.fury.io/rb/crunchbase4)
 [![Build Status](https://travis-ci.org/ekohe/crunchbase4.svg?branch=master)](https://travis-ci.org/ekohe/crunchbase4)
@@ -22,6 +22,18 @@ Or install it yourself as:
     $ gem install crunchbase4
 
 ## Getting Started
+
+#### Crunchbase API Infos
+
+- Title: Crunchbase Enterprise API
+- Last Updated Date: 2021-07-16
+- Servers URL: https://api.crunchbase.com/api/v4
+- API Reference doc: https://data.crunchbase.com/docs
+- Tags
+  - Autocomplete
+  - Deleted Entities
+  - Entity
+  - Search
 
 #### Configure your certificate for API
 
@@ -153,7 +165,7 @@ pry(main)> Crunchbase::Utils::COMPANY_TYPES
 ```ruby
 pry(main)> response = client.organization('ekohe')
 => #<Crunchbase::Models::Organization:0x00007fbc5cfdf2f8
- @categories=["Apps", "Artificial Intelligence", "Big Data", "E-Commerce", "Enterprise Software", "FinTech", "iOS", "Retail", "UX Design"],
+ @categories=["Apps", "Artificial Intelligence", "Big Data", "Blockchain", "Cryptocurrency", "Enterprise Software", "iOS", "Machine Learning", "Retail", "UX Design"],
  @category_groups=["Apps", "Artificial Intelligence", "Commerce and Shopping", "Data and Analytics", "Design", "Financial Services", "Mobile", "Platforms", "Science and Engineering", "Software"],
  @company_type="for_profit",
  @contact_email="info@ekohe.com",
@@ -201,7 +213,7 @@ pry(main)> response = client.funding_round('371c20af-8aa9-4bcb-a8da-0694d138f247
  @funded_organization_categories=nil,
  @funded_organization_description="Facebook is an online social networking service that enables its users to connect with friends and family.",
  @funded_organization_funding_stage="ipo",
- @funded_organization_funding_total=2335700000,
+ @funded_organization_funding_total=16122817488,
  @funded_organization_identifier="Facebook",
  @funded_organization_location=["Menlo Park", "California", "United States", "North America"],
  @funded_organization_revenue_range="r_10000000",
