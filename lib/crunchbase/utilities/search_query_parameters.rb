@@ -11,6 +11,7 @@ module Crunchbase
       #
       # Search Query Parameters
       #
+      #   order_field_id: sort field, default field will be updated_at
       #   field_ids: array of field_id strings
       #     Fields to include as columns in the search result entities
       #   query: Search query to perform on the designated entity
@@ -25,19 +26,11 @@ module Crunchbase
       #     Used to paginate search results to the next page.
       #     after_id should be the uuid of the last item in the current page. May not be provided simultaneously with before_id.
       def query_parameters(args)
+        order_field_id = args[:order_field_id] || 'updated_at'
+
         params = {
-          'field_ids' => %w[
-            uuid
-            created_at
-            updated_at
-          ] + (args[:field_ids] || []).uniq,
-          'order' => [
-            {
-              'field_id' => 'updated_at',
-              'sort' => (args[:sort] || 'desc'),
-              'nulls' => 'last'
-            }
-          ],
+          'field_ids' => default_field_ids + (args[:field_ids] || []).uniq,
+          'order' => [{ 'field_id' => order_field_id, 'sort' => (args[:sort] || 'desc'), 'nulls' => 'last' }],
           'limit' => args[:limit] || 1000
         }
 
@@ -46,7 +39,7 @@ module Crunchbase
             'query' => [
               {
                 'type' => 'predicate',
-                'field_id' => 'updated_at',
+                'field_id' => order_field_id,
                 'operator_id' => 'gte',
                 'values' => [
                   args[:date]
@@ -58,6 +51,14 @@ module Crunchbase
         params.merge!('before_id' => args[:before_id]) unless args[:before_id].nil?
         params.merge!('after_id' => args[:after_id]) unless args[:after_id].nil?
         params
+      end
+
+      def default_field_ids
+        @default_field_ids ||= %w[
+          uuid
+          created_at
+          updated_at
+        ]
       end
     end
   end
