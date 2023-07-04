@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    crunchbase4 (0.2.2)
+    crunchbase4 (0.2.3)
       faraday
       faraday_curl
       faraday_middleware
@@ -17,8 +17,25 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.5.0)
-    faraday (1.0.1)
+    faraday (1.8.0)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0.1)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.1)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
     faraday_curl (0.0.2)
       faraday (>= 0.9.0)
     faraday_middleware (1.2.0)
@@ -64,6 +81,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.5)
     safe_yaml (1.0.5)
     unicode-display_width (1.7.0)
     vcr (6.0.0)

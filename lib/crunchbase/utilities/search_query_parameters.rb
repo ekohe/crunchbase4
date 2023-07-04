@@ -11,7 +11,7 @@ module Crunchbase
       #
       # Search Query Parameters
       #
-      #   order_field_id: sort field, default field will be updated_at
+      #   order_field_ids: sort field, default field will be updated_at
       #   field_ids: array of field_id strings
       #     Fields to include as columns in the search result entities
       #   query: Search query to perform on the designated entity
@@ -26,11 +26,12 @@ module Crunchbase
       #     Used to paginate search results to the next page.
       #     after_id should be the uuid of the last item in the current page. May not be provided simultaneously with before_id.
       def query_parameters(args)
-        order_field_id = args[:order_field_id] || 'updated_at'
+        order_field_ids = args[:order_field_ids] || ['updated_at']
+        order_conditions = order_field_ids.map { |field_id| { 'field_id' => field_id, 'sort' => (args[:sort] || 'desc'), 'nulls' => 'last' } }
 
         params = {
           'field_ids' => default_field_ids + (args[:field_ids] || []).uniq,
-          'order' => [{ 'field_id' => order_field_id, 'sort' => (args[:sort] || 'desc'), 'nulls' => 'last' }],
+          'order' => order_conditions,
           'limit' => args[:limit] || 1000
         }
 
@@ -39,7 +40,7 @@ module Crunchbase
             'query' => [
               {
                 'type' => 'predicate',
-                'field_id' => order_field_id,
+                'field_id' => order_field_ids[0],
                 'operator_id' => 'gte',
                 'values' => [
                   args[:date]
