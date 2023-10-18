@@ -73,8 +73,10 @@ module Crunchbase
           'field_ids' => field_ids,
           'order' => @conditions['order'],
           'query' => @conditions['query'],
+          'before_id' => @conditions['before_id'],
+          'after_id' => @conditions['after_id'],
           'limit' => limit
-        }
+        }.delete_if { |_, v| v.nil? }
       end
     end
   end

@@ -49,8 +49,8 @@ module Crunchbase
             ]
           )
         end
-        params.merge!('before_id' => args[:before_id]) unless args[:before_id].nil?
-        params.merge!('after_id' => args[:after_id]) unless args[:after_id].nil?
+        params['before_id'] = args[:before_id] unless args[:before_id].nil?
+        params['after_id'] = args[:after_id] unless args[:after_id].nil?
         params
       end
 
