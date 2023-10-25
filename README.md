@@ -434,6 +434,18 @@ args = {
 }
 
 response = client.recent_updates(args)
+
+args = {
+  scope_name: 'press_reference',             # must
+  from_date: '2020-05-05',                   # optional
+  to_date: '2020-05-05',                     # optional
+  field_ids: %w[title posted_on publisher],  # default %[uuid created_at updated_at]
+  sort: 'desc'                              # default `desc`
+  before_id: 'uuid'                         # optional
+  after_id: 'uuid'                          # optional
+}
+
+response = client.recent_updates(args)
 ```
 
 ##### Search organizations by query conditions and order

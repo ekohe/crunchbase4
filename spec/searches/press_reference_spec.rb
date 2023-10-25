@@ -88,4 +88,24 @@ RSpec.describe Crunchbase::Searches::Client do
     expect(press_references[0].title).to eq('FSD Pharma Appoints Zeeshan Saeed as Chief Executive Officer, Anthony Durkacz to Serve as Executive Co-Chairman of the Board of Directors')
     expect(press_references[0].posted_on).to eq('2023-07-04')
   end
+
+  it 'able to search press references with a date ranges' do
+    response = VCR.use_cassette('recent_updates_press_references_with_date_ranges') do
+      Crunchbase::Client.new.recent_updates({
+                                              scope_name: 'press_reference',
+                                              field_ids: %w[title author url posted_on publisher thumbnail_url entity_def_id activity_entities],
+                                              order_field_ids: %w[posted_on updated_at],
+                                              from_date: '2023-09-04',
+                                              to_date: '2023-09-07',
+                                              limit: 100
+                                            })
+    end
+
+    press_references = response.entities
+
+    expect(response.count).to eq(100)
+    expect(response.total_count).to eq(14_069)
+    expect(press_references.size).to eq(100)
+    expect(press_references[0].posted_on).to eq('2023-09-07')
+  end
 end

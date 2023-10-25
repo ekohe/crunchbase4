@@ -34,25 +34,19 @@ module Crunchbase
           'order' => order_conditions,
           'limit' => args[:limit] || 1000
         }
-
-        unless args[:date].nil?
-          params.merge!(
-            'query' => [
-              {
-                'type' => 'predicate',
-                'field_id' => order_field_ids[0],
-                'operator_id' => 'gte',
-                'values' => [
-                  args[:date]
-                ]
-              }
-            ]
-          )
-        end
+        # Pagination
         params['before_id'] = args[:before_id] unless args[:before_id].nil?
         params['after_id'] = args[:after_id] unless args[:after_id].nil?
+
+        # Date Ranges
+        unless (queries = build_predicate_queries(args, order_field_ids)).empty?
+          params['query'] = queries
+        end
+
         params
       end
+
+      private
 
       def default_field_ids
         @default_field_ids ||= %w[
@@ -60,6 +54,34 @@ module Crunchbase
           created_at
           updated_at
         ]
+      end
+
+      def build_predicate_queries(args, order_field_ids)
+        # Date Ranges
+        queries = []
+        if !args[:date].nil? || !args[:from_date].nil?
+          queries << {
+            'type' => 'predicate',
+            'field_id' => order_field_ids[0],
+            'operator_id' => 'gte',
+            'values' => [
+              args[:date] || args[:from_date]
+            ]
+          }
+        end
+
+        unless args[:to_date].nil?
+          queries << {
+            'type' => 'predicate',
+            'field_id' => order_field_ids[0],
+            'operator_id' => 'lte',
+            'values' => [
+              args[:to_date]
+            ]
+          }
+        end
+
+        queries
       end
     end
   end
