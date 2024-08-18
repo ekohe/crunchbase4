@@ -7,10 +7,10 @@ RSpec.describe Crunchbase::Models::Ipo do
     end
 
     it 'returns all fields' do
-      person = described_class.new
+      ipo = described_class.new
 
-      expect(person.field_ids.size).to eq(20)
-      expect(person.field_ids).to eq(
+      expect(ipo.field_ids.size).to eq(20)
+      expect(ipo.field_ids).to eq(
         %w[
           created_at
           entity_def_id
@@ -37,10 +37,10 @@ RSpec.describe Crunchbase::Models::Ipo do
     end
 
     it 'returns basis fields' do
-      person = described_class.new
+      ipo = described_class.new
 
-      expect(person.basis_fields.size).to eq(10)
-      expect(person.basis_fields).to eq(
+      expect(ipo.basis_fields.size).to eq(10)
+      expect(ipo.basis_fields).to eq(
         %w[
           uuid
           permalink

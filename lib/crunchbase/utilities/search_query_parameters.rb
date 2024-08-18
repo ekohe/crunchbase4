@@ -27,7 +27,13 @@ module Crunchbase
       #     after_id should be the uuid of the last item in the current page. May not be provided simultaneously with before_id.
       def query_parameters(args)
         order_field_ids = args[:order_field_ids] || ['updated_at']
-        order_conditions = order_field_ids.map { |field_id| { 'field_id' => field_id, 'sort' => (args[:sort] || 'desc'), 'nulls' => 'last' } }
+        order_conditions = order_field_ids.map do |field_id|
+          {
+            'field_id' => field_id,
+            'sort' => (args[:sort] || 'desc'),
+            'nulls' => 'last'
+          }
+        end
 
         params = {
           'field_ids' => default_field_ids + (args[:field_ids] || []).uniq,

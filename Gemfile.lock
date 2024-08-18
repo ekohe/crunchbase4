@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    crunchbase4 (0.2.5)
+    crunchbase4 (0.2.6)
       faraday
       faraday_curl
       faraday_middleware
