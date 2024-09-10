@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Entities::Client do
   it 'be able to get organization data' do
     org = VCR.use_cassette('organization_ekohe') do

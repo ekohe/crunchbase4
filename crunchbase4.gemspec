@@ -33,7 +33,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'faraday'
   spec.add_dependency 'faraday_curl'
-  spec.add_dependency 'faraday_middleware'
   spec.add_dependency 'httparty'
 
   # VCR for testing APIs

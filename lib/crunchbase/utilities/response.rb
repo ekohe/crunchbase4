@@ -19,7 +19,7 @@ module Crunchbase
 
           values = hash_datas&.map { |k, v| v if %w[uuid permalink value].include?(k) }&.compact || []
           dynamic_define_method(object, attribute_name, values)
-          hash_datas&.keys&.each do |key|
+          hash_datas&.each_key do |key|
             next unless %w[uuid permalink].include?(key)
 
             dynamic_define_method(object, key, hash_datas&.dig(key))
@@ -35,11 +35,11 @@ module Crunchbase
         # Manually creates methods for both getter and setter and then
         #   sends a message to the new setter with the attribute_value
         object.class.send(:define_method, "#{attribute_name}=".to_sym) do |value|
-          instance_variable_set('@' + attribute_name, value)
+          instance_variable_set("@#{attribute_name}", value)
         end
 
         object.class.send(:define_method, attribute_name.to_sym) do
-          instance_variable_get('@' + attribute_name.to_s)
+          instance_variable_get("@#{attribute_name}")
         end
 
         object.send("#{attribute_name}=".to_sym, attribute_value)
@@ -52,21 +52,19 @@ module Crunchbase
         %w[identifier]
       end
 
-      # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       def field_value(name, data)
-        value = data.dig(name)
+        value = data[name]
 
         return value if value.nil? || value.is_a?(String)
         return parse_items(value, name) if value.is_a?(Array) && value[0].is_a?(Hash) && value[0].keys.include?('value')
-        return value.dig('value_usd') if value.is_a?(Hash) && value.keys.include?('value_usd')
-        return value.dig('value') if value.is_a?(Hash) && value.keys.include?('value')
+        return value['value_usd'] if value.is_a?(Hash) && value.keys.include?('value_usd')
+        return value['value'] if value.is_a?(Hash) && value.keys.include?('value')
 
         value
       end
-      # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
       def parse_items(items, field_name)
-        return items.collect { |e| e.dig('value') } unless field_name == 'activity_entities'
+        return items.collect { |e| e['value'] } unless field_name == 'activity_entities'
 
         # Sepcial case for activity_entities
         items.each_with_object([]) do |item, objects|

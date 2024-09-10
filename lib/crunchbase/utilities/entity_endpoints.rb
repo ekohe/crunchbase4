@@ -17,7 +17,7 @@ module Crunchbase
       #   limit:      Number of rows to return. Default is 100, min is 1, max is 100.
 
       # Lookup an Organization or single card
-      def organization(entity_id, **card_args)
+      def organization(entity_id, card_args = {})
         lookup_for('organization', entity_id, card_args)
       end
 
@@ -27,7 +27,7 @@ module Crunchbase
       end
 
       # Lookup a Person or single card
-      def person(entity_id, **card_args)
+      def person(entity_id, card_args = {})
         lookup_for('person', entity_id, card_args)
       end
 
@@ -37,7 +37,7 @@ module Crunchbase
       end
 
       # Lookup a Funding Round or single card
-      def funding_round(entity_id, **card_args)
+      def funding_round(entity_id, card_args = {})
         lookup_for('funding_round', entity_id, card_args)
       end
 
@@ -47,7 +47,7 @@ module Crunchbase
       end
 
       # Lookup an Acquisition or Single card
-      def acquisition(entity_id, **card_args)
+      def acquisition(entity_id, card_args = {})
         lookup_for('acquisition', entity_id, card_args)
       end
 
@@ -57,7 +57,7 @@ module Crunchbase
       end
 
       # Lookup an Investment or Single card
-      def investment(entity_id, **card_args)
+      def investment(entity_id, card_args = {})
         lookup_for('investment', entity_id, card_args)
       end
 
@@ -67,7 +67,7 @@ module Crunchbase
       end
 
       # Lookup an PressReference or Single card
-      def press_reference(entity_id, **card_args)
+      def press_reference(entity_id, card_args = {})
         lookup_for('press_reference', entity_id, card_args)
       end
 
@@ -77,7 +77,7 @@ module Crunchbase
       end
 
       # Lookup an Ipo or Single card
-      def ipo(entity_id, **card_args)
+      def ipo(entity_id, card_args = {})
         lookup_for('ipo', entity_id, card_args)
       end
 
@@ -87,7 +87,7 @@ module Crunchbase
       end
 
       # Lookup an fund or Single card
-      def fund(entity_id, **card_args)
+      def fund(entity_id, card_args = {})
         lookup_for('fund', entity_id, card_args)
       end
 
@@ -97,7 +97,7 @@ module Crunchbase
       end
 
       # Lookup an fund or Single card
-      def ownership(entity_id, **card_args)
+      def ownership(entity_id, card_args = {})
         lookup_for('ownership', entity_id, card_args)
       end
 
@@ -112,9 +112,8 @@ module Crunchbase
         Crunchbase::Entities::Client.new(entity_id, entity_type)
       end
 
-      def lookup_for(entity_type, entity_id, **card_args)
+      def lookup_for(entity_type, entity_id, card_args)
         kobject = entities(entity_type, entity_id)
-
         card_id = card_args&.delete(:card_id)
         return kobject.fetch if card_id.nil?
 

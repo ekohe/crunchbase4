@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Models::PressReference do
   context 'press_reference' do
     it 'returns press_reference as endpoint' do
@@ -49,8 +51,7 @@ RSpec.describe Crunchbase::Models::PressReference do
 
       expect(press_reference.full_cards.size).to eq(0)
       expect(press_reference.full_cards).to eq(
-        %w[
-        ]
+        %w[]
       )
     end
   end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Models::Investment do
   context 'investment' do
     it 'returns investments as endpoint' do

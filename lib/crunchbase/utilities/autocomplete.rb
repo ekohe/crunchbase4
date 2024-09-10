@@ -33,8 +33,10 @@ module Crunchbase
       #     query: keyword,
       #     collection_ids: 'organizations'
       #  }
-      def autocomplete(keyword, **args)
-        crunchbase_autocompletes(wrapper_autocompletes_data(keyword, args))
+      def autocomplete(keyword, args = {})
+        crunchbase_autocompletes(
+          wrapper_autocompletes_data(keyword, args)
+        )
       end
 
       private
@@ -43,7 +45,7 @@ module Crunchbase
         Crunchbase::Autocompletes::Client.new(raw_data).autocompletes
       end
 
-      def wrapper_autocompletes_data(keyword, **args)
+      def wrapper_autocompletes_data(keyword, args)
         { query: keyword }.merge(args)
       end
     end

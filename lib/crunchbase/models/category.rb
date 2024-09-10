@@ -8,18 +8,15 @@ module Crunchbase
       RESOURCE_LIST = 'categories'
 
       def field_ids
-        %w[
-        ] + basis_fields
+        %w[] + basis_fields
       end
 
       def basis_fields
-        %w[
-        ]
+        %w[]
       end
 
       def full_cards
-        %w[
-        ]
+        %w[]
       end
     end
   end

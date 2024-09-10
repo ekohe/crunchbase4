@@ -75,14 +75,14 @@ pry(main)> client = Crunchbase::Client.new
 ```ruby
 <!-- Examples of organization and single card -->
 response                = client.organization('ekohe')
-ipos                    = client.organization('ekohe', card_id: 'ipos')
-fund                    = client.organization('ekohe', card_id: 'fund')
-ownership               = client.organization('ekohe', card_id: 'ownership')
-founders                = client.organization('ekohe', card_id: 'founders')
-investors               = client.organization('ekohe', card_id: 'investors')
-jobs                    = client.organization('ekohe', card_id: 'jobs')
-headquarters_address    = client.organization('ekohe', card_id: 'headquarters_address')
-top_2_press_references  = client.organization('ekohe', card_id: 'press_references', limit: 2)
+ipos                    = client.organization('ekohe', { card_id: 'ipos' })
+fund                    = client.organization('ekohe', { card_id: 'fund' })
+ownership               = client.organization('ekohe', { card_id: 'ownership' })
+founders                = client.organization('ekohe', { card_id: 'founders' })
+investors               = client.organization('ekohe', { card_id: 'investors' })
+jobs                    = client.organization('ekohe', { card_id: 'jobs' })
+headquarters_address    = client.organization('ekohe', { card_id: 'headquarters_address' })
+top_2_press_references  = client.organization('ekohe', { card_id: 'press_references', limit: 2 })
 
 <!-- Examples to get the funding rounds of the organization through paging -->
 response = client.organization(
@@ -95,9 +95,9 @@ response = client.organization(
 <!-- Examples of person and single card -->
 
 response = client.person('mark-zuckerberg')
-response = client.person('mark-zuckerberg', card_id: 'participated_investments')
+response = client.person('mark-zuckerberg', { card_id: 'participated_investments' })
 response = client.funding_round('3cdfcecd-5377-439b-acab-cefcf6fe21a5')
-response = client.funding_round('3cdfcecd-5377-439b-acab-cefcf6fe21a5', card_id: 'investors')
+response = client.funding_round('3cdfcecd-5377-439b-acab-cefcf6fe21a5', { card_id: 'investors' })
 response = client.acquisition('7638eae9-07b7-4fc6-ad20-5d99de3ff928')
 response = client.fund('aeaac12b-df56-7039-40f9-f1992f88e20e')
 response = client.ownership('4506d9ce-85d3-4a8f-89cd-07a225359d55')
@@ -119,16 +119,16 @@ client.recent_updates({
 
 <!-- Autocompletes -->
 response = client.autocomplete('ekohe')
-response = client.autocomplete('ekohe', collection_ids: 'organizations')
-response = client.autocomplete('ekohe', collection_ids: 'organizations', limit: 3)
-response = client.autocomplete('encore', collection_ids: 'people')
-response = client.autocomplete('facebook', collection_ids: 'funding_rounds')
-response = client.autocomplete('facebook', collection_ids: 'press_references')
+response = client.autocomplete('ekohe', { collection_ids: 'organizations' })
+response = client.autocomplete('ekohe', { collection_ids: 'organizations', limit: 3 })
+response = client.autocomplete('encore', { collection_ids: 'people' })
+response = client.autocomplete('facebook', { collection_ids: 'funding_rounds' })
+response = client.autocomplete('facebook', { collection_ids: 'press_references' })
 
 <!-- Deleted Entities -->
-response = client.deledeted_entities(collection_ids: 'organizations')
-response = client.deledeted_entities(collection_ids: 'people')
-response = client.deledeted_entities(collection_ids: 'funding_rounds')
+response = client.deledeted_entities({ collection_ids: 'organizations' })
+response = client.deledeted_entities({ collection_ids: 'people' })
+response = client.deledeted_entities({ collection_ids: 'funding_rounds' })
 ```
 
 #### Module: Utils
@@ -614,7 +614,7 @@ Search by keyword has been supported in "Organization", "People" and "Fund Round
 * Search in an organization by keyword
 
 ```ruby
-pry(main)> response = client.autocomplete('ekohe', collection_ids: 'organizations')
+pry(main)> response = client.autocomplete('ekohe', { collection_ids: 'organizations' })
 => #<Crunchbase::Autocompletes::Client:0x00007fecb34ce1e8
  @conditions={:query=>"ekohe", :collection_ids=>"organizations"},
  @count=25,
@@ -646,7 +646,7 @@ pry(main)> response.total_count
 * Search in an people by keyword
 
 ```ruby
-pry(main)> response = client.autocomplete('maxime', collection_ids: 'people')
+pry(main)> response = client.autocomplete('maxime', { collection_ids: 'people' })
 => #<Crunchbase::Autocompletes::Client:0x00007fecb474f9c0
  @conditions={:query=>"maxime", :collection_ids=>"people"},
  @count=25,
@@ -678,7 +678,7 @@ pry(main)> response.total_count
 * Search in an funding rounds by keyword
 
 ```ruby
-pry(main)> response = client.autocomplete('facebook', collection_ids: 'funding_rounds')
+pry(main)> response = client.autocomplete('facebook', { collection_ids: 'funding_rounds' })
 => #<Crunchbase::Autocompletes::Client:0x00007fecb4dd66b8
  @conditions={:query=>"facebook", :collection_ids=>"funding_rounds"},
  @count=25,

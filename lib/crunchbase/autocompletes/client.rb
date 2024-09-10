@@ -37,7 +37,7 @@ module Crunchbase
       private
 
       def wrapping_autocomplete_entities!(response)
-        query_results = search_results(response.dig('entities'))
+        query_results = search_results(response['entities'])
 
         self.total_count  = response['count']
         self.entities     = query_results

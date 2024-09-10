@@ -38,7 +38,7 @@ module Crunchbase
       # Auto combine the card num field to request field_ids
       #
       #   Example: if card_id is investors, will auto add num_investors
-      def cards(card_id, **args)
+      def cards(card_id, args = {})
         raise Crunchbase::Error, 'Invalid card_id' unless cbobject.full_cards.include?(card_id)
 
         field_ids = cbobject.basis_fields.concat(cbobject.card_num_field(card_id))
@@ -55,7 +55,7 @@ module Crunchbase
 
       private
 
-      def entity_request_uri(**args)
+      def entity_request_uri(args = {})
         [
           ROOT_LIST, kclass_name::RESOURCE_LIST,
           @entity_id, args[:name], args[:card_id]

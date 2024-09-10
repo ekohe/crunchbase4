@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Models::Ipo do
   context 'ipo' do
     it 'returns people as endpoint' do

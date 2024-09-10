@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Searches::Client do
   it 'be able search organizations' do
     post_data_raw = {

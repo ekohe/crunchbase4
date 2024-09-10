@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Models::Person do
   context 'person' do
     it 'returns people as endpoint' do

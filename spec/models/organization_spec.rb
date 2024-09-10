@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Models::Organization do
   context 'organization' do
     it 'returns organizations as endpoint' do

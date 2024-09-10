@@ -30,7 +30,7 @@ module Crunchbase
         order_conditions = order_field_ids.map do |field_id|
           {
             'field_id' => field_id,
-            'sort' => (args[:sort] || 'desc'),
+            'sort' => args[:sort] || 'desc',
             'nulls' => 'last'
           }
         end

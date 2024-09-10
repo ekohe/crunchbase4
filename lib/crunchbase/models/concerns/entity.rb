@@ -18,14 +18,14 @@ module Crunchbase
       def parse_response(response, request_field_ids = [], cards = [])
         extract_fields = (request_field_ids.empty? ? field_ids : request_field_ids)
 
-        dynamic_attributes(self, extract_fields, response.dig('properties'))
-        setup_relationships(self, cards, response.dig('cards'))
+        dynamic_attributes(self, extract_fields, response['properties'])
+        setup_relationships(self, cards, response['cards'])
         self
       end
 
       def setup_relationships(object, request_card_ids, response_cards)
         request_card_ids.each do |card_id|
-          card_data = response_cards.dig(card_id)
+          card_data = response_cards[card_id]
           card_model = model_mappings[card_id]
           card_objects = if card_data.is_a?(Array)
                            card_data.each_with_object([]) do |data, objects|

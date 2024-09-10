@@ -33,7 +33,7 @@ module Crunchbase
       #   deleted_at_order: string
       #     Direction of sorting by deleted_at property
       #       Available values : asc, desc
-      def deleted_entities(**args)
+      def deleted_entities(args = {})
         crunchbase_deleted_entities(args)
       end
 

@@ -34,8 +34,7 @@ module Crunchbase
       end
 
       def full_cards
-        %w[
-        ]
+        %w[]
       end
     end
   end

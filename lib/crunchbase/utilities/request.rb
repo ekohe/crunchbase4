@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'faraday'
-require 'faraday_middleware'
 require 'faraday_curl'
 require 'logger'
 require_relative '../errors'
@@ -40,8 +39,8 @@ module Crunchbase
         response = Faraday.new(url: BASE_URI, headers: post_headers) do |faraday|
           faraday.adapter Faraday.default_adapter
           faraday.response :json
-          faraday.request :curl, ::Logger.new(STDOUT), :warn if debug_mode?
-          faraday.response :logger, ::Logger.new(STDOUT), bodies: true if debug_mode?
+          faraday.request :curl, ::Logger.new($stdout), :warn if debug_mode?
+          faraday.response :logger, ::Logger.new($stdout), bodies: true if debug_mode?
         end.post(uri, args)
 
         resp_body = response.body
@@ -57,7 +56,7 @@ module Crunchbase
         response = Faraday.new(url: BASE_URI, headers: headers) do |faraday|
           faraday.adapter Faraday.default_adapter
           faraday.response :json
-          faraday.response :logger, ::Logger.new(STDOUT), bodies: true if debug_mode?
+          faraday.response :logger, ::Logger.new($stdout), bodies: true if debug_mode?
         end.get(uri, *args)
 
         resp_body = response.body

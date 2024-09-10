@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Models::CategoryGroup do
   context 'category_group' do
     it 'returns category_group as endpoint' do
@@ -41,8 +43,7 @@ RSpec.describe Crunchbase::Models::CategoryGroup do
 
       expect(category_group.full_cards.size).to eq(0)
       expect(category_group.full_cards).to eq(
-        %w[
-        ]
+        %w[]
       )
     end
   end

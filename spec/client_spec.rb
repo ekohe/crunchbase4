@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe Crunchbase::Client do
   let(:client) { described_class.new }
 
@@ -95,7 +97,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with ipos' do
       organization = VCR.use_cassette('organization-facebook-with-ipos') do
-        client.organization('facebook', card_id: 'ipos')
+        client.organization('facebook', { card_id: 'ipos' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -107,14 +109,14 @@ RSpec.describe Crunchbase::Client do
     it 'raise error when with a invalid card_id' do
       expect do
         VCR.use_cassette('organization-facebook-with-funding_rounds') do
-          client.organization('facebook', card_id: 'funding_rounds')
+          client.organization('facebook', { card_id: 'funding_rounds' })
         end
       end.to raise_error(Crunchbase::Error, 'Invalid card_id')
     end
 
     it 'be able to get organization data with raised_funding_rounds' do
       organization = VCR.use_cassette('organization-facebook-with-raised_funding_rounds') do
-        client.organization('facebook', card_id: 'raised_funding_rounds')
+        client.organization('facebook', { card_id: 'raised_funding_rounds' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -132,7 +134,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get pre_money_valuation and diversity_spotlights data from raised_funding_rounds' do
       organization = VCR.use_cassette('organization-calendly-with-raised_funding_rounds') do
-        client.organization('calendly', card_id: 'raised_funding_rounds')
+        client.organization('calendly', { card_id: 'raised_funding_rounds' })
       end
 
       expect(organization.permalink).to eq('calendly')
@@ -171,7 +173,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with raised_funds' do
       organization = VCR.use_cassette('organization-facebook-with-raised_funds') do
-        client.organization('facebook', card_id: 'raised_funds')
+        client.organization('facebook', { card_id: 'raised_funds' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -180,7 +182,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with participated_funds' do
       organization = VCR.use_cassette('organization-facebook-with-participated_funds') do
-        client.organization('facebook', card_id: 'participated_funds')
+        client.organization('facebook', { card_id: 'participated_funds' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -202,7 +204,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with parent_ownership' do
       organization = VCR.use_cassette('organization-facebook-with-parent_ownership') do
-        client.organization('facebook', card_id: 'parent_ownership')
+        client.organization('facebook', { card_id: 'parent_ownership' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -211,7 +213,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with child_ownerships' do
       organization = VCR.use_cassette('organization-facebook-with-child_ownerships') do
-        client.organization('facebook', card_id: 'child_ownerships')
+        client.organization('facebook', { card_id: 'child_ownerships' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -236,7 +238,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with founders' do
       organization = VCR.use_cassette('organization-facebook-with-founders') do
-        client.organization('facebook', card_id: 'founders')
+        client.organization('facebook', { card_id: 'founders' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -255,7 +257,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with event_appearances' do
       organization = VCR.use_cassette('organization-facebook-with-event_appearances') do
-        client.organization('facebook', card_id: 'event_appearances')
+        client.organization('facebook', { card_id: 'event_appearances' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -274,7 +276,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with investors' do
       organization = VCR.use_cassette('organization-facebook-with-investors') do
-        client.organization('facebook', card_id: 'investors')
+        client.organization('facebook', { card_id: 'investors' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -291,7 +293,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with jobs' do
       organization = VCR.use_cassette('organization-facebook-with-jobs') do
-        client.organization('facebook', card_id: 'jobs')
+        client.organization('facebook', { card_id: 'jobs' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -308,7 +310,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'be able to get organization data with headquarters_address' do
       organization = VCR.use_cassette('organization-facebook-with-headquarters_address') do
-        client.organization('facebook', card_id: 'headquarters_address')
+        client.organization('facebook', { card_id: 'headquarters_address' })
       end
 
       expect(organization.permalink).to eq('facebook')
@@ -533,7 +535,7 @@ RSpec.describe Crunchbase::Client do
   context 'Autocompletes API' do
     it 'returns matched organizations by keyword' do
       response = VCR.use_cassette('autocomplete_organizations_by_keyword-ekohe') do
-        client.autocomplete('ekohe', collection_ids: 'organizations')
+        client.autocomplete('ekohe', { collection_ids: 'organizations' })
       end
 
       organizations = response.entities
@@ -546,7 +548,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'returns matched people by keyword' do
       response = VCR.use_cassette('autocomplete_people_by_keyword-maxime') do
-        client.autocomplete('maxime', collection_ids: 'people')
+        client.autocomplete('maxime', { collection_ids: 'people' })
       end
 
       people = response.entities
@@ -559,7 +561,7 @@ RSpec.describe Crunchbase::Client do
 
     it 'returns matched funding rounds by facebook' do
       response = VCR.use_cassette('autocomplete_funding_rounds_by_keyword-facebook') do
-        client.autocomplete('facebook', collection_ids: 'funding_rounds')
+        client.autocomplete('facebook', { collection_ids: 'funding_rounds' })
       end
 
       funding_rounds = response.entities

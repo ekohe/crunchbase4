@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Crunchbase::Searches::Client do
+require 'spec_helper'
+
+RSpec.describe ::Crunchbase::Searches::Client do
   it 'be able search press references with raw params by search client' do
     post_data_raw = {
       'field_ids' => %w[
